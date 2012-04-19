@@ -4,7 +4,7 @@
   <title><![CDATA[SEGMAC]]></title>
   <link href="http://duanhong169.github.com/atom.xml" rel="self"/>
   <link href="http://duanhong169.github.com/"/>
-  <updated>2012-04-19T18:20:52+08:00</updated>
+  <updated>2012-04-19T20:11:42+08:00</updated>
   <id>http://duanhong169.github.com/</id>
   <author>
     <name><![CDATA[弘]]></name>
@@ -14,20 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[挂你妹啊 SB]]></title>
-    <link href="http://duanhong169.github.com/blog/hereiam.html"/>
-    <updated>2012-04-19T02:41:00+08:00</updated>
-    <id>http://duanhong169.github.com/blog/hereiam</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Smack设置隐身状态]]></title>
     <link href="http://duanhong169.github.com/blog/smack-invisibility.html"/>
     <updated>2012-04-18T18:01:00+08:00</updated>
     <id>http://duanhong169.github.com/blog/smack-invisibility</id>
-    <content type="html"><![CDATA[<p>什么是Smack?? Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.?<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>?Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
+    <content type="html"><![CDATA[<p>什么是Smack?  Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat. <a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a> Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
 
 <p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
 
@@ -38,6 +29,8 @@
 <p>XMPP RFC认为隐身实际上是一个不必要独立存在的一个状态，因为在实际应用时，只要你不给你的其他联系人发送available类型的Presence，那么你的联系人就是不会看见你在线的，也就是达到了和隐身相同的效果，XMPP文档<a href="http://xmpp.org/extensions/xep-0126.html">XEP-0126</a>对于这种隐身功能的实现做了十分详细的说明。</p>
 
 <p>那么在Smack中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：</p>
+
+<p>[java highlight=&#8221;25,26-43&#8221;]</p>
 
 <pre><code>//设置状态
 private void setPresence(int code){
@@ -91,6 +84,8 @@ private void setPresence(int code){
     }
 }
 </code></pre>
+
+<p>[/java]</p>
 
 <p>其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。</p>
 ]]></content>
