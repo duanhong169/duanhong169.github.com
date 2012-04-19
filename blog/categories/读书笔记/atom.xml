@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 读书笔记 | SEGMAC]]></title>
-  <link href="http://blog.segmac.com/blog/categories/读书笔记/atom.xml" rel="self"/>
-  <link href="http://blog.segmac.com/"/>
-  <updated>2012-04-19T17:56:27+08:00</updated>
-  <id>http://blog.segmac.com/</id>
+  <link href="http://duanhong169.github.com/blog/categories/读书笔记/atom.xml" rel="self"/>
+  <link href="http://duanhong169.github.com/"/>
+  <updated>2012-04-19T18:12:00+08:00</updated>
+  <id>http://duanhong169.github.com/</id>
   <author>
     <name><![CDATA[弘]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[《20岁，开始与别人拉开距离》笔记二]]></title>
-    <link href="http://blog.segmac.com/blog/20-2.html"/>
+    <link href="http://duanhong169.github.com/blog/20-2.html"/>
     <updated>2011-11-09T23:16:03+08:00</updated>
-    <id>http://blog.segmac.com/blog/20-2</id>
+    <id>http://duanhong169.github.com/blog/20-2</id>
     <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
 
 <p>伴随着时间的推移，伴随着年龄的增加，要为自己增加一些能够让未来更加光明的武器和筹码。这些武器和筹码，可以是另一项才能，可以是现有能力的挖掘，也可以是一种意识上的推陈出新。</p>
@@ -55,9 +55,9 @@
   
   <entry>
     <title type="html"><![CDATA[《20岁，开始与别人拉开距离》笔记]]></title>
-    <link href="http://blog.segmac.com/blog/20.html"/>
+    <link href="http://duanhong169.github.com/blog/20.html"/>
     <updated>2011-11-01T10:35:28+08:00</updated>
-    <id>http://blog.segmac.com/blog/20</id>
+    <id>http://duanhong169.github.com/blog/20</id>
     <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
 
 <p>人生要抢占先机，在尝试和挑战中去发现自己的理想职业。要明白：有时候只需要稍微努力一下，情况就可能完全逆转。当前的种种状况必不能代表之后的状况，考入重点高中并不代表可以考入重点大学，考入重点大学并不代表能够成就一番事业，反之亦然，不要沉溺于当前的状态，将曾经的“辉煌”与“失败”统统归零。</p>

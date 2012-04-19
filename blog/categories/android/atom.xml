@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Android | SEGMAC]]></title>
-  <link href="http://blog.segmac.com/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://blog.segmac.com/"/>
-  <updated>2012-04-19T17:56:27+08:00</updated>
-  <id>http://blog.segmac.com/</id>
+  <link href="http://duanhong169.github.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://duanhong169.github.com/"/>
+  <updated>2012-04-19T18:12:00+08:00</updated>
+  <id>http://duanhong169.github.com/</id>
   <author>
     <name><![CDATA[弘]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ 关于“A folder failed to be renamed or moved”错误]]></title>
-    <link href="http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html"/>
+    <link href="http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved.html"/>
     <updated>2011-11-16T18:12:08+08:00</updated>
-    <id>http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved</id>
+    <id>http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved</id>
     <content type="html"><![CDATA[<p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
 
 <p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory 'D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools'. When ready, press YES to try again.</p>
@@ -36,9 +36,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android RotateAnimation的一点疑问]]></title>
-    <link href="http://blog.segmac.com/blog/android-rotateanimation.html"/>
+    <link href="http://duanhong169.github.com/blog/android-rotateanimation.html"/>
     <updated>2011-11-10T11:33:34+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-rotateanimation</id>
+    <id>http://duanhong169.github.com/blog/android-rotateanimation</id>
     <content type="html"><![CDATA[<p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
 
 <p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android Google Weather API调用示例]]></title>
-    <link href="http://blog.segmac.com/blog/android-google-weather-api.html"/>
+    <link href="http://duanhong169.github.com/blog/android-google-weather-api.html"/>
     <updated>2011-10-22T00:27:47+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-google-weather-api</id>
+    <id>http://duanhong169.github.com/blog/android-google-weather-api</id>
     <content type="html"><![CDATA[<p>该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
 Demo截图：
 [fgallery id=2 w=480 h=480 t=0 title="weatherapp"]
@@ -676,9 +676,9 @@ class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt
   
   <entry>
     <title type="html"><![CDATA[Android SQLiteDemo]]></title>
-    <link href="http://blog.segmac.com/blog/android-sqlitedemo.html"/>
+    <link href="http://duanhong169.github.com/blog/android-sqlitedemo.html"/>
     <updated>2011-10-20T10:51:17+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-sqlitedemo</id>
+    <id>http://duanhong169.github.com/blog/android-sqlitedemo</id>
     <content type="html"><![CDATA[<p>该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
 Demo截图：
 [fgallery id=1 w=320 h=480 t=0 title="sqlite"]

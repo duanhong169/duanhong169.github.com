@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[SEGMAC]]></title>
-  <link href="http://blog.segmac.com/atom.xml" rel="self"/>
-  <link href="http://blog.segmac.com/"/>
-  <updated>2012-04-19T17:56:27+08:00</updated>
-  <id>http://blog.segmac.com/</id>
+  <link href="http://duanhong169.github.com/atom.xml" rel="self"/>
+  <link href="http://duanhong169.github.com/"/>
+  <updated>2012-04-19T18:12:00+08:00</updated>
+  <id>http://duanhong169.github.com/</id>
   <author>
     <name><![CDATA[弘]]></name>
     
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[挂你妹啊 SB]]></title>
-    <link href="http://blog.segmac.com/blog/hereiam.html"/>
+    <link href="http://duanhong169.github.com/blog/hereiam.html"/>
     <updated>2012-04-19T02:41:00+08:00</updated>
-    <id>http://blog.segmac.com/blog/hereiam</id>
+    <id>http://duanhong169.github.com/blog/hereiam</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Smack设置隐身状态]]></title>
-    <link href="http://blog.segmac.com/blog/smack-invisibility.html"/>
+    <link href="http://duanhong169.github.com/blog/smack-invisibility.html"/>
     <updated>2012-04-18T18:01:00+08:00</updated>
-    <id>http://blog.segmac.com/blog/smack-invisibility</id>
+    <id>http://duanhong169.github.com/blog/smack-invisibility</id>
     <content type="html"><![CDATA[<p>什么是Smack?? Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.?<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>?Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
 
 <p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
@@ -98,9 +98,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[The social life in my mind]]></title>
-    <link href="http://blog.segmac.com/blog/the-social-life-in-my-mind.html"/>
+    <link href="http://duanhong169.github.com/blog/the-social-life-in-my-mind.html"/>
     <updated>2012-04-04T21:28:44+08:00</updated>
-    <id>http://blog.segmac.com/blog/the-social-life-in-my-mind</id>
+    <id>http://duanhong169.github.com/blog/the-social-life-in-my-mind</id>
     <content type="html"><![CDATA[<p>Every human can&#8217;t live out of the social, and so we build a very big social around the world, and then we live in it,  we help each other, build our own land, so us human beings become stronger and stronger&#8211;we become the kings of the world.</p>
 
 <pre><code> As a human, we must be a part of the social or we'll be cancelled...It's no doubt we'll be cancelled if we don't do something to adapt to the social life, the social nature. 
@@ -119,9 +119,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[思考]]></title>
-    <link href="http://blog.segmac.com/blog/thinking.html"/>
+    <link href="http://duanhong169.github.com/blog/thinking.html"/>
     <updated>2011-12-18T16:36:21+08:00</updated>
-    <id>http://blog.segmac.com/blog/thinking</id>
+    <id>http://duanhong169.github.com/blog/thinking</id>
     <content type="html"><![CDATA[<p>一个人在经历了一定的时间之后，他终究是会醒悟的。</p>
 
 <p>在一个人觉醒之前，他会觉得他总是正确的，他认为他总能够看清楚世间万物的道理。当他看到眼前所经历的一件事情之后，就会在脑子里对其进行分析和假定，然后给这件事情中涉及的人和事都加上自己的注解，他并不关心这些理解是否正确，因为他坚信自己的想法一定是正确的。他可以把自己与世间万物独立开来，站在上帝的角度来看待世界。他把自己视作hypervisor，以为自己已经掌握了所有心理学的奥妙，殊不知其实他连自己的心理状态都没有思考清楚。不过通常情况下他在大部分时候还可能是对的，因而就更加坚定了他站在上帝所处的制高点的信心，其实那些只不过是一个正常人都具备的基本的分析判断能力罢了。虽然偶尔发生的状况可能会稍稍地打击一下他，但是他也总是能够找到为自己开脱的理由。</p>
@@ -138,9 +138,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[P2P与PPP]]></title>
-    <link href="http://blog.segmac.com/blog/p2pppp.html"/>
+    <link href="http://duanhong169.github.com/blog/p2pppp.html"/>
     <updated>2011-12-08T00:34:07+08:00</updated>
-    <id>http://blog.segmac.com/blog/p2pppp</id>
+    <id>http://duanhong169.github.com/blog/p2pppp</id>
     <content type="html"><![CDATA[<p>这两个概念非常容易搞混。这里提供一些线索供大家参考，分清楚两者之间的关系。</p>
 
 <h2>Clue 1：简要回答</h2>
@@ -282,9 +282,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[KVM]]></title>
-    <link href="http://blog.segmac.com/blog/kvm.html"/>
+    <link href="http://duanhong169.github.com/blog/kvm.html"/>
     <updated>2011-11-29T20:36:01+08:00</updated>
-    <id>http://blog.segmac.com/blog/kvm</id>
+    <id>http://duanhong169.github.com/blog/kvm</id>
     <content type="html"><![CDATA[<h2>KVM</h2>
 
 <p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
@@ -329,9 +329,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[ 关于“A folder failed to be renamed or moved”错误]]></title>
-    <link href="http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html"/>
+    <link href="http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved.html"/>
     <updated>2011-11-16T18:12:08+08:00</updated>
-    <id>http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved</id>
+    <id>http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved</id>
     <content type="html"><![CDATA[<p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
 
 <p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory &#8216;D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools&#8217;. When ready, press YES to try again.</p>
@@ -350,9 +350,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[Android RotateAnimation的一点疑问]]></title>
-    <link href="http://blog.segmac.com/blog/android-rotateanimation.html"/>
+    <link href="http://duanhong169.github.com/blog/android-rotateanimation.html"/>
     <updated>2011-11-10T11:33:34+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-rotateanimation</id>
+    <id>http://duanhong169.github.com/blog/android-rotateanimation</id>
     <content type="html"><![CDATA[<p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
 
 <p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
@@ -385,9 +385,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[《20岁，开始与别人拉开距离》笔记二]]></title>
-    <link href="http://blog.segmac.com/blog/20-2.html"/>
+    <link href="http://duanhong169.github.com/blog/20-2.html"/>
     <updated>2011-11-09T23:16:03+08:00</updated>
-    <id>http://blog.segmac.com/blog/20-2</id>
+    <id>http://duanhong169.github.com/blog/20-2</id>
     <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
 
 <p>伴随着时间的推移，伴随着年龄的增加，要为自己增加一些能够让未来更加光明的武器和筹码。这些武器和筹码，可以是另一项才能，可以是现有能力的挖掘，也可以是一种意识上的推陈出新。</p>
@@ -425,9 +425,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[DOTA2的调查问卷]]></title>
-    <link href="http://blog.segmac.com/blog/dota2-takesurvey.html"/>
+    <link href="http://duanhong169.github.com/blog/dota2-takesurvey.html"/>
     <updated>2011-11-02T14:58:44+08:00</updated>
-    <id>http://blog.segmac.com/blog/dota2-takesurvey</id>
+    <id>http://duanhong169.github.com/blog/dota2-takesurvey</id>
     <content type="html"><![CDATA[<p>以前申请的DOTA2体验资格的邮箱今天收到了一封由Steam发过来的邮件，大概意思是需要进一步的调查玩家所使用的机器配置及网络相关的信息，一遍DOTA2能够满足大部分玩家的需求，可是发件邮件中的<a href="steam://takesurvey/1/">steam://takesurvey/1/</a>链接（这里可以点）却点不开，已经安装并更新了STEAM的客户端也不行，不知道什么原因~</p>
 
 <p>呵呵没关系，更新完成后，点上面那个链接应该就行了，可能是邮件里面除了些问题，没有把链接弄对。</p>
@@ -438,9 +438,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[《20岁，开始与别人拉开距离》笔记]]></title>
-    <link href="http://blog.segmac.com/blog/20.html"/>
+    <link href="http://duanhong169.github.com/blog/20.html"/>
     <updated>2011-11-01T10:35:28+08:00</updated>
-    <id>http://blog.segmac.com/blog/20</id>
+    <id>http://duanhong169.github.com/blog/20</id>
     <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
 
 <p>人生要抢占先机，在尝试和挑战中去发现自己的理想职业。要明白：有时候只需要稍微努力一下，情况就可能完全逆转。当前的种种状况必不能代表之后的状况，考入重点高中并不代表可以考入重点大学，考入重点大学并不代表能够成就一番事业，反之亦然，不要沉溺于当前的状态，将曾经的“辉煌”与“失败”统统归零。</p>
@@ -505,9 +505,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[坑爹的XX]]></title>
-    <link href="http://blog.segmac.com/blog/kendie-xx.html"/>
+    <link href="http://duanhong169.github.com/blog/kendie-xx.html"/>
     <updated>2011-10-31T15:34:36+08:00</updated>
-    <id>http://blog.segmac.com/blog/kendie-xx</id>
+    <id>http://duanhong169.github.com/blog/kendie-xx</id>
     <content type="html"><![CDATA[<p>不知道是不是我太龊了，一天之内改两篇工程硕士学位论文真的大丈夫吗？注意这里的改不是批改，而是要修改其中的内容。说白了就是帮人写论文罢了，要是是我做过这论文里面的相关系统的设计也还可以理解，可是这根本就是我没去接触过的，看看学校给的这些整改意见吧。</p>
 
 <blockquote><p>“论文毫无实质性内容，……系统实现部分根本看不出工作量，无关键代码，甚至无法知道系统设计的语言。”</p></blockquote>
@@ -524,9 +524,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[为什么总是缺少语言]]></title>
-    <link href="http://blog.segmac.com/blog/no-words.html"/>
+    <link href="http://duanhong169.github.com/blog/no-words.html"/>
     <updated>2011-10-30T14:48:53+08:00</updated>
-    <id>http://blog.segmac.com/blog/no-words</id>
+    <id>http://duanhong169.github.com/blog/no-words</id>
     <content type="html"><![CDATA[<p>很多时候，感觉自己想要说点什么，但是却一个字也吐不出来。看着对方一行一行的字出现，更是觉得越来越大的压力，以至于更加不知道说什么好了。</p>
 
 <p>不能怨别人，肤浅的人总是缺少语言，对一件事缺少感情，自然也不会对它产生多少的理解，更不用说对其侃侃而谈了。</p>
@@ -539,9 +539,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[I can not wake up]]></title>
-    <link href="http://blog.segmac.com/blog/i-can-not-wake-up.html"/>
+    <link href="http://duanhong169.github.com/blog/i-can-not-wake-up.html"/>
     <updated>2011-10-27T16:02:47+08:00</updated>
-    <id>http://blog.segmac.com/blog/i-can-not-wake-up</id>
+    <id>http://duanhong169.github.com/blog/i-can-not-wake-up</id>
     <content type="html"><![CDATA[<p>是意志不够坚定吗？但是我确实感觉太累了，感觉即使我能逃离这张床，也必定会在某个地方趴着睡着。</p>
 
 <p>唉 谁能教会我深度睡眠就好了~我觉得以前的我就是这样的，感觉每天睡四到六个小时就足够了，第二天一样精神满满，现在怎么就不行了呢。是环境变了吗，还是我自己变了。</p>
@@ -562,9 +562,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[晚睡强迫症]]></title>
-    <link href="http://blog.segmac.com/blog/sleep-late.html"/>
+    <link href="http://duanhong169.github.com/blog/sleep-late.html"/>
     <updated>2011-10-26T01:48:22+08:00</updated>
-    <id>http://blog.segmac.com/blog/sleep-late</id>
+    <id>http://duanhong169.github.com/blog/sleep-late</id>
     <content type="html"><![CDATA[<p>为什么夜深了却越是睡不着呢··七八点的时候倒是会有点打瞌睡。
 那时候又不敢睡~怕晚上突然醒了就悲剧了，最痛苦的事情还是是失眠呀。</p>
 
@@ -583,9 +583,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[Android Google Weather API调用示例]]></title>
-    <link href="http://blog.segmac.com/blog/android-google-weather-api.html"/>
+    <link href="http://duanhong169.github.com/blog/android-google-weather-api.html"/>
     <updated>2011-10-22T00:27:47+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-google-weather-api</id>
+    <id>http://duanhong169.github.com/blog/android-google-weather-api</id>
     <content type="html"><![CDATA[<p>该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
 Demo截图：
 [fgallery id=2 w=480 h=480 t=0 title=&#8221;weatherapp&#8221;]
@@ -1188,9 +1188,9 @@ class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt
   
   <entry>
     <title type="html"><![CDATA[Android SQLiteDemo]]></title>
-    <link href="http://blog.segmac.com/blog/android-sqlitedemo.html"/>
+    <link href="http://duanhong169.github.com/blog/android-sqlitedemo.html"/>
     <updated>2011-10-20T10:51:17+08:00</updated>
-    <id>http://blog.segmac.com/blog/android-sqlitedemo</id>
+    <id>http://duanhong169.github.com/blog/android-sqlitedemo</id>
     <content type="html"><![CDATA[<p>该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
 Demo截图：
 [fgallery id=1 w=320 h=480 t=0 title=&#8221;sqlite&#8221;]
@@ -1552,9 +1552,9 @@ android:layout_height="fill_parent"&gt;
   
   <entry>
     <title type="html"><![CDATA[I need something special.]]></title>
-    <link href="http://blog.segmac.com/blog/i-need-something-special.html"/>
+    <link href="http://duanhong169.github.com/blog/i-need-something-special.html"/>
     <updated>2011-10-19T23:51:56+08:00</updated>
-    <id>http://blog.segmac.com/blog/i-need-something-special</id>
+    <id>http://duanhong169.github.com/blog/i-need-something-special</id>
     <content type="html"><![CDATA[<p>我需要改变。</p>
 
 <p>我需要做一些特别的事情。</p>

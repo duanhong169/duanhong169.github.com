@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Study | SEGMAC]]></title>
-  <link href="http://blog.segmac.com/blog/categories/study/atom.xml" rel="self"/>
-  <link href="http://blog.segmac.com/"/>
-  <updated>2012-04-19T17:56:27+08:00</updated>
-  <id>http://blog.segmac.com/</id>
+  <link href="http://duanhong169.github.com/blog/categories/study/atom.xml" rel="self"/>
+  <link href="http://duanhong169.github.com/"/>
+  <updated>2012-04-19T18:12:00+08:00</updated>
+  <id>http://duanhong169.github.com/</id>
   <author>
     <name><![CDATA[弘]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Smack设置隐身状态]]></title>
-    <link href="http://blog.segmac.com/blog/smack-invisibility.html"/>
+    <link href="http://duanhong169.github.com/blog/smack-invisibility.html"/>
     <updated>2012-04-18T18:01:00+08:00</updated>
-    <id>http://blog.segmac.com/blog/smack-invisibility</id>
+    <id>http://duanhong169.github.com/blog/smack-invisibility</id>
     <content type="html"><![CDATA[<p>什么是Smack?? Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.?<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>?Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
 
 <p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
@@ -89,9 +89,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[P2P与PPP]]></title>
-    <link href="http://blog.segmac.com/blog/p2pppp.html"/>
+    <link href="http://duanhong169.github.com/blog/p2pppp.html"/>
     <updated>2011-12-08T00:34:07+08:00</updated>
-    <id>http://blog.segmac.com/blog/p2pppp</id>
+    <id>http://duanhong169.github.com/blog/p2pppp</id>
     <content type="html"><![CDATA[<p>这两个概念非常容易搞混。这里提供一些线索供大家参考，分清楚两者之间的关系。</p>
 
 <h2>Clue 1：简要回答</h2>
@@ -233,9 +233,9 @@ private void setPresence(int code){
   
   <entry>
     <title type="html"><![CDATA[KVM]]></title>
-    <link href="http://blog.segmac.com/blog/kvm.html"/>
+    <link href="http://duanhong169.github.com/blog/kvm.html"/>
     <updated>2011-11-29T20:36:01+08:00</updated>
-    <id>http://blog.segmac.com/blog/kvm</id>
+    <id>http://duanhong169.github.com/blog/kvm</id>
     <content type="html"><![CDATA[<h2>KVM</h2>
 
 <p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
