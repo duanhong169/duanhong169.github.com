@@ -103,8 +103,7 @@ Smack is a library for communicating with XMPP servers to perform real-time comm
 
 <p>XMPP RFC认为隐身实际上是一个不必要独立存在的一个状态，因为在实际应用时，只要你不给你的其他联系人发送available类型的Presence，那么你的联系人就是不会看见你在线的，也就是达到了和隐身相同的效果，XMPP文档<a href="http://xmpp.org/extensions/xep-0126.html">XEP-0126</a>对于这种隐身功能的实现做了十分详细的说明。</p>
 
-<p>那么在Smack中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：
-{% codeblock Smack invisibility lang:ruby %}</p>
+<p>那么在Smack中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：</p>
 
 <pre><code>//设置状态
 private void setPresence(int code){
@@ -159,8 +158,7 @@ private void setPresence(int code){
 }
 </code></pre>
 
-<p>{% endcodeblock %}
-其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。</p>
+<p>其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。</p>
 </div>
   
   
