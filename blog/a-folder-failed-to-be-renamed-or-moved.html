@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title> 关于“A folder failed to be renamed or moved”错误 - SEGMAC</title>
+  
+  <meta name="description" content="关于“a Folder Failed to Be Renamed or Moved”错误 2011-11-16 Wed Tag: Android 在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息， &hellip;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/screen.css" />
+  
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" />
+  
+</head>
+
+<body>
+<!--[if IE]>
+html,body{height:100%;overflow:hidden}
+<div class="ie-go-away">My blog does not support the IE!</div>
+<![endif]-->
+
+<!-- 黑长直 -->
+<nav class="black-long-straight">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank">
+        <input type="hidden" name="q" value="site:blog.segmac.com" />
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech />
+      </form>
+    </li>
+    
+  </ul>
+</nav>
+
+<header class="my-nickname"><em title="">弘</em></header>
+
+<section class="main-wrap clearfix">
+  <article role="article">
+    
+
+<header>
+  
+    <h1 class="entry-title">关于“a Folder Failed to Be Renamed or Moved”错误</h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-16T18:12:08+08:00" pubdate="pubdate" data-updated="true">2011-11-16 Wed</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/android/'>Android</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=关于“a Folder Failed to Be Renamed or Moved”错误 - &amp;url=http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=关于“a Folder Failed to Be Renamed or Moved”错误 - &amp;url=http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=关于“a Folder Failed to Be Renamed or Moved”错误 - http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
+
+<p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory &#8216;D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools&#8217;. When ready, press YES to try again.</p>
+
+<p>以前更新的时候遇到过几次，不过没去管，不能够更新的组件不更新就是了，说不定下次更新的时候就可以了。但是今天去更新Android SDK Tools Rev. 15的时候，又碰见了这个问题，真是好郁闷，于是想看看到底是为什么，于是就尝试手动的逐渐将tools这个文件夹内的内容移动走，看看最终是那些东西被占用了，最后发现是tools/lib目录下的一些jar包正在被占用，刚好360有个解除占用的工具，于是用这个工具一看，发现是被java.exe使用了。</p>
+
+<p>于是全部解除占用后，按YES还是出现同样的错误，没办法，手动将所有的文件都移走，只留下一个空的tools文件夹，当然不出所料是不能移动这个空文件夹的，在windows下已经习惯这种情况了，关闭了所有杀毒软件也没有用，你就是不知道这个空文件夹到底是怎么被占用的。</p>
+
+<p>其实在进行新版本替换时，已经将新版本下载到temp文件夹下了，既然文件夹被使用不能移动，那就不去动它了，点NO然后关闭掉SDK manager，然后手动把新版本的压缩包解压到tools目录下，再次启动SDK manager，发现更新已经成功了。</p>
+
+<p><a href="http://segmac.com/wp-content/uploads/2011/11/update-success.png"><img src="http://segmac.com/wp-content/uploads/2011/11/update-success.png" alt="" /></a></p>
+
+<p>所以呢，其实这个事情上谁都没有错，毕竟是多个公司的产品在协作上不可能那么完美，在这种情况下，自己稍微变通一下往往就可以解决这类问题了。</p>
+</div>
+
+
+    <footer>
+      <p class="meta neighbor clearfix">
+        
+          <a href="/blog/android-rotateanimation.html" class="float-l" title="Previous Post: Android RotateAnimation的一点疑问">&laquo; Android RotateAnimation的一点疑问</a>
+        
+        
+          <a href="/blog/kvm.html" class="float-r" title="Next Post: KVM">KVM &raquo;</a>
+        
+      </p>
+    </footer>
+  </article>
+
+  <section id="disqus_thread"></section>
+</section>
+
+<footer class="footer">
+  &copy;2012 弘
+  &nbsp;-&nbsp;
+  Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
+</footer>
+
+
+<ul id="social-links">
+  
+  
+  
+  
+</ul>
+
+<script src="/javascripts/application.js"></script>
+
+
+<iframe src="/offline-cache.html" style="display:none"></iframe>
+</body>
+</html>

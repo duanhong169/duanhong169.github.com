@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Android SQLiteDemo - SEGMAC</title>
+  
+  <meta name="description" content="Android SQLiteDemo 2011-10-20 Thu Tag: Android 该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
+Demo截图：
+[fgallery id=1 w=320 h=480 t=0 title=&#8221;sqlite&#8221 &hellip;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/screen.css" />
+  
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" />
+  
+</head>
+
+<body>
+<!--[if IE]>
+html,body{height:100%;overflow:hidden}
+<div class="ie-go-away">My blog does not support the IE!</div>
+<![endif]-->
+
+<!-- 黑长直 -->
+<nav class="black-long-straight">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank">
+        <input type="hidden" name="q" value="site:blog.segmac.com" />
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech />
+      </form>
+    </li>
+    
+  </ul>
+</nav>
+
+<header class="my-nickname"><em title="">弘</em></header>
+
+<section class="main-wrap clearfix">
+  <article role="article">
+    
+
+<header>
+  
+    <h1 class="entry-title">Android SQLiteDemo</h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-20T10:51:17+08:00" pubdate="pubdate" data-updated="true">2011-10-20 Thu</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/android/'>Android</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Android SQLiteDemo - &amp;url=http://blog.segmac.com/blog/android-sqlitedemo.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=Android SQLiteDemo - &amp;url=http://blog.segmac.com/blog/android-sqlitedemo.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android SQLiteDemo - http://blog.segmac.com/blog/android-sqlitedemo.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
+Demo截图：
+[fgallery id=1 w=320 h=480 t=0 title=&#8221;sqlite&#8221;]
+Android Project结构：
+<a href="http://l4love.org/wp-content/uploads/2011/10/project.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project.png" alt="" /></a></p>
+
+<p>数据库操作辅助类（DBHelper.java），该类封装了对SQLite数据的操作，包括了创建表，删除表，增删改查数据等方法：
+[java]package com.android.SqliteDemo;</p>
+
+<p>import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.util.Log;</p>
+
+<p>public class DBHelper extends SQLiteOpenHelper {</p>
+
+<pre><code>Context context;//应用环境上下文  
+private static SQLiteDatabase db;//该辅助类维护的数据库对象
+public String table_name = "files";//数据库表名
+private static final String TAG = "duanhong";// 调试标签 
+private String name;//数据库名
+public DBHelper(Context context, String name, CursorFactory factory,
+        int version) {
+    super(context, name, factory, version);
+    this.context = context;
+    this.name = name;
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);
+    drop_table();//清除数据库，便于测试
+    CreateTable();//辅助类建立时运行该方法建立数据库
+}
+@Override
+public void onCreate(SQLiteDatabase db) {
+
+} 
+public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+}
+
+public void CreateTable() {   
+    try {//使用execSQL方法执行sql语句完成数据库表创建   
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + table_name + "(" +   
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,"  
+                + "fileName VARCHAR, description VARCHAR"    
+                + ");");   
+        Log.v(TAG, "Create Table files ok");   
+    } catch (Exception e) {   
+        Log.v(TAG, e.toString());   
+    }   
+}
+
+//初始化表，使用SQLiteDatabase提供的insert方法插入一行数据
+public void initDatabase(){
+    ContentValues cv = new ContentValues();//数据集，表示一行数据
+    cv.put("fileName", "Test");
+    cv.put("description", "初始化测试项");
+    db.insert(table_name, "", cv);
+}
+
+/**
+ * @param filename 欲插入条目的名称
+ * @param description 欲插入条目的描述
+ * @return 条目是否插入成功
+ */
+public boolean insert(String filename, String description){   
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null); //打开数据库供后续操作使用  
+        sql="insert into files values(null,'"+ filename + "','" + description +"')";   
+        db.execSQL(sql);   
+        Log.v(TAG,"insert Table files ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"insert Table files err ,sql: "+sql);   
+        return false;   
+    }   
+}   
+/**
+ * @param fileid 欲删除的条目id
+ * @return 条目是否删除成功
+ */
+public boolean delete(int fileid){
+    String sql="";
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="delete from files where _id=" + fileid;   
+        db.execSQL(sql);   
+        Log.v(TAG,"delete item ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"delete item err ,sql: "+sql);   
+        return false;   
+    }
+}
+/**
+ * @param fileid 欲修改的条目id
+ * @param filename 欲修改条目名称的目标内容
+ * @param description 欲修改条目的目标描述
+ * @return 条目是否修改成功
+ */
+public boolean update(int fileid, String filename, String description){
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="update files set fileName='" + filename + "',description='" + description +"' where _id=" + fileid;   
+        db.execSQL(sql);   
+        Log.v(TAG,"update Table files ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"update Table files err ,sql: "+sql);   
+        return false;   
+    }
+}
+
+/**
+ * @param fileid 欲查询的条目id
+ * @return 欲查询条目的Cursor，使用该Cursor可得到条目各属性内容
+ */
+public Cursor select(int fileid){
+    String sql="_id=" + fileid;
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, sql, null, null, null, null);   
+    return cur; 
+}
+
+public Cursor loadAll(){//返回可得到数据库所有表项的Cursor   
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, null, null, null, null, null);   
+    return cur;   
+}   
+
+public void drop_table(){//删除表
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="drop table " + table_name;   
+        db.execSQL(sql);   
+        Log.v(TAG,"drop Table files ok");   
+    }catch(Exception e){   
+        Log.v(TAG,"drop Table files err ,sql: "+sql);     
+    }
+}
+
+public void close(){  //关闭数据库 
+    db.close();   
+}
+</code></pre>
+
+<p>}[/java]</p>
+
+<p>Activity代码（SQLiteDemoActivity.java）：
+[java]package com.android.SqliteDemo;</p>
+
+<p>import android.app.Activity;
+import android.os.Bundle;
+import android.database.Cursor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.*;</p>
+
+<p>public class SqliteDemoActivity extends Activity {</p>
+
+<pre><code>public String db_name = "sqlite_test";//数据库名
+Button add;
+Button delete;
+Button modify;
+Button query;
+EditText filename;
+EditText description;
+EditText fileid;
+TextView answer;
+ListView items;
+DBHelper helper;
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    add = (Button)findViewById(R.id.add);//获得UI控件
+    delete = (Button)findViewById(R.id.delete);
+    modify = (Button)findViewById(R.id.modify);
+    query = (Button)findViewById(R.id.query);
+    fileid = (EditText)findViewById(R.id.fileid);
+    filename = (EditText)findViewById(R.id.filename);
+    description = (EditText)findViewById(R.id.description);
+    answer = (TextView)findViewById(R.id.answer);
+    items = (ListView)findViewById(R.id.items);
+    //实例化辅助类，在辅助类中实现数据库创建并提供增删改查操作的接口
+    helper = new DBHelper(this,db_name,null,2);
+    helper.initDatabase();//初始化数据
+    refresh();//刷新数据库内容显示
+    //定义按钮点击监听器
+    OnClickListener ocl = new OnClickListener(){
+        public void onClick(View v) {
+            int id;
+            switch(v.getId()){
+            case R.id.add:
+                //添加条目，使用helper的insert方法，由于id是自增的，只需提供名称及描述
+                helper.insert(filename.getText().toString(), description.getText().toString());
+                refresh();
+                break;
+            case R.id.delete:
+                //删除条目，从编辑框中获取欲删除的条目id
+                try {//若输入id格式错误，给出提示信息
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                helper.delete(id);
+                refresh();
+                break;
+            case R.id.modify:
+                //更新条目，从id编辑框中获知欲更新的条目
+                try {
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                helper.update(id, filename.getText().toString(), description.getText().toString());
+                refresh();
+                break;
+            //使用id查询数据
+            case R.id.query:
+                try {
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                Cursor cur = helper.select(id);
+                cur.moveToFirst();
+                filename.setText(cur.getString(1));
+                description.setText(cur.getString(2));
+                break;
+            }
+        }
+    };
+    //按钮绑定监听器
+    add.setOnClickListener(ocl);
+    delete.setOnClickListener(ocl);
+    modify.setOnClickListener(ocl);
+    query.setOnClickListener(ocl);
+}
+
+//刷新数据库内容显示
+public void refresh(){
+    Cursor cur = helper.loadAll();
+    //将cursor对象交给系统管理，使cursor与Activity生命周期同步
+    startManagingCursor(cur);
+    ListAdapter la = new SimpleCursorAdapter(this,R.layout.list_item,cur,new String[]{"_id", "fileName", "description"},new int[]{R.id.item_fileid, R.id.item_filename, R.id.item_description});
+    items.setAdapter(la);
+    items.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+    helper.close();
+}
+//由于仅用于测试，故在程序被销毁时删除表中数据
+public void onDestroy(){
+    super.onDestroy();
+    helper.drop_table();
+}
+</code></pre>
+
+<p>}[/java]
+每一行的布局：list_item.xml
+[xml]&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?>
+&lt;LinearLayout android:id=&#8221;@+id/linearLayout1&#8221;</p>
+
+<pre><code>android:layout_width="fill_parent" 
+android:layout_height="fill_parent"
+android:orientation="vertical" 
+xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+&lt;LinearLayout android:id="@+id/linearLayout2" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"&gt;
+&lt;!-- &lt;CheckBox android:id="@+id/chkTodo"
+    android:layout_width="40dip" 
+    android:layout_height="40dip"/&gt; --&gt;
+&lt;TextView android:id="@+id/item_fileid" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;TextView android:id="@+id/item_filename" 
+    android:layout_width="fill_parent" 
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;TextView android:id="@+id/item_description" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p></LinearLayout>[/xml]
+布局文件：main.xml
+[xml]&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?>
+&lt;LinearLayout xmlns:android=&#8221;http://schemas.android.com/apk/res/android&#8221;</p>
+
+<pre><code>android:orientation="vertical" android:layout_width="fill_parent"
+android:layout_height="fill_parent"&gt;
+&lt;TextView android:layout_width="fill_parent" android:background="#222222" android:textSize="20dip"
+    android:layout_height="wrap_content" android:text="SQLite基本操作演示" /&gt;
+&lt;TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent"&gt;
+    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+        &lt;TextView android:text="ID" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;TextView android:text="条目名称" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;TextView android:text="条目描述" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+        &lt;EditText android:id="@+id/fileid" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;EditText android:id="@+id/filename" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;EditText android:id="@+id/description" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+    &lt;/TableRow&gt;
+&lt;/TableLayout&gt;
+&lt;LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+    &lt;Button android:text="增加记录" android:id="@+id/add"
+        android:layout_weight="1" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+    &lt;Button android:text="删除记录" android:id="@+id/delete"
+        android:layout_weight="1" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+&lt;/LinearLayout&gt;
+&lt;LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+    &lt;Button android:text="修改记录" android:id="@+id/modify"
+        android:layout_weight="1" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+    &lt;Button android:text="查询记录" android:id="@+id/query"
+        android:layout_weight="1" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+&lt;/LinearLayout&gt;
+&lt;TextView android:layout_width="fill_parent"
+    android:text="数据库内容（ID|名称|描述）" android:background="#222222"
+    android:layout_height="wrap_content" android:textSize="20dip"
+    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
+&lt;ListView android:id="@+id/items" android:layout_width="match_parent" 
+    android:layout_height="wrap_content"&gt;&lt;/ListView&gt;
+&lt;TextView android:id="@+id/answer" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:textSize="20dip"
+    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
+</code></pre>
+
+<p></LinearLayout>[/xml]</p>
+</div>
+
+
+    <footer>
+      <p class="meta neighbor clearfix">
+        
+          <a href="/blog/i-need-something-special.html" class="float-l" title="Previous Post: I need something special.">&laquo; I need something special.</a>
+        
+        
+          <a href="/blog/android-google-weather-api.html" class="float-r" title="Next Post: Android Google Weather API调用示例">Android Google Weather API调用示例 &raquo;</a>
+        
+      </p>
+    </footer>
+  </article>
+
+  <section id="disqus_thread"></section>
+</section>
+
+<footer class="footer">
+  &copy;2012 弘
+  &nbsp;-&nbsp;
+  Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
+</footer>
+
+
+<ul id="social-links">
+  
+  
+  
+  
+</ul>
+
+<script src="/javascripts/application.js"></script>
+
+
+<iframe src="/offline-cache.html" style="display:none"></iframe>
+</body>
+</html>

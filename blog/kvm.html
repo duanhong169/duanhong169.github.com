@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>KVM - SEGMAC</title>
+  
+  <meta name="description" content="KVM 2011-11-29 Tue Tag: KVM KVM KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux &hellip;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/screen.css" />
+  
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" />
+  
+</head>
+
+<body>
+<!--[if IE]>
+html,body{height:100%;overflow:hidden}
+<div class="ie-go-away">My blog does not support the IE!</div>
+<![endif]-->
+
+<!-- 黑长直 -->
+<nav class="black-long-straight">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank">
+        <input type="hidden" name="q" value="site:blog.segmac.com" />
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech />
+      </form>
+    </li>
+    
+  </ul>
+</nav>
+
+<header class="my-nickname"><em title="">弘</em></header>
+
+<section class="main-wrap clearfix">
+  <article role="article">
+    
+
+<header>
+  
+    <h1 class="entry-title">KVM</h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-29T20:36:01+08:00" pubdate="pubdate" data-updated="true">2011-11-29 Tue</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/kvm/'>KVM</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=KVM - &amp;url=http://blog.segmac.com/blog/kvm.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=KVM - &amp;url=http://blog.segmac.com/blog/kvm.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=KVM - http://blog.segmac.com/blog/kvm.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><h2>KVM</h2>
+
+<p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
+
+<h2></h2>
+
+<h2>QEMU</h2>
+
+<p>QEMU是一套由Fabrice Bellard所编写的模拟处理器的自由软件。它与Bochs，PearPC近似，但其具有某些后两者所不具备的特性，如高速度及跨平台的特性。经由kqemu这个开源的加速器，QEMU能模拟至接近真实电脑的速度。QEMU有两种主要运作模式：</p>
+
+<ul>
+<li><p>User mode模拟模式，亦即是使用者模式。QEMU能启动那些为不同中央处理器编译的Linux程序。而Wine及Dosemu是其主要目标。</p></li>
+<li><p>System mode模拟模式，亦即是系统模式。QEMU能模拟整个电脑系统，包括中央处理器及其他周边设备。它使得为系统源代码进行测试及除错工作变得容易。其亦能用来在一部主机上虚拟数部不同虚拟电脑。</p></li>
+</ul>
+
+
+<p>目前的Android模拟器就是基于QEMU开发的。</p>
+
+<h2>KVM与QEMU</h2>
+
+<p>由于KVM仅仅是为上层提供虚拟化的支持，它本身并不进行任何的创建或管理虚拟机的工作，而是通过一个用户空间的程序通过调用/dev/kvm接口来设置客户虚拟机的地址空间、管理I/O以及将视频显示映射回主机。QEMU就是一个可以完成这些工作的程序，可以说KVM就是借助QEMU的一部分功能来实现具体的虚拟机。</p>
+
+<h2>KVM与Xen</h2>
+
+<p>由于Xen、KVM都是应用在Linux虚拟化上的技术，因此有必要弄清楚它们之间的关系。Xen是一个直接工作在硬件层之上的系统，它是一个基于Nemesis微内核的hypervisor。当前各Linux发行版所包含的Xen，表面上看似乎是Xen跑在Linux系统上，实际上却是Linux跑在Xen上，只是这类发行版默认安装了一个Linux guest作为domain0，这让用户很容易产生错觉，以至于大多数的用户根本没有意识到他们正在运行一个完全不同的操作系统。</p>
+
+<p>对于Linux最开始为什么要包含Xen，Linux的开发者ANTHONY LIGUORI称这主要是由于Linux社区的绝望。因为虚拟化在最近一段时间逐渐成为了一个很热门的技术。但是Linux过去却没有提供任何的native hypervisor的能力。大多数的Linux kernel开发者对虚拟化技术知道得也不多，因此Xen很容易的使用了一个定制的kernel，并且这个kernel还有一个相当好的community。于是Linux社区做了一个决定：包含Xen到发行版中。LIGUORI称这个决定是草率的，因为他认为正确的做法是把Linux变成一个合适的hypervisor，而不是将这个功能寄托在Xen上，他也认为其他的系统也应该像Linux这样对待这个问题。因此，可以将KVM理解为由Linux内核直接提供的对虚拟化的更好的（Linux社区有足够的自信）支持。</p>
+
+<h2>其他</h2>
+
+<ul>
+<li><p>Xen——一个完整的系统，通常使用定制的Linux发行版作为domain0</p></li>
+<li><p>virtualbox——它的部分代码由QEMU修改而来，拥有自身的图形加速</p></li>
+<li><p>一套可以运行的KVM通常包括qemu-kvm和kvm-kmod两部分</p></li>
+<li><p>Xen属于半虚拟化的范畴，半虚拟化指客户机操作系统是经过定制的，客户机知道自身工作在虚拟的环境中，而全虚拟化则相反</p></li>
+<li><p>hypervisor，又叫VMM（Virtual Machine Manager），它相对于supervisory program（也成为内核）而言，内核的作用是负责分配计算机资源，调度，I/O等，而hypervisor处在比supervisory更高的层次上。</p></li>
+<li><p>hypervisor分为两类，即Type1 和 Type 2：1类的hypervisor直接运行在裸机上，相当于hypervisor是硬件上的第一层；2类的hypervisor则是运行在传统的操作系统之上，即hypervisor是属于第2层。KVM和Xen on Linux都是属于1类，不过Xen却伪装得很像2类。</p></li>
+</ul>
+
+</div>
+
+
+    <footer>
+      <p class="meta neighbor clearfix">
+        
+          <a href="/blog/a-folder-failed-to-be-renamed-or-moved.html" class="float-l" title="Previous Post:  关于“A folder failed to be renamed or moved”错误">&laquo;  关于“A folder failed to be renamed or moved”错误</a>
+        
+        
+          <a href="/blog/p2pppp.html" class="float-r" title="Next Post: P2P与PPP">P2P与PPP &raquo;</a>
+        
+      </p>
+    </footer>
+  </article>
+
+  <section id="disqus_thread"></section>
+</section>
+
+<footer class="footer">
+  &copy;2012 弘
+  &nbsp;-&nbsp;
+  Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
+</footer>
+
+
+<ul id="social-links">
+  
+  
+  
+  
+</ul>
+
+<script src="/javascripts/application.js"></script>
+
+
+<iframe src="/offline-cache.html" style="display:none"></iframe>
+</body>
+</html>

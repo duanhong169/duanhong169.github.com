@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | SEGMAC]]></title>
+  <link href="http://blog.segmac.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://blog.segmac.com/"/>
+  <updated>2012-04-19T17:56:27+08:00</updated>
+  <id>http://blog.segmac.com/</id>
+  <author>
+    <name><![CDATA[弘]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ 关于“A folder failed to be renamed or moved”错误]]></title>
+    <link href="http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html"/>
+    <updated>2011-11-16T18:12:08+08:00</updated>
+    <id>http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved</id>
+    <content type="html"><![CDATA[<p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
+
+<p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory 'D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools'. When ready, press YES to try again.</p>
+
+<p>以前更新的时候遇到过几次，不过没去管，不能够更新的组件不更新就是了，说不定下次更新的时候就可以了。但是今天去更新Android SDK Tools Rev. 15的时候，又碰见了这个问题，真是好郁闷，于是想看看到底是为什么，于是就尝试手动的逐渐将tools这个文件夹内的内容移动走，看看最终是那些东西被占用了，最后发现是tools/lib目录下的一些jar包正在被占用，刚好360有个解除占用的工具，于是用这个工具一看，发现是被java.exe使用了。</p>
+
+<p>于是全部解除占用后，按YES还是出现同样的错误，没办法，手动将所有的文件都移走，只留下一个空的tools文件夹，当然不出所料是不能移动这个空文件夹的，在windows下已经习惯这种情况了，关闭了所有杀毒软件也没有用，你就是不知道这个空文件夹到底是怎么被占用的。</p>
+
+<p>其实在进行新版本替换时，已经将新版本下载到temp文件夹下了，既然文件夹被使用不能移动，那就不去动它了，点NO然后关闭掉SDK manager，然后手动把新版本的压缩包解压到tools目录下，再次启动SDK manager，发现更新已经成功了。</p>
+
+<p><a href="http://segmac.com/wp-content/uploads/2011/11/update-success.png"><img src="http://segmac.com/wp-content/uploads/2011/11/update-success.png" alt="" /></a></p>
+
+<p>所以呢，其实这个事情上谁都没有错，毕竟是多个公司的产品在协作上不可能那么完美，在这种情况下，自己稍微变通一下往往就可以解决这类问题了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android RotateAnimation的一点疑问]]></title>
+    <link href="http://blog.segmac.com/blog/android-rotateanimation.html"/>
+    <updated>2011-11-10T11:33:34+08:00</updated>
+    <id>http://blog.segmac.com/blog/android-rotateanimation</id>
+    <content type="html"><![CDATA[<p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
+
+<p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
+
+<p><a href="http://l4love.org/wp-content/uploads/2011/11/relationship1.png"><img src="http://l4love.org/wp-content/uploads/2011/11/relationship1.png" alt="" /></a></p>
+
+<p>图1 手机朝向与传感器返回值的关系</p>
+
+<p>图中右方箭头所指方向为正北，左方圆形中的箭头所指的是手机（传感器）所朝的方向，数值则是传感器返回的values[0]值。</p>
+
+<p>因此在对指南针进行旋转时则需要朝相反的方向旋转一个角度（即-values[0]），则可以实现指南针始终能够指向一个方向。现在的问题是经过临界点的旋转问题，即旋转经过（-0°）时，分为了如下两种情况：</p>
+
+<ol>
+<li><p>顺时针经过0°，即旋转过程为（-1° → -359°）；</p></li>
+<li><p>逆时针经过0°，即旋转过程为（-359° → -1°）；</p></li>
+</ol>
+
+
+<p>按照RotateAnimation的旋转方式，这两种情况将会出现一个旋转这个圆中大弧的情况，视觉上的效果就是指南针在经过零点时不会平滑的旋转过去，而是相反的快速的反向旋转接近360°到达目标角度，出现一个跳转的效果，虽然说结果是正确的，但是毕竟会给人不好的感觉。</p>
+
+<p>然而，在这个指南针示例中，它却能够平滑的经过0°点而不发生跳转，让我百思不得骑姐。。</p>
+
+<p>之后我将RotateAnimation单独拿出来测试，也验证了RotateAnimation在处理上述两种情况时确实会按圆的大弧旋转，最后经过思考，暂时觉得原因如下：</p>
+
+<blockquote><p>由于传感器传回数值的频率相当频繁，大约一秒钟内会有数次，即旋转所进行的频率过快，以至于在（-1° → -359°）和（-359° → -1°）两种情况的旋转尚未完成时，就被新的旋转所覆盖，它自然也就被冲掉了，有点像前浪死在沙滩上的感觉。</p></blockquote>
+
+<p>这个故事告诉我们：邪恶的行为一定会被正义消灭的··</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Google Weather API调用示例]]></title>
+    <link href="http://blog.segmac.com/blog/android-google-weather-api.html"/>
+    <updated>2011-10-22T00:27:47+08:00</updated>
+    <id>http://blog.segmac.com/blog/android-google-weather-api</id>
+    <content type="html"><![CDATA[<p>该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
+Demo截图：
+[fgallery id=2 w=480 h=480 t=0 title="weatherapp"]
+Android Project结构：
+<a href="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png" alt="" /></a>
+天气信息抽象数据类型WeatherInfo.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>public class WeatherInfo {</p>
+
+<pre><code>String city_name;
+String update_time;
+
+String condition;
+String temp_f;
+String temp_c;
+String humidity;
+String icon;
+String wind_condition;
+
+String day_of_week;
+String temp_low_f;
+String temp_high_f;
+
+public String getUpdate_time() {
+    return update_time;
+}
+
+public void setUpdate_time(String update_time) {
+    this.update_time = update_time;
+}
+
+public String getDay_of_week() {
+    return day_of_week;
+}
+
+public void setDay_of_week(String day_of_week) {
+    this.day_of_week = day_of_week;
+}
+
+public String getTemp_low_f() {
+    return temp_low_f;
+}
+
+public void setTemp_low_f(String temp_low_f) {
+    this.temp_low_f = temp_low_f;
+}
+
+public String getTemp_high_f() {
+    return temp_high_f;
+}
+
+public void setTemp_high_f(String temp_high_f) {
+    this.temp_high_f = temp_high_f;
+}
+
+public void setCity_name(String attribute) {
+    city_name = attribute;
+}
+
+public void setCondition(String attribute) {
+    condition = attribute;
+}
+
+public void setTemp_f(String attribute) {
+    temp_f = attribute;
+}
+
+public void setTemp_c(String attribute) {
+    temp_c = attribute;
+}
+
+public void setHumidity(String attribute) {
+    humidity = attribute;       
+}
+
+public void setIconPath(String attribute) {
+    icon = attribute;       
+}
+
+public void setWind_condition(String attribute) {
+    wind_condition = attribute;     
+}
+
+public String getCity_name() {
+    return city_name;
+}
+
+public String getCondition() {
+    return condition;
+}
+
+public String getTemp_f() {
+    return temp_f;
+}
+
+public String getHumidity() {
+    return humidity;
+}
+
+public String getTemp_c() {
+    return temp_c;
+}
+
+public String getWind_condition() {
+    return wind_condition;
+}
+
+public String getIconPath() {
+    return icon;
+}
+</code></pre>
+
+<p>}
+[/java]
+xml文档解析类DomXMLReader.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;</p>
+
+<p>import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;</p>
+
+<p>import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;</p>
+
+<p>public class DomXMLReader {</p>
+
+<pre><code>public static List&lt;WeatherInfo&gt; readXML(InputStream inStream) {
+    List&lt;WeatherInfo&gt; weatherReportList = new ArrayList&lt;WeatherInfo&gt;();
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    try {
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document dom = builder.parse(inStream);
+        Element root = dom.getDocumentElement();
+        NodeList items = root.getElementsByTagName("current_conditions");//查找所有CurrentCondition节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo currentCondition = new WeatherInfo();
+            //得到第一个CurrentCondition节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否condition元素
+                    if ("condition".equals(childNode.getNodeName())) {
+                        //获取condition节点的data属性值
+                        currentCondition.setCondition(childNode.getAttribute("data"));
+                    } else if ("temp_f".equals(childNode.getNodeName())) {
+                        //获取temp_f节点的data属性值
+                        currentCondition.setTemp_f(childNode.getAttribute("data"));
+                    } else if ("temp_c".equals(childNode.getNodeName())) {
+                        //获取temp_c节点的data属性值
+                        currentCondition.setTemp_c(childNode.getAttribute("data"));
+                    } else if ("humidity".equals(childNode.getNodeName())) {
+                        //获取humidity节点的data属性值
+                        currentCondition.setHumidity(childNode.getAttribute("data"));
+                    } else if ("icon".equals(childNode.getNodeName())) {
+                        //获取iconPath节点的data属性值
+                        currentCondition.setIconPath(childNode.getAttribute("data"));
+                    } else if ("wind_condition".equals(childNode.getNodeName())) {
+                        //获取wind_condition节点的data属性值
+                        currentCondition.setWind_condition(childNode.getAttribute("data"));
+                    }
+                }
+            }
+            weatherReportList.add(currentCondition);
+        }
+        items = root.getElementsByTagName("forecast_information");//查找所有forecast_information节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo forecastInformation = new WeatherInfo();
+            //得到一个forecastInformation节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否city元素
+                    if ("city".equals(childNode.getNodeName())) {
+                        //获取city节点的data属性值
+                        forecastInformation.setCity_name(childNode.getAttribute("data"));
+                    } else if ("current_date_time".equals(childNode.getNodeName())) {
+                        //获取current_date_time节点的data属性值
+                        forecastInformation.setUpdate_time(childNode.getAttribute("data"));
+                    } 
+                }
+            }
+            weatherReportList.add(forecastInformation);
+        }
+        items = root.getElementsByTagName("forecast_conditions");//查找所有forecast_conditions节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo forecastCondition = new WeatherInfo();
+            //得到第一个forecastCondition节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否condition元素
+                    if ("condition".equals(childNode.getNodeName())) {
+                        //获取condition节点的data属性值
+                        forecastCondition.setCondition(childNode.getAttribute("data"));
+                    } else if ("day_of_week".equals(childNode.getNodeName())) {
+                        //获取day_of_week节点的data属性值
+                        forecastCondition.setDay_of_week(childNode.getAttribute("data"));
+                    } else if ("low".equals(childNode.getNodeName())) {
+                        //获取low节点的data属性值
+                        forecastCondition.setTemp_low_f(childNode.getAttribute("data"));
+                    } else if ("high".equals(childNode.getNodeName())) {
+                        //获取high节点的data属性值
+                        forecastCondition.setTemp_high_f(childNode.getAttribute("data"));
+                    } else if ("icon".equals(childNode.getNodeName())) {
+                        //获取iconPath节点的data属性值
+                        forecastCondition.setIconPath(childNode.getAttribute("data"));
+                    } 
+                }
+            }
+            weatherReportList.add(forecastCondition);
+        }
+        inStream.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return weatherReportList;
+}
+</code></pre>
+
+<p>}
+[/java]
+Activity代码WeatherAppActivity.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;</p>
+
+<p>import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;</p>
+
+<p>import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.InputType;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;</p>
+
+<p>public class WeatherAppActivity extends Activity implements OnClickListener {</p>
+
+<pre><code>private static final String GOOGLE_API_URL = "http://www.google.com/ig/api?weather=";        
+private static final String NETWORK_ERROR = "Zip code not found.\nPlease check the zip code.\nE.g.:10010 --&gt; New York\n94043 --&gt; Mountain View";
+private static final String TAG = "WeatherReport";        
+private EditText editText;
+private Button button;
+private TextView tvWeatherInfo, tvWeatherInfo01, tvWeatherInfo02, tvWeatherInfo03, tvWeatherInfo04; // Display weather information
+private TextView time, time01, time02, time03, time04;
+private ImageView icon, icon01, icon02, icon03, icon04;
+private List&lt;String&gt; times = new ArrayList&lt;String&gt;();
+private List&lt;Bitmap&gt; bms = new ArrayList&lt;Bitmap&gt;();
+private Handler mHandler;
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    Log.v(TAG, "onCreate()");
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    mHandler = new Handler();
+    findView();
+    button.setOnClickListener(this);
+    Timer timer = new Timer();
+    timer.schedule(new TimerTask() {
+        @Override
+        public void run() {
+            hideInputMethodView();//隐藏掉可能的已存在的软键盘
+            requestInputMethodView();
+        }
+    }, 1000);  //在一秒后打开(等待View绘制完成才能打开软键盘)
+}
+
+private void findView(){
+    editText = (EditText) findViewById(R.id.editText);
+    button = (Button) findViewById(R.id.goQuery);
+    icon = (ImageView) findViewById(R.id.icon);
+    time = (TextView) findViewById(R.id.time);
+    tvWeatherInfo = (TextView) findViewById(R.id.tvWeatherInfo);
+    icon01 = (ImageView) findViewById(R.id.icon01);
+    time01 = (TextView) findViewById(R.id.time01);
+    tvWeatherInfo01 = (TextView) findViewById(R.id.tvWeatherInfo01);
+    icon02 = (ImageView) findViewById(R.id.icon02);
+    time02 = (TextView) findViewById(R.id.time02);
+    tvWeatherInfo02 = (TextView) findViewById(R.id.tvWeatherInfo02);
+    icon03 = (ImageView) findViewById(R.id.icon03);
+    time03 = (TextView) findViewById(R.id.time03);
+    tvWeatherInfo03 = (TextView) findViewById(R.id.tvWeatherInfo03);
+    icon04 = (ImageView) findViewById(R.id.icon04);
+    time04 = (TextView) findViewById(R.id.time04);
+    tvWeatherInfo04 = (TextView) findViewById(R.id.tvWeatherInfo04);
+}
+
+private void resetView(){
+    icon.setImageDrawable(null);
+    time.setText(null);
+    tvWeatherInfo.setText(null);
+    icon01.setImageDrawable(null);
+    time01.setText(null);
+    tvWeatherInfo01.setText(null);
+    icon02.setImageDrawable(null);
+    time02.setText(null);
+    tvWeatherInfo02.setText(null);
+    icon03.setImageDrawable(null);
+    time03.setText(null);
+    tvWeatherInfo03.setText(null);
+    icon04.setImageDrawable(null);
+    time04.setText(null);
+    tvWeatherInfo04.setText(null);
+}
+
+@Override
+protected void onResume() {
+    Log.v(TAG, "onResume()");
+    super.onResume();
+}
+
+public void onClick(View v) {
+    //获得用户输入的城市名称
+    String city = editText.getText().toString();
+    // 必须每次都重新创建一个新的task实例进行查询，否则将提示如下异常信息
+    // the task has already been executed (a task can be executed only once)
+    city = city.replace(" ", "%20");
+    Log.v(TAG, city);
+    new GetWeatherTask().execute(city);
+    resetView();
+    //把天气信息显示出来
+    tvWeatherInfo.setText("Pending...");
+    hideInputMethodView();
+    //setTitle(weather);
+}
+
+@Override
+public void onConfigurationChanged(Configuration newConfig) {
+    Log.v(TAG, "onConfigurationChange()");
+    Log.v(TAG, newConfig.orientation + "");
+    hideInputMethodView();
+    // 当屏幕布局模式变为portrait时
+    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+    {
+        editText.setText(null);
+        editText.setHint(R.string.hint_string_portrait);
+        editText.setInputType(InputType.TYPE_CLASS_PHONE);
+        //icon.setImageDrawable(null);
+        //tvWeatherInfo.setText(R.string.indicate_string_portrait);
+        requestInputMethodView();
+    }
+    // 当屏幕布局模式变为landscape时
+    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_USER)
+    {
+        editText.setText(null);
+        editText.setHint(R.string.hint_string_landscape);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        //icon.setImageDrawable(null);
+        //tvWeatherInfo.setText(R.string.indicate_string_landscape);
+        requestInputMethodView();
+    }
+    super.onConfigurationChanged(newConfig);
+}
+
+/**
+ * 该方法用于在需要的时候弹出软键盘
+ */
+private void requestInputMethodView() {
+    Log.v(TAG, "requestInputMethodView()");
+    mHandler.post(new Runnable() {
+
+        public void run() {
+            Log.v(TAG, "InputMethodManager imm");
+            InputMethodManager imm = (InputMethodManager) WeatherAppActivity.this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
+            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_portrait, Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_landscape, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    });
+}
+
+private void hideInputMethodView() {
+    InputMethodManager imm = (InputMethodManager) this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+}
+
+/**
+ * 从Google Weather API获取数据
+ * @param city 城市名称或邮政编码
+ * @return 天气数据信息
+ */
+public List&lt;String&gt; getWeatherByCity(String city) {
+    HttpClient httpClient = new DefaultHttpClient();
+    HttpContext localContext = new BasicHttpContext();
+    HttpGet httpGet = new HttpGet(GOOGLE_API_URL + city);
+    Log.v(TAG, GOOGLE_API_URL + city);
+    try {HttpResponse response = httpClient.execute(httpGet, localContext);
+        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+            Log.e(TAG, "Failed. status code is not ok.");
+            httpGet.abort();
+        } 
+        else { 
+            // Get weather information successful
+            // Reset charset
+            HttpEntity httpEntity = response.getEntity();
+            String string = EntityUtils.toString(httpEntity, "utf-8").trim();
+            InputStream is = new ByteArrayInputStream(string.getBytes("utf-8"));
+            return parseWeather(is);
+        }
+    } catch (Exception e) {
+        Log.e(TAG, "Failed to get weather", e);
+    } finally {
+        httpClient.getConnectionManager().shutdown();
+    }
+    List&lt;String&gt; error = new ArrayList&lt;String&gt;();
+    error.add(NETWORK_ERROR);
+    return error;
+}
+
+/**
+ * 解析xml得出天气数据
+ * @param is 由Google Weather API返回的输入流
+ * @return 天气数据
+ * @throws IOException
+ */
+public List&lt;String&gt; parseWeather(InputStream is) throws IOException { 
+    List&lt;WeatherInfo&gt; list = DomXMLReader.readXML(is);
+    List&lt;String&gt; weatherInfos = new ArrayList&lt;String&gt;();
+    WeatherInfo weather_report = list.get(0);
+    if(weather_report.getIconPath().endsWith(".gif"));{
+        try
+        {
+            bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
+
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "IOException");
+        }
+    }
+    times.add("Now");
+    String without_city_name_and_time = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + ", "
+         + "Temp_f: " + weather_report.getTemp_f() + "℉\n"
+         //+ "Temp_c: " + weather_report.getTemp_c() + "℃\n"
+         + weather_report.getHumidity() + ", "
+</code></pre>
+
+<p>//             + current.getIconPath() + "\n"</p>
+
+<pre><code>         + weather_report.getWind_condition();
+    weather_report = list.get(1);
+    String city_name_and_time = "City: " + new String(weather_report.getCity_name().getBytes(), "utf-8") + "\n"
+         //+ "Update Time: " + weather_report.getUpdate_time() + "\n"
+         ;
+    weatherInfos.add(city_name_and_time + without_city_name_and_time);
+    for(int i = 2; i &lt;= 5; i++){
+         weather_report = list.get(i);
+         times.add(weather_report.getDay_of_week());
+         if(weather_report.getIconPath().endsWith(".gif"));{
+            try
+            {
+                bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
+
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG, "IOException");
+            }
+         }
+         String forecastCondition = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + "\n"
+                 + "Temp_low_f: " + weather_report.getTemp_low_f() + "℉\n"
+                 + "Temp_high_f: " + weather_report.getTemp_high_f() + "F\n";
+         weatherInfos.add(forecastCondition);
+    }
+    return weatherInfos;
+}
+
+/**
+ * 获取天气图片
+ * @param url 图片url
+ * @return
+ */
+private Bitmap getNetBitmap(String url){
+    URL imageUrl = null;
+    Bitmap bitmap = null;
+    try {
+        imageUrl = new URL(url);
+    }
+    catch (MalformedURLException e){
+        Log.e(TAG, e.getMessage());
+    }
+    try {
+        HttpURLConnection conn = (HttpURLConnection)imageUrl.openConnection();
+        conn.setDoInput(true);
+        conn.connect();
+        InputStream is = conn.getInputStream();
+        bitmap = BitmapFactory.decodeStream(is);
+        is.close();
+    } catch (IOException e){
+        Log.e(TAG, "IOException");
+    }
+    return bitmap;
+}
+
+/**
+ * 采用异步任务更新显示
+ * @author honson
+ *
+ */
+class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt; {
+
+    @Override
+    protected List&lt;String&gt; doInBackground(String... params) {
+        String city = params[0];
+
+        // 调用Google天气API查询指定城市的当日天气情况
+        return getWeatherByCity(city);
+    }
+
+    protected void onPostExecute(List&lt;String&gt; result) {
+        if(result.size() == 1){
+            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+                resetView();
+                tvWeatherInfo.setText(result.get(0));
+            }
+            return;
+        }
+        if(result.size() != 5 || times.size() != 5 || bms.size() !=5 || times == null) {
+            //tvWeatherInfo.setText(result.get(0));
+            return;
+        }
+        // 把doInBackground处理的结果即天气信息显示到界面
+        tvWeatherInfo.setText(result.get(0));
+        time.setText(times.get(0));
+        icon.setImageBitmap(bms.get(0));
+        tvWeatherInfo01.setText(result.get(1));
+        time01.setText(times.get(1));
+        icon01.setImageBitmap(bms.get(1));
+        tvWeatherInfo02.setText(result.get(2));
+        time02.setText(times.get(2));
+        icon02.setImageBitmap(bms.get(2));
+        tvWeatherInfo03.setText(result.get(3));
+        time03.setText(times.get(3));
+        icon03.setImageBitmap(bms.get(3));
+        tvWeatherInfo04.setText(result.get(4));
+        time04.setText(times.get(4));
+        icon04.setImageBitmap(bms.get(4));
+        bms.clear();
+        times.clear();
+    }
+}
+</code></pre>
+
+<p>}[/java]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android SQLiteDemo]]></title>
+    <link href="http://blog.segmac.com/blog/android-sqlitedemo.html"/>
+    <updated>2011-10-20T10:51:17+08:00</updated>
+    <id>http://blog.segmac.com/blog/android-sqlitedemo</id>
+    <content type="html"><![CDATA[<p>该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
+Demo截图：
+[fgallery id=1 w=320 h=480 t=0 title="sqlite"]
+Android Project结构：
+<a href="http://l4love.org/wp-content/uploads/2011/10/project.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project.png" alt="" /></a></p>
+
+<p>数据库操作辅助类（DBHelper.java），该类封装了对SQLite数据的操作，包括了创建表，删除表，增删改查数据等方法：
+[java]package com.android.SqliteDemo;</p>
+
+<p>import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.util.Log;</p>
+
+<p>public class DBHelper extends SQLiteOpenHelper {</p>
+
+<pre><code>Context context;//应用环境上下文  
+private static SQLiteDatabase db;//该辅助类维护的数据库对象
+public String table_name = "files";//数据库表名
+private static final String TAG = "duanhong";// 调试标签 
+private String name;//数据库名
+public DBHelper(Context context, String name, CursorFactory factory,
+        int version) {
+    super(context, name, factory, version);
+    this.context = context;
+    this.name = name;
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);
+    drop_table();//清除数据库，便于测试
+    CreateTable();//辅助类建立时运行该方法建立数据库
+}
+@Override
+public void onCreate(SQLiteDatabase db) {
+
+} 
+public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+}
+
+public void CreateTable() {   
+    try {//使用execSQL方法执行sql语句完成数据库表创建   
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + table_name + "(" +   
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,"  
+                + "fileName VARCHAR, description VARCHAR"    
+                + ");");   
+        Log.v(TAG, "Create Table files ok");   
+    } catch (Exception e) {   
+        Log.v(TAG, e.toString());   
+    }   
+}
+
+//初始化表，使用SQLiteDatabase提供的insert方法插入一行数据
+public void initDatabase(){
+    ContentValues cv = new ContentValues();//数据集，表示一行数据
+    cv.put("fileName", "Test");
+    cv.put("description", "初始化测试项");
+    db.insert(table_name, "", cv);
+}
+
+/**
+ * @param filename 欲插入条目的名称
+ * @param description 欲插入条目的描述
+ * @return 条目是否插入成功
+ */
+public boolean insert(String filename, String description){   
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null); //打开数据库供后续操作使用  
+        sql="insert into files values(null,'"+ filename + "','" + description +"')";   
+        db.execSQL(sql);   
+        Log.v(TAG,"insert Table files ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"insert Table files err ,sql: "+sql);   
+        return false;   
+    }   
+}   
+/**
+ * @param fileid 欲删除的条目id
+ * @return 条目是否删除成功
+ */
+public boolean delete(int fileid){
+    String sql="";
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="delete from files where _id=" + fileid;   
+        db.execSQL(sql);   
+        Log.v(TAG,"delete item ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"delete item err ,sql: "+sql);   
+        return false;   
+    }
+}
+/**
+ * @param fileid 欲修改的条目id
+ * @param filename 欲修改条目名称的目标内容
+ * @param description 欲修改条目的目标描述
+ * @return 条目是否修改成功
+ */
+public boolean update(int fileid, String filename, String description){
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="update files set fileName='" + filename + "',description='" + description +"' where _id=" + fileid;   
+        db.execSQL(sql);   
+        Log.v(TAG,"update Table files ok");   
+        return true;   
+
+    }catch(Exception e){   
+        Log.v(TAG,"update Table files err ,sql: "+sql);   
+        return false;   
+    }
+}
+
+/**
+ * @param fileid 欲查询的条目id
+ * @return 欲查询条目的Cursor，使用该Cursor可得到条目各属性内容
+ */
+public Cursor select(int fileid){
+    String sql="_id=" + fileid;
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, sql, null, null, null, null);   
+    return cur; 
+}
+
+public Cursor loadAll(){//返回可得到数据库所有表项的Cursor   
+    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, null, null, null, null, null);   
+    return cur;   
+}   
+
+public void drop_table(){//删除表
+    String sql="";   
+    try{   
+        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
+        sql="drop table " + table_name;   
+        db.execSQL(sql);   
+        Log.v(TAG,"drop Table files ok");   
+    }catch(Exception e){   
+        Log.v(TAG,"drop Table files err ,sql: "+sql);     
+    }
+}
+
+public void close(){  //关闭数据库 
+    db.close();   
+}
+</code></pre>
+
+<p>}[/java]</p>
+
+<p>Activity代码（SQLiteDemoActivity.java）：
+[java]package com.android.SqliteDemo;</p>
+
+<p>import android.app.Activity;
+import android.os.Bundle;
+import android.database.Cursor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.*;</p>
+
+<p>public class SqliteDemoActivity extends Activity {</p>
+
+<pre><code>public String db_name = "sqlite_test";//数据库名
+Button add;
+Button delete;
+Button modify;
+Button query;
+EditText filename;
+EditText description;
+EditText fileid;
+TextView answer;
+ListView items;
+DBHelper helper;
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    add = (Button)findViewById(R.id.add);//获得UI控件
+    delete = (Button)findViewById(R.id.delete);
+    modify = (Button)findViewById(R.id.modify);
+    query = (Button)findViewById(R.id.query);
+    fileid = (EditText)findViewById(R.id.fileid);
+    filename = (EditText)findViewById(R.id.filename);
+    description = (EditText)findViewById(R.id.description);
+    answer = (TextView)findViewById(R.id.answer);
+    items = (ListView)findViewById(R.id.items);
+    //实例化辅助类，在辅助类中实现数据库创建并提供增删改查操作的接口
+    helper = new DBHelper(this,db_name,null,2);
+    helper.initDatabase();//初始化数据
+    refresh();//刷新数据库内容显示
+    //定义按钮点击监听器
+    OnClickListener ocl = new OnClickListener(){
+        public void onClick(View v) {
+            int id;
+            switch(v.getId()){
+            case R.id.add:
+                //添加条目，使用helper的insert方法，由于id是自增的，只需提供名称及描述
+                helper.insert(filename.getText().toString(), description.getText().toString());
+                refresh();
+                break;
+            case R.id.delete:
+                //删除条目，从编辑框中获取欲删除的条目id
+                try {//若输入id格式错误，给出提示信息
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                helper.delete(id);
+                refresh();
+                break;
+            case R.id.modify:
+                //更新条目，从id编辑框中获知欲更新的条目
+                try {
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                helper.update(id, filename.getText().toString(), description.getText().toString());
+                refresh();
+                break;
+            //使用id查询数据
+            case R.id.query:
+                try {
+                    id = Integer.parseInt(fileid.getText().toString());
+                }catch (NumberFormatException e) {
+                    answer.setText("请输入纯数字的id号");
+                    break;
+                }
+                Cursor cur = helper.select(id);
+                cur.moveToFirst();
+                filename.setText(cur.getString(1));
+                description.setText(cur.getString(2));
+                break;
+            }
+        }
+    };
+    //按钮绑定监听器
+    add.setOnClickListener(ocl);
+    delete.setOnClickListener(ocl);
+    modify.setOnClickListener(ocl);
+    query.setOnClickListener(ocl);
+}
+
+//刷新数据库内容显示
+public void refresh(){
+    Cursor cur = helper.loadAll();
+    //将cursor对象交给系统管理，使cursor与Activity生命周期同步
+    startManagingCursor(cur);
+    ListAdapter la = new SimpleCursorAdapter(this,R.layout.list_item,cur,new String[]{"_id", "fileName", "description"},new int[]{R.id.item_fileid, R.id.item_filename, R.id.item_description});
+    items.setAdapter(la);
+    items.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+    helper.close();
+}
+//由于仅用于测试，故在程序被销毁时删除表中数据
+public void onDestroy(){
+    super.onDestroy();
+    helper.drop_table();
+}
+</code></pre>
+
+<p>}[/java]
+每一行的布局：list_item.xml
+[xml]&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout android:id="@+id/linearLayout1"</p>
+
+<pre><code>android:layout_width="fill_parent" 
+android:layout_height="fill_parent"
+android:orientation="vertical" 
+xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+&lt;LinearLayout android:id="@+id/linearLayout2" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"&gt;
+&lt;!-- &lt;CheckBox android:id="@+id/chkTodo"
+    android:layout_width="40dip" 
+    android:layout_height="40dip"/&gt; --&gt;
+&lt;TextView android:id="@+id/item_fileid" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;TextView android:id="@+id/item_filename" 
+    android:layout_width="fill_parent" 
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;TextView android:id="@+id/item_description" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textSize="20dip"&gt;&lt;/TextView&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p></LinearLayout>[/xml]
+布局文件：main.xml
+[xml]&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"</p>
+
+<pre><code>android:orientation="vertical" android:layout_width="fill_parent"
+android:layout_height="fill_parent"&gt;
+&lt;TextView android:layout_width="fill_parent" android:background="#222222" android:textSize="20dip"
+    android:layout_height="wrap_content" android:text="SQLite基本操作演示" /&gt;
+&lt;TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent"&gt;
+    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+        &lt;TextView android:text="ID" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;TextView android:text="条目名称" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;TextView android:text="条目描述" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+        &lt;EditText android:id="@+id/fileid" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;EditText android:id="@+id/filename" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+        &lt;EditText android:id="@+id/description" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
+    &lt;/TableRow&gt;
+&lt;/TableLayout&gt;
+&lt;LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+    &lt;Button android:text="增加记录" android:id="@+id/add"
+        android:layout_weight="1" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+    &lt;Button android:text="删除记录" android:id="@+id/delete"
+        android:layout_weight="1" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+&lt;/LinearLayout&gt;
+&lt;LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
+    &lt;Button android:text="修改记录" android:id="@+id/modify"
+        android:layout_weight="1" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+    &lt;Button android:text="查询记录" android:id="@+id/query"
+        android:layout_weight="1" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20dip"
+        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
+&lt;/LinearLayout&gt;
+&lt;TextView android:layout_width="fill_parent"
+    android:text="数据库内容（ID|名称|描述）" android:background="#222222"
+    android:layout_height="wrap_content" android:textSize="20dip"
+    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
+&lt;ListView android:id="@+id/items" android:layout_width="match_parent" 
+    android:layout_height="wrap_content"&gt;&lt;/ListView&gt;
+&lt;TextView android:id="@+id/answer" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:textSize="20dip"
+    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
+</code></pre>
+
+<p></LinearLayout>[/xml]</p>
+]]></content>
+  </entry>
+  
+</feed>

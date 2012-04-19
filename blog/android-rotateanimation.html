@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Android RotateAnimation的一点疑问 - SEGMAC</title>
+  
+  <meta name="description" content="Android RotateAnimation的一点疑问 2011-11-10 Thu Tag: top 最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下： 众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的， &hellip;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/screen.css" />
+  
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" />
+  
+</head>
+
+<body>
+<!--[if IE]>
+html,body{height:100%;overflow:hidden}
+<div class="ie-go-away">My blog does not support the IE!</div>
+<![endif]-->
+
+<!-- 黑长直 -->
+<nav class="black-long-straight">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank">
+        <input type="hidden" name="q" value="site:blog.segmac.com" />
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech />
+      </form>
+    </li>
+    
+  </ul>
+</nav>
+
+<header class="my-nickname"><em title="">弘</em></header>
+
+<section class="main-wrap clearfix">
+  <article role="article">
+    
+
+<header>
+  
+    <h1 class="entry-title">Android RotateAnimation的一点疑问</h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T11:33:34+08:00" pubdate="pubdate" data-updated="true">2011-11-10 Thu</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/top/'>top</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Android RotateAnimation的一点疑问 - &amp;url=http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=Android RotateAnimation的一点疑问 - &amp;url=http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android RotateAnimation的一点疑问 - http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
+
+<p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
+
+<p><a href="http://l4love.org/wp-content/uploads/2011/11/relationship1.png"><img src="http://l4love.org/wp-content/uploads/2011/11/relationship1.png" alt="" /></a></p>
+
+<p>图1 手机朝向与传感器返回值的关系</p>
+
+<p>图中右方箭头所指方向为正北，左方圆形中的箭头所指的是手机（传感器）所朝的方向，数值则是传感器返回的values[0]值。</p>
+
+<p>因此在对指南针进行旋转时则需要朝相反的方向旋转一个角度（即-values[0]），则可以实现指南针始终能够指向一个方向。现在的问题是经过临界点的旋转问题，即旋转经过（-0°）时，分为了如下两种情况：</p>
+
+<ol>
+<li><p>顺时针经过0°，即旋转过程为（-1° → -359°）；</p></li>
+<li><p>逆时针经过0°，即旋转过程为（-359° → -1°）；</p></li>
+</ol>
+
+
+<p>按照RotateAnimation的旋转方式，这两种情况将会出现一个旋转这个圆中大弧的情况，视觉上的效果就是指南针在经过零点时不会平滑的旋转过去，而是相反的快速的反向旋转接近360°到达目标角度，出现一个跳转的效果，虽然说结果是正确的，但是毕竟会给人不好的感觉。</p>
+
+<p>然而，在这个指南针示例中，它却能够平滑的经过0°点而不发生跳转，让我百思不得骑姐。。</p>
+
+<p>之后我将RotateAnimation单独拿出来测试，也验证了RotateAnimation在处理上述两种情况时确实会按圆的大弧旋转，最后经过思考，暂时觉得原因如下：</p>
+
+<blockquote><p>由于传感器传回数值的频率相当频繁，大约一秒钟内会有数次，即旋转所进行的频率过快，以至于在（-1° → -359°）和（-359° → -1°）两种情况的旋转尚未完成时，就被新的旋转所覆盖，它自然也就被冲掉了，有点像前浪死在沙滩上的感觉。</p></blockquote>
+
+<p>这个故事告诉我们：邪恶的行为一定会被正义消灭的··</p>
+</div>
+
+
+    <footer>
+      <p class="meta neighbor clearfix">
+        
+          <a href="/blog/20-2.html" class="float-l" title="Previous Post: 《20岁，开始与别人拉开距离》笔记二">&laquo; 《20岁，开始与别人拉开距离》笔记二</a>
+        
+        
+          <a href="/blog/a-folder-failed-to-be-renamed-or-moved.html" class="float-r" title="Next Post:  关于“A folder failed to be renamed or moved”错误"> 关于“A folder failed to be renamed or moved”错误 &raquo;</a>
+        
+      </p>
+    </footer>
+  </article>
+
+  <section id="disqus_thread"></section>
+</section>
+
+<footer class="footer">
+  &copy;2012 弘
+  &nbsp;-&nbsp;
+  Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
+</footer>
+
+
+<ul id="social-links">
+  
+  
+  
+  
+</ul>
+
+<script src="/javascripts/application.js"></script>
+
+
+<iframe src="/offline-cache.html" style="display:none"></iframe>
+</body>
+</html>

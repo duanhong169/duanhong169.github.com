@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SEGMAC</title>
+  
+  <meta name="description" content="挂你妹啊 SB 2012-04-19 Thu Smack设置隐身状态 2012-04-18 Wed Tags: Invisibility, Smack, XMPP 什么是Smack?? Smack is a library for communicating with XMPP servers &hellip;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/screen.css" />
+  
+  <link rel="alternate" href="/atom.xml" type="application/atom+xml" />
+  
+</head>
+
+<body>
+<!--[if IE]>
+html,body{height:100%;overflow:hidden}
+<div class="ie-go-away">My blog does not support the IE!</div>
+<![endif]-->
+
+<!-- 黑长直 -->
+<nav class="black-long-straight">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank">
+        <input type="hidden" name="q" value="site:blog.segmac.com" />
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech />
+      </form>
+    </li>
+    
+  </ul>
+</nav>
+
+<header class="my-nickname"><em title="">弘</em></header>
+
+<section class="main-wrap clearfix">
+  
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/hereiam.html">挂你妹啊 SB</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-19T02:41:00+08:00" pubdate="pubdate" data-updated="true">2012-04-19 Thu</time>
+      
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=挂你妹啊 SB - &amp;url=http://blog.segmac.com/blog/hereiam.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=挂你妹啊 SB - &amp;url=http://blog.segmac.com/blog/hereiam.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=挂你妹啊 SB - http://blog.segmac.com/blog/hereiam.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/smack-invisibility.html">Smack设置隐身状态</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-18T18:01:00+08:00" pubdate="pubdate" data-updated="true">2012-04-18 Wed</time>
+      
+
+<span class="tags">
+  Tags:
+  
+    <a href='/blog/tags/invisibility/'>Invisibility</a>, <a href='/blog/tags/smack/'>Smack</a>, <a href='/blog/tags/xmpp/'>XMPP</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Smack设置隐身状态 - &amp;url=http://blog.segmac.com/blog/smack-invisibility.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=Smack设置隐身状态 - &amp;url=http://blog.segmac.com/blog/smack-invisibility.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Smack设置隐身状态 - http://blog.segmac.com/blog/smack-invisibility.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>什么是Smack?? Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.?<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>?Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
+
+<p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
+
+<p><a href="http://segmac.com/wp-content/uploads/2012/04/JWChat_login.png"><img src="http://segmac.com/wp-content/uploads/2012/04/JWChat_login_thumb.png" alt="JWChat_login" /></a></p>
+
+<p>对于通常的聊天客户端来说，用户一般都需要使用到“隐身（invisibility）”状态，即自身对于其他用户是离线的状态，而自身却依然能够接收到其他用户发来的消息。在Smack中用户通过向服务器发送<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.html">Presence</a>包来设置自己的状态，通过发送这个数据包可以向服务器发送一些与用户状态相关的请求，设置Presence的<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.Type.html">Type</a>属性可以用于说明该Presence包的用途（包括上线（available）、下线（unavailable）、请求订阅其他用户的状态（subscribe）、允许其他用户订阅自己的状态（subscribed）等等），通过设置Presence的<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.Mode.html">Mode</a>属性用于说明自己当前的状态（包括了在线（available）、离开（away）、等待聊天（chat）、忙碌（dnd）、长时间离开（xa）等状态），在Smack的较早版本中的Presence是可以直接设置为隐身（invisibility）的，然而这却违反了XMPP RFC，因此在2006年的6月就已经将这个隐身状态从Smack API中移除了<a href="http://issues.igniterealtime.org/browse/SMACK-147?page=com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab">[2]</a>。</p>
+
+<p>XMPP RFC认为隐身实际上是一个不必要独立存在的一个状态，因为在实际应用时，只要你不给你的其他联系人发送available类型的Presence，那么你的联系人就是不会看见你在线的，也就是达到了和隐身相同的效果，XMPP文档<a href="http://xmpp.org/extensions/xep-0126.html">XEP-0126</a>对于这种隐身功能的实现做了十分详细的说明。</p>
+
+<p>那么在Smack中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：</p>
+
+<pre><code>//设置状态
+private void setPresence(int code){
+    if(connection == null) return;
+    Presence presence;
+    switch(code){
+    case 0:
+        presence = new Presence(Presence.Type.available);
+        connection.sendPacket(presence);
+        Log.v(TAG, "设置在线");
+        break;
+    case 1:
+        presence = new Presence(Presence.Type.available);
+        presence.setMode(Presence.Mode.dnd);
+        connection.sendPacket(presence);
+        Log.v(TAG, "设置忙碌");
+        System.out.println(presence.toXML());
+        break;
+    case 2:
+        presence = new Presence(Presence.Type.available);
+        presence.setMode(Presence.Mode.away);
+        connection.sendPacket(presence);
+        Log.v(TAG, "设置离开");
+        System.out.println(presence.toXML());
+        break;
+    case 3:
+        Roster roster = connection.getRoster();
+        Collection entries = roster.getEntries();
+        for (RosterEntry entry : entries) {
+            presence = new Presence(Presence.Type.unavailable);
+            presence.setPacketID(Packet.ID_NOT_AVAILABLE);
+            presence.setFrom(connection.getUser());
+            presence.setTo(entry.getUser());
+            connection.sendPacket(presence);
+            System.out.println(presence.toXML());
+        }
+        //向同一用户的其他客户端发送隐身状态
+        presence = new Presence(Presence.Type.unavailable);
+        presence.setPacketID(Packet.ID_NOT_AVAILABLE);
+        presence.setFrom(connection.getUser());
+        presence.setTo(StringUtils.parseBareAddress(connection.getUser()));
+        connection.sendPacket(presence);
+        Log.v(TAG, "设置隐身");
+        break;
+    case 4:
+        presence = new Presence(Presence.Type.unavailable);
+        connection.sendPacket(presence);
+        Log.v(TAG, "设置离线");
+        break;
+    default: break;
+    }
+}
+</code></pre>
+
+<p>其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/the-social-life-in-my-mind.html">The Social Life in My Mind</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-04T21:28:44+08:00" pubdate="pubdate" data-updated="true">2012-04-04 Wed</time>
+      
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=The Social Life in My Mind - &amp;url=http://blog.segmac.com/blog/the-social-life-in-my-mind.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=The Social Life in My Mind - &amp;url=http://blog.segmac.com/blog/the-social-life-in-my-mind.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=The Social Life in My Mind - http://blog.segmac.com/blog/the-social-life-in-my-mind.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>Every human can&#8217;t live out of the social, and so we build a very big social around the world, and then we live in it,  we help each other, build our own land, so us human beings become stronger and stronger&#8211;we become the kings of the world.</p>
+
+<pre><code> As a human, we must be a part of the social or we'll be cancelled...It's no doubt we'll be cancelled if we don't do something to adapt to the social life, the social nature. 
+ You must want to know what is life and what is social life.well, sometimes we say life, this life most means our individual life. But truth be told, our life has two part--the social life and the individual life.
+ Every morning we get up and open our eyes, it's our life,our individual life. we can't deny that social life is more difficult than individual life, we meet many different people and many different affairs, many problem for us to solve. As it is more difficult, some people want to run away from it. If a man run away from the social life, there is only one result, he'll fail, he'll never make any progress, and at last, he dead with nobody else feel sad...like he never come to the world. 
+ Strictly speaking, human is a type of animal that tends to lead a social rather than individual life. If you like, it’s easy to collect a bulk of strong and indubitable evidences to defend this. But isn’t true? What kind of social life the word covers? Beyond boundary of common sense, the word “social”, herein, not only embraces some things as bait fame and accumulate property by all means, not narrowly peer at all gathering in a mess in the street or grand hall. But, in my limited perspective, also emphasizes on one of main bridge which span the gap between countries, races, color, even languages: right reasoning. 
+  However, in our current society, a common picture becomes more difficult to draw in our hand.  Much time we wasted on one-eyed monster (TV, and new digital gadgets), around the corner of cyber web, etc. Solitude is like a haunting ghost we scare to be in face with. If not, where to get clear reason and make right decision on short-term, and long-term demand? 
+ If you want to be one part of the social life,first,you must know how to learn something aboat other people,whenever I meet new people, I’m always curious to find out where they’re coming from so I can better understand who they are. This is natural, I know. The only difference is that to me, this means finding out about their past relationships. Strange, right? I’ve concluded that this is because I define myself by my relationships and therefore apply the same rules when trying to learn about other people.Well, it's just my way, and every body has their own ways.No matter which way you do, the most important thing is that you should know the man you want to do thing with.
+ But what I say is just say, you must do it, we say practise is the best teacher, and so it's right here, we must take part in the social life and practise time afer time, then I believe every body has ability to handle it well.
+ Now we're college students, as soon as we graduate, we will really become one part of the social, and it's time for us to show our skills, our ability, our advantages and so on. We must show our best to the other so we can be accept by others and then we have chances to make some bigger progress. If you don't show yourself, of course nobody will know what a man you are, even if you are most clever, loyal and so on, also nobody else could know you, nor feel good about you.So after we have got a job, we can say we really get in the social life, at that time we will feel how important to have a good way to deal with the social life.
+ I'm very silent, I know it's not good for me to adapt to the society so I must take some action in order to make myself better. I won't stop my steps to success. BATTLE MY WAY TO THE SOCIAL LIFE.
+ If the social life is like the sea, our individual life is just a pond of water, so how can we just want a pond of water and never think about to have fun in the sea?
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/thinking.html">思考</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-18T16:36:21+08:00" pubdate="pubdate" data-updated="true">2011-12-18 Sun</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/thinking/'>thinking</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=思考 - &amp;url=http://blog.segmac.com/blog/thinking.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=思考 - &amp;url=http://blog.segmac.com/blog/thinking.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=思考 - http://blog.segmac.com/blog/thinking.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>一个人在经历了一定的时间之后，他终究是会醒悟的。</p>
+
+<p>在一个人觉醒之前，他会觉得他总是正确的，他认为他总能够看清楚世间万物的道理。当他看到眼前所经历的一件事情之后，就会在脑子里对其进行分析和假定，然后给这件事情中涉及的人和事都加上自己的注解，他并不关心这些理解是否正确，因为他坚信自己的想法一定是正确的。他可以把自己与世间万物独立开来，站在上帝的角度来看待世界。他把自己视作hypervisor，以为自己已经掌握了所有心理学的奥妙，殊不知其实他连自己的心理状态都没有思考清楚。不过通常情况下他在大部分时候还可能是对的，因而就更加坚定了他站在上帝所处的制高点的信心，其实那些只不过是一个正常人都具备的基本的分析判断能力罢了。虽然偶尔发生的状况可能会稍稍地打击一下他，但是他也总是能够找到为自己开脱的理由。</p>
+
+<p>如果缺乏一定的目标来驱动，没有一个正确的标准来衡量自己的行为，那么一个人在一段时间内总会认为自己当前所做的事情是最合理的，即使在别人看来那是非常的不合理。也许在之后的某个时刻他自己也会发现其实现在这个时刻他所做的事情是无意义的，那是因为他已经觉得在之后那个时刻他正在做着他认为最合理的事情，所以说一个人总是处在一个自认为“最合理”的状态，因而会出现一些旁人看来异常顽固或者执迷不悟的行为，但是他本人却从未发觉，即使发觉了也是对别人的看法不屑一顾。这也许就是心理学上说的人的自利倾向吧。</p>
+
+<p>这个世界并不存在什么绝对的对与错，它们是相对的，这取决于你用什么标准来衡量成功与失败。用正确的方法达到正确的目标固然是一种理想的方式，然而我们经常也会遇到用正确的方法做了错误的事的情况，甚至可能遇到用错误的方法却做了正确的事。这取决于你所处的环境、事物的发展趋势也可以理解为运气，而你自认为的努力从某种意义上来讲，可能是有助于你做正确的事，也可能恰恰是阻碍你做正确的事的原因，因为这个努力在未看结果之前，不能够确定到底是正方向上的还是反方向上的。</p>
+
+<p>不要说你对你做过的某件事从不后悔，因为那只是你还没有醒悟，也就是常常说的拿无知当个性。但是这种醒悟不是简单地通过别人的帮助就能够实现的，这也无可厚非，没有人比你自己更了解自己，你所表现出来的仅仅是你的一部分而已，甚至是你伪装出来的一部分，有一些部分是你不愿意被别人看到的因此你会选择将它们隐藏起来，而还有一部分是甚至你自己都未曾认识到的，就好像形容一个人“大智若愚”一样，一个人的智或者愚的特征并不是那么分明的，也许你真的很愚，但是别人却以为你是一种超越了智慧的一种愚，而如果连你自己也深信自己确实不愚的话，那么事实上就好像真的是这样了。在这种状态下，没有人能够帮助你醒悟，除了你自己。</p>
+
+<p>你并不是你想象中的那么特别，你只不过是芸芸众生中的一员罢了，你认为自己特别，别人同样认为自己特别，这种“自认为特别”的感觉实际上本身就不是一种特别。通常情况下，如果你有能力去完成一件事情，你可能会觉得你能把这件事完成得最好，至少会包含那么一点你认为“特别”的地方，但是事实是有更多的人又能够比你完成得更好，并且比你更特别，甚至让你觉得你的那个“特别”不过是一件丑陋的装饰罢了。别人有能力完成一件事情时，你又通常会觉得你有能力完成得比他更好，虽然大部分时候你都不会去验证这个想法，但是你确实会这样想。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/p2pppp.html">P2P与PPP</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-08T00:34:07+08:00" pubdate="pubdate" data-updated="true">2011-12-08 Thu</time>
+      
+
+<span class="tags">
+  Tags:
+  
+    <a href='/blog/tags/p2p/'>P2P</a>, <a href='/blog/tags/ppp/'>PPP</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=P2P与PPP - &amp;url=http://blog.segmac.com/blog/p2pppp.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=P2P与PPP - &amp;url=http://blog.segmac.com/blog/p2pppp.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=P2P与PPP - http://blog.segmac.com/blog/p2pppp.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>这两个概念非常容易搞混。这里提供一些线索供大家参考，分清楚两者之间的关系。</p>
+
+<h2>Clue 1：简要回答</h2>
+
+<p>Q:What is the difference between point to point and peer to peer?</p>
+
+<p>A:Point to point is a protocol for communication between two computers using a serial interface(phone).</p>
+
+<p>Peer to peer is a communication model in which each party has the same capabilities and either party can initiate a communication session.</p>
+
+<h2>Clue 2：概念简介</h2>
+
+<p>PPP（Point-to-Point Protocol）</p>
+
+<ul>
+<li>是为在同等单元之间传输数据包这样的简单链路设计的链路层协议。这种链路提供全双工操作，并按照顺序传递数据包。设计目的主要是用来通过拨号或专线方式建立点对点连接发送数据，使其成为各种主机、网桥和路由器之间简单连接的一种共通的解决方案。</li>
+</ul>
+
+
+<p>P2P</p>
+
+<ul>
+<li><p>是一种技术，但更多的是一种思想，有着改变整个互联网基础的潜能的思想。</p></li>
+<li><p>是peer-to-peer的缩写，peer在英语里有“（地位、能力等）同等者”、“同事”和“伙伴”等意义。这样一来，P2P也就可以理解为“伙伴对伙伴”的意思，或称为对等联网。目前人们认为其在加强网络上人的交流、文件交换、分布计算等方面大有前途。</p></li>
+<li><p>简单的说，P2P直接将人们联系起来，让人们通过互联网直接交互。P2P使得网络上的沟通变得容易、更直接共享和交互，真正地消除中间商。P2P就是人可以直接连接到其他用户的计算机、交换文件，而不是像过去那样连接到服务器去浏览与下载。P2P另一个重要特点是改变互联网现在的以大网站为中心的状态、重返“非中心化”，并把权力交还给用户。 P2P看起来似乎很新，但是正如B2C、B2B是将现实世界中很平常的东西移植到互联网上一样，P2P并不是什么新东西。在现实生活中我们每天都按照P2P模式面对面地或者通过电话交流和沟通。</p></li>
+</ul>
+
+
+<h2>Clue 3：层次对比</h2>
+
+<p>Point-to-Point是一种transmission technology，是在通信领域的范畴上来讲的，和Broadcast links构成两种“widespread use”。</p>
+
+<p>而Peer-to-Peer(P2P)是一种网络模型或者说是一种&#8221;architechture&#8221;，&#8221;distinguishing from the Client-Server model&#8221;，指的是一种对等进程间的通信，服务器和客户机共存于一个节点，这个概念定义在一个更高的级别上，当“transmission technology”实现以后，也就是计算机通过网络联在一起以后才能有通信，从这个意义上说这两个概念有一个先后的问题。</p>
+
+<h2>Clue 4：层次对比</h2>
+
+<p>point to point是相对于broadcast的一种网络技术分类形式，而peer to peer 指的是网络中的对等模型，peer to peer communication属于person to person communication中的一种网络应用，而point to point是指网络连接的方式。</p>
+
+<p>broadcast与point to point是指传输的基本设施，即如何安排连接的链路，表明的是一种拓扑关系，而P2P是基于这种基本设施上的传送行为。低层基础设施（Infrastructure）用point to point网络，高层应用（Application）可以用p2p模式；低层基础设施用broadcast网络，高层应用同样可以用p2p模式；同样的，低层基础设施用point to point网络，高层应用可以用C/S模式；低层基础设施用broadcast网络，高层应用同样可以用C/S模式。</p>
+
+<h2>Clue 5：引申知识</h2>
+
+<p>基础设施上的传送行为，或曰传送操作模式（分三类，即Broadcasting、Multicasting和Unicasting），这是介于上述两个层面之间的又一个层面的问题：</p>
+
+<ul>
+<li><p>在Broadcast networks和Point-to-point networks上，都可以Unicasting，这一个发送者和一个接收者之间，从应用的层面来看，既可以是不对等的关系（即采用C/S模式），也可以是对等的关系（即采用p2p模式）；</p></li>
+<li><p>在Broadcast networks和Point-to-point networks上，都还可以Multicasting（或Broadcasting），这一个发送者和多个（或其它所有）接收者中的每一个接收者之间，从应用的层面来看，同样是既可以采用C/S模式，也可以采用p2p模式。</p></li>
+</ul>
+
+
+<h2>Clue 6：PPP引申</h2>
+
+<p>点到点（网络拓扑）：</p>
+
+<ul>
+<li><p>永久连接（专用的）：两个端点之间的网络是永久性的连接的，就像小时候学习物理时的“绳子电话”一样。</p></li>
+<li><p>交换网络：借助于电路交换和分组交换技术，点对点的连接可以动态的建立，并且在不需要该链接时自动断开。即经典的电话交换网模型。</p></li>
+</ul>
+
+
+<p>点对点（协议）：</p>
+
+<ul>
+<li>互联网协议族的一部分，工作在数据链路层。它通常用在两节点间建立直接的连接，主要利用串口线来连接两台计算机，现在也有用在宽带计算机连接上。很多ISP使用PPPoE（over Ethernet）给用户提供接入服务。</li>
+</ul>
+
+
+<h2></h2>
+
+<h2>Clue 7：P2P引申</h2>
+
+<p>peer-to-peer， 简称P2P，又称对等互联网络技术，是一种网络新技术，依赖网络中参与者的计算能力和带宽，而不是把依赖都聚集在较少的几台服务器上。请注意与point-to-point之间的区别，peer-to-peer一般译为端对端或者群对群，指对等网中的节点；point-to-point一般译为点对点，对应于普通网络节点。P2P网络通常用于通过Ad Hoc连接来连接节点。这类网络可以用于多种用途，各种文件共享软件已经得到了广泛的使用。P2P技术也被使用在类似VoIP等实时媒体业务的数据通信中。</p>
+
+<p>纯点对点网络没有客户端或服务器的概念，只有平等的同级节点，同时对网络上的其它节点充当客户端和服务器。这种网络设计模型不同于客户端-服务器模型，在客户端-服务器模型中通信通常来往于一个中央服务器。</p>
+
+<p>有些网络（如Napster、OpenNAP，或IRC @find）的一些功能（比如搜索）使用客户端-服务器结构，而使用P2P结构来实现另外一些功能。类似Gnutella或Freenet的网络则使用纯P2P结构来实现全部的任务。</p>
+
+<p>一般报章都称P2P是点对点技术，但其实是错的，实为解作群对群（Peer-to-Peer）。在虚拟私人网络VPN (Virtual Private Network)中，也有P2P这个名称，它才是真正解作点对点（Point-to-Point）。</p>
+
+<p><strong>依中央化程度</strong></p>
+
+<ul>
+<li>纯P2P——Gnutella</li>
+</ul>
+
+
+<blockquote><p>设想一个大的由用户（称为“节点”）组成的环，每个节点都有Gnutella客户端软件运行。当初始启动时，客户端软件必须进行自举（Bootstrapping）并找到至少一个其它节点，有多种不同的方法可以达到这一功能，包括软件内置的一组正在工作的已经存在的地址列表，Web缓存的已知节点更新（称为 GWebCaches）, UDP服务器缓存以及IRC。一旦连接上，客户端就会请求一张活动地址列表。</p></blockquote>
+
+<p>当用户想要进行搜索时，客户向每一个活动联接节点发送请求。在历史上（协议0.4版本），一个客户的活动联接节点数十分小（大约是5），所以每一个收到请求的联接节点都会再向其自身的所有联接节点转发该条请求，如此继续下去，直到该请求数据包在网络中被转发的“跳数”超过一个预先设定的数值（最大为7）。</p>
+
+<p>到了0.6版之后，Gnutella网络中的节点被划分为叶节点（leaf nodes）与超节点（ultra nodes 或 ultrapeers）。 每个叶节点仅与少数（一般为3）超节点连接，而每一个超节点与多于32个的其它超节点相连。在这种更高的出度（outdegree）下，先前提到的一条查询在网络中能达到的最大“跳数”被降低到4。</p>
+
+<p>叶节点与超节点利用查询路由协议（Query Routing Protocol）来交换查询路由表（Query Routing Table (QRT)）。叶节点将它的QRT发送到每一个与之连接的超节点，超节点随后将每一个与之相连接的叶节点传来的QRT以及其本身的QRT合并，并且将其与自身的邻居节点交换。</p>
+
+<p>在实际中，这种在Gnutella网络中的搜索模式是十分不可靠的。由于每一个节点都是一台普通的计算机用户，他们经常连接或者断开网络，所以整个Gnutella网络结构永远都不是完全稳定的。Gnutella网络搜索的带宽消耗也是随着连接用户的增加而指数递增的[1]，经常饱和的连接会导致较慢的节点失去作用。因此，搜索请求在网络中会被经常丢弃，与整个网络相比，大多数的查询只会到达其中的很少一部分节点。</p>
+
+<ul>
+<li>杂P2P——Napster</li>
+</ul>
+
+
+<blockquote><p>正因为其是杂的P2P，招致了音像界对其大规模侵权行为的非难。在法庭的责令下该服务已经终止，它却给点对点文件共享程序——如Kazaa，Limewire和BearShare——的拓展铺好了路，对这种方式的文件共享的控制，亦变得愈加困难。</p></blockquote>
+
+<ul>
+<li>混合P2P——Skype</li>
+</ul>
+
+
+<blockquote><p>同时含有前面两种P2P的特点。Skype软件会在电脑上打开一个网络连接端口来监听其他Skype用户的连接调用；当其他电脑能顺利连接到这部电脑，Skype称呼该用户为“Super node”（超级节点）。Super Node在该P2P环境中的角色，即为提供其他无法连接的用户的之间的中继站，借用诸多Super Nodes的些许网络带宽，协助其他的Skype用户之间能够顺利的互相联系。这种行为，在P2P环境中，这算是相当常见的手法，也是点对点连接的精髓之一。Skype是第一个将此种做法运用到网络语音通话与实时消息应用层面上。</p></blockquote>
+
+<p>Skype在台湾是与网络家庭（PChome Online）合作，推出的Skype称为PChome &amp; Skype。在中国大陆，Skype与TOM集团旗下北京讯能网络有限公司TOM在线合作，所推出的Skype又称为TOM &amp; Skype。但是注意，由于中共政府的存在，TOM &amp; Skype被修改为明文传输以便于政府监控公民。在香港，Skype与和记环球电讯合作，推出的Skype称为HGC-Skype。在日本则与Buffalo和Excite合作。</p>
+
+<blockquote><p>2011年5月10日，微软宣布以85亿美元现金并购了Skype。 2011年10月14日微软宣布完成这项85亿美元现金并购交易程序，Skype 首席执行官 Tony Bates 转任微软Skype事业部总裁</p></blockquote>
+
+<p><strong>依网络拓扑结构划分</strong></p>
+
+<ul>
+<li>结构P2P</li>
+</ul>
+
+
+<blockquote><p>点对点之间互有连结信息，彼此形成特定规则拓扑结构。需要请求某资源时，依该拓扑结构规则查找，若存在则一定找得到。如Chord、CAN。</p></blockquote>
+
+<ul>
+<li>无结构P2P：</li>
+</ul>
+
+
+<blockquote><p>点对点之间互有连结信息，彼此形成无规则网状拓扑结构。需要请求某资源点时，以广播方式查找，通常会设TTL，即使存在也不一定找得到。如Gnutella。</p></blockquote>
+
+<ul>
+<li>松散结构P2P：</li>
+</ul>
+
+
+<blockquote><p>点对点之间互有连结信息，彼此形成无规则网状拓扑结构。需要请求某资源时，依现有信息推测查找，介于结构P2P和无结构P2P之间。如Freenet。</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/kvm.html">KVM</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-29T20:36:01+08:00" pubdate="pubdate" data-updated="true">2011-11-29 Tue</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/kvm/'>KVM</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=KVM - &amp;url=http://blog.segmac.com/blog/kvm.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=KVM - &amp;url=http://blog.segmac.com/blog/kvm.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=KVM - http://blog.segmac.com/blog/kvm.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><h2>KVM</h2>
+
+<p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
+
+<h2></h2>
+
+<h2>QEMU</h2>
+
+<p>QEMU是一套由Fabrice Bellard所编写的模拟处理器的自由软件。它与Bochs，PearPC近似，但其具有某些后两者所不具备的特性，如高速度及跨平台的特性。经由kqemu这个开源的加速器，QEMU能模拟至接近真实电脑的速度。QEMU有两种主要运作模式：</p>
+
+<ul>
+<li><p>User mode模拟模式，亦即是使用者模式。QEMU能启动那些为不同中央处理器编译的Linux程序。而Wine及Dosemu是其主要目标。</p></li>
+<li><p>System mode模拟模式，亦即是系统模式。QEMU能模拟整个电脑系统，包括中央处理器及其他周边设备。它使得为系统源代码进行测试及除错工作变得容易。其亦能用来在一部主机上虚拟数部不同虚拟电脑。</p></li>
+</ul>
+
+
+<p>目前的Android模拟器就是基于QEMU开发的。</p>
+
+<h2>KVM与QEMU</h2>
+
+<p>由于KVM仅仅是为上层提供虚拟化的支持，它本身并不进行任何的创建或管理虚拟机的工作，而是通过一个用户空间的程序通过调用/dev/kvm接口来设置客户虚拟机的地址空间、管理I/O以及将视频显示映射回主机。QEMU就是一个可以完成这些工作的程序，可以说KVM就是借助QEMU的一部分功能来实现具体的虚拟机。</p>
+
+<h2>KVM与Xen</h2>
+
+<p>由于Xen、KVM都是应用在Linux虚拟化上的技术，因此有必要弄清楚它们之间的关系。Xen是一个直接工作在硬件层之上的系统，它是一个基于Nemesis微内核的hypervisor。当前各Linux发行版所包含的Xen，表面上看似乎是Xen跑在Linux系统上，实际上却是Linux跑在Xen上，只是这类发行版默认安装了一个Linux guest作为domain0，这让用户很容易产生错觉，以至于大多数的用户根本没有意识到他们正在运行一个完全不同的操作系统。</p>
+
+<p>对于Linux最开始为什么要包含Xen，Linux的开发者ANTHONY LIGUORI称这主要是由于Linux社区的绝望。因为虚拟化在最近一段时间逐渐成为了一个很热门的技术。但是Linux过去却没有提供任何的native hypervisor的能力。大多数的Linux kernel开发者对虚拟化技术知道得也不多，因此Xen很容易的使用了一个定制的kernel，并且这个kernel还有一个相当好的community。于是Linux社区做了一个决定：包含Xen到发行版中。LIGUORI称这个决定是草率的，因为他认为正确的做法是把Linux变成一个合适的hypervisor，而不是将这个功能寄托在Xen上，他也认为其他的系统也应该像Linux这样对待这个问题。因此，可以将KVM理解为由Linux内核直接提供的对虚拟化的更好的（Linux社区有足够的自信）支持。</p>
+
+<h2>其他</h2>
+
+<ul>
+<li><p>Xen——一个完整的系统，通常使用定制的Linux发行版作为domain0</p></li>
+<li><p>virtualbox——它的部分代码由QEMU修改而来，拥有自身的图形加速</p></li>
+<li><p>一套可以运行的KVM通常包括qemu-kvm和kvm-kmod两部分</p></li>
+<li><p>Xen属于半虚拟化的范畴，半虚拟化指客户机操作系统是经过定制的，客户机知道自身工作在虚拟的环境中，而全虚拟化则相反</p></li>
+<li><p>hypervisor，又叫VMM（Virtual Machine Manager），它相对于supervisory program（也成为内核）而言，内核的作用是负责分配计算机资源，调度，I/O等，而hypervisor处在比supervisory更高的层次上。</p></li>
+<li><p>hypervisor分为两类，即Type1 和 Type 2：1类的hypervisor直接运行在裸机上，相当于hypervisor是硬件上的第一层；2类的hypervisor则是运行在传统的操作系统之上，即hypervisor是属于第2层。KVM和Xen on Linux都是属于1类，不过Xen却伪装得很像2类。</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/a-folder-failed-to-be-renamed-or-moved.html">关于“a Folder Failed to Be Renamed or Moved”错误</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-16T18:12:08+08:00" pubdate="pubdate" data-updated="true">2011-11-16 Wed</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/android/'>Android</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=关于“a Folder Failed to Be Renamed or Moved”错误 - &amp;url=http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=关于“a Folder Failed to Be Renamed or Moved”错误 - &amp;url=http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=关于“a Folder Failed to Be Renamed or Moved”错误 - http://blog.segmac.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
+
+<p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory &#8216;D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools&#8217;. When ready, press YES to try again.</p>
+
+<p>以前更新的时候遇到过几次，不过没去管，不能够更新的组件不更新就是了，说不定下次更新的时候就可以了。但是今天去更新Android SDK Tools Rev. 15的时候，又碰见了这个问题，真是好郁闷，于是想看看到底是为什么，于是就尝试手动的逐渐将tools这个文件夹内的内容移动走，看看最终是那些东西被占用了，最后发现是tools/lib目录下的一些jar包正在被占用，刚好360有个解除占用的工具，于是用这个工具一看，发现是被java.exe使用了。</p>
+
+<p>于是全部解除占用后，按YES还是出现同样的错误，没办法，手动将所有的文件都移走，只留下一个空的tools文件夹，当然不出所料是不能移动这个空文件夹的，在windows下已经习惯这种情况了，关闭了所有杀毒软件也没有用，你就是不知道这个空文件夹到底是怎么被占用的。</p>
+
+<p>其实在进行新版本替换时，已经将新版本下载到temp文件夹下了，既然文件夹被使用不能移动，那就不去动它了，点NO然后关闭掉SDK manager，然后手动把新版本的压缩包解压到tools目录下，再次启动SDK manager，发现更新已经成功了。</p>
+
+<p><a href="http://segmac.com/wp-content/uploads/2011/11/update-success.png"><img src="http://segmac.com/wp-content/uploads/2011/11/update-success.png" alt="" /></a></p>
+
+<p>所以呢，其实这个事情上谁都没有错，毕竟是多个公司的产品在协作上不可能那么完美，在这种情况下，自己稍微变通一下往往就可以解决这类问题了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/android-rotateanimation.html">Android RotateAnimation的一点疑问</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T11:33:34+08:00" pubdate="pubdate" data-updated="true">2011-11-10 Thu</time>
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/top/'>top</a>
+  
+</span>
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Android RotateAnimation的一点疑问 - &amp;url=http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=Android RotateAnimation的一点疑问 - &amp;url=http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android RotateAnimation的一点疑问 - http://blog.segmac.com/blog/android-rotateanimation.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
+
+<p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
+
+<p><a href="http://l4love.org/wp-content/uploads/2011/11/relationship1.png"><img src="http://l4love.org/wp-content/uploads/2011/11/relationship1.png" alt="" /></a></p>
+
+<p>图1 手机朝向与传感器返回值的关系</p>
+
+<p>图中右方箭头所指方向为正北，左方圆形中的箭头所指的是手机（传感器）所朝的方向，数值则是传感器返回的values[0]值。</p>
+
+<p>因此在对指南针进行旋转时则需要朝相反的方向旋转一个角度（即-values[0]），则可以实现指南针始终能够指向一个方向。现在的问题是经过临界点的旋转问题，即旋转经过（-0°）时，分为了如下两种情况：</p>
+
+<ol>
+<li><p>顺时针经过0°，即旋转过程为（-1° → -359°）；</p></li>
+<li><p>逆时针经过0°，即旋转过程为（-359° → -1°）；</p></li>
+</ol>
+
+
+<p>按照RotateAnimation的旋转方式，这两种情况将会出现一个旋转这个圆中大弧的情况，视觉上的效果就是指南针在经过零点时不会平滑的旋转过去，而是相反的快速的反向旋转接近360°到达目标角度，出现一个跳转的效果，虽然说结果是正确的，但是毕竟会给人不好的感觉。</p>
+
+<p>然而，在这个指南针示例中，它却能够平滑的经过0°点而不发生跳转，让我百思不得骑姐。。</p>
+
+<p>之后我将RotateAnimation单独拿出来测试，也验证了RotateAnimation在处理上述两种情况时确实会按圆的大弧旋转，最后经过思考，暂时觉得原因如下：</p>
+
+<blockquote><p>由于传感器传回数值的频率相当频繁，大约一秒钟内会有数次，即旋转所进行的频率过快，以至于在（-1° → -359°）和（-359° → -1°）两种情况的旋转尚未完成时，就被新的旋转所覆盖，它自然也就被冲掉了，有点像前浪死在沙滩上的感觉。</p></blockquote>
+
+<p>这个故事告诉我们：邪恶的行为一定会被正义消灭的··</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/20-2.html">《20岁，开始与别人拉开距离》笔记二</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T23:16:03+08:00" pubdate="pubdate" data-updated="true">2011-11-09 Wed</time>
+      
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=《20岁，开始与别人拉开距离》笔记二 - &amp;url=http://blog.segmac.com/blog/20-2.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=《20岁，开始与别人拉开距离》笔记二 - &amp;url=http://blog.segmac.com/blog/20-2.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=《20岁，开始与别人拉开距离》笔记二 - http://blog.segmac.com/blog/20-2.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
+
+<p>伴随着时间的推移，伴随着年龄的增加，要为自己增加一些能够让未来更加光明的武器和筹码。这些武器和筹码，可以是另一项才能，可以是现有能力的挖掘，也可以是一种意识上的推陈出新。</p>
+
+<p>局部的胜利可以增强信心，并非一定要取得总体的第一名，可以先以某一领域的NO.1为奋斗目标，即便不能在大的领域保持领先，也要使自己成为不可忽视的一种力量。</p>
+
+<p>在工作中往往并不一定要100%地追求十全十美，许多工作只要能够做到70分即可。没有必要对待每一件工作都竭尽全力。要考虑到工作本身的性质并且提高工作效率。</p>
+
+<p>要怀疑常识，不要臆测结果。不要害怕结果与别处不同。</p>
+
+<p>赚钱不是王道，花自己的钱为自己投资。在交往中使用金钱是人生必要的投资。</p>
+
+<p>要想不断提升自己，就得自己掏腰包去看一些东西，并尝试一些事情。这些都会在无形中成为自己的软实力。
+自己掏腰包去娱乐身心吧！这样自身的软实力就会不断增强。</p>
+
+<p>活着就应有活着的精彩，对于只能花在今天的钱就不要吝惜！</p>
+
+<p>不修边幅是不行的。</p>
+
+<p>不要总想着要有什么回报，而是要先尽自己的力量来提供帮助。</p>
+
+<p>善于和异性沟通能使人受益。</p>
+
+<p>恋爱可以让阴暗的人变得开朗，可以让愚钝的人变得干脆利落富有行动力，可以让傲慢的人变得谦逊。恋爱有着能够洗涤你灵魂中的邪与恶的效果。</p>
+
+<p>恋爱可以减轻你的自卑感。与异性交谈，将自卑感变成武器。找一个能够让你克服自卑感的异性是你一生的幸福。</p>
+
+<p>真正的恋爱，就是要找出对方的优点，展示自己的缺点。</p>
+
+<p>养育孩子能够扩宽你的话题，可以增加你自己直面这个世界的机会。</p>
+
+<p>人生，其实就是自己送给自己的礼物。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/dota2-takesurvey.html">DOTA2的调查问卷</a></h1>
+  
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-02T14:58:44+08:00" pubdate="pubdate" data-updated="true">2011-11-02 Wed</time>
+      
+
+      <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=DOTA2的调查问卷 - &amp;url=http://blog.segmac.com/blog/dota2-takesurvey.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;appkey=&amp;title=DOTA2的调查问卷 - &amp;url=http://blog.segmac.com/blog/dota2-takesurvey.html', null, 'width=700,height=680,toolbar=0,status=0')" class="tencent-weibo" title="分享到腾讯微博"></a>
+
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=DOTA2的调查问卷 - http://blog.segmac.com/blog/dota2-takesurvey.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>以前申请的DOTA2体验资格的邮箱今天收到了一封由Steam发过来的邮件，大概意思是需要进一步的调查玩家所使用的机器配置及网络相关的信息，一遍DOTA2能够满足大部分玩家的需求，可是发件邮件中的<a href="steam://takesurvey/1/">steam://takesurvey/1/</a>链接（这里可以点）却点不开，已经安装并更新了STEAM的客户端也不行，不知道什么原因~</p>
+
+<p>呵呵没关系，更新完成后，点上面那个链接应该就行了，可能是邮件里面除了些问题，没有把链接弄对。</p>
+
+<p>点击之后可能会弹出使用什么软件来打开这个链接的窗口，steam安装正确的话默认选项就是steam了，确认就会从steam打开这个问卷了，开始做问卷调查吧。做完调查后就可能在几周内收到邀请函了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+
+  
+  <!-- Pagination -->
+  <section class="pagination clearfix">
+    <a class="prev float-l" href="/blog/page/2/">&larr; Older</a>
+    
+  </section>
+  
+</section>
+
+
+<footer class="footer">
+  &copy;2012 弘
+  &nbsp;-&nbsp;
+  Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
+</footer>
+
+
+<ul id="social-links">
+  
+  
+  
+  
+</ul>
+
+<script src="/javascripts/application.js"></script>
+
+
+<iframe src="/offline-cache.html" style="display:none"></iframe>
+</body>
+</html>

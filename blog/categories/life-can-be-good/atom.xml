@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Life can be good | SEGMAC]]></title>
+  <link href="http://blog.segmac.com/blog/categories/life-can-be-good/atom.xml" rel="self"/>
+  <link href="http://blog.segmac.com/"/>
+  <updated>2012-04-19T17:56:27+08:00</updated>
+  <id>http://blog.segmac.com/</id>
+  <author>
+    <name><![CDATA[弘]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DOTA2的调查问卷]]></title>
+    <link href="http://blog.segmac.com/blog/dota2-takesurvey.html"/>
+    <updated>2011-11-02T14:58:44+08:00</updated>
+    <id>http://blog.segmac.com/blog/dota2-takesurvey</id>
+    <content type="html"><![CDATA[<p>以前申请的DOTA2体验资格的邮箱今天收到了一封由Steam发过来的邮件，大概意思是需要进一步的调查玩家所使用的机器配置及网络相关的信息，一遍DOTA2能够满足大部分玩家的需求，可是发件邮件中的<a href="steam://takesurvey/1/">steam://takesurvey/1/</a>链接（这里可以点）却点不开，已经安装并更新了STEAM的客户端也不行，不知道什么原因~</p>
+
+<p>呵呵没关系，更新完成后，点上面那个链接应该就行了，可能是邮件里面除了些问题，没有把链接弄对。</p>
+
+<p>点击之后可能会弹出使用什么软件来打开这个链接的窗口，steam安装正确的话默认选项就是steam了，确认就会从steam打开这个问卷了，开始做问卷调查吧。做完调查后就可能在几周内收到邀请函了。</p>
+]]></content>
+  </entry>
+  
+</feed>
