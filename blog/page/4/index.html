@@ -3,11 +3,11 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Android SQLiteDemo - 弘's blog</title>
+  <title>弘's blog</title>
   
-  <meta name="description" content="Android SQLiteDemo Posted in: Android Tag: Android Oct 20th, 2011 该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
+  <meta name="description" content="Android Google Weather API调用示例 Posted in: Android Tag: Android Oct 22nd, 2011 该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
 Demo截图：
-[fgallery id=1 w=320 h=480 t=0 title=&# &hellip;" />
+[ &hellip;" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/stylesheets/screen.css" />
   
@@ -41,13 +41,672 @@ html,body{height:100%;overflow:hidden}
 
 <header class="my-nickname"><em title="">弘哥保护你</em></header>
 
+<meta property="wb:webmaster" content="31d8715d39ea1555" />
 <section class="main-wrap clearfix">
-  <article role="article">
-    
+  
+  
+  
+    <article>
+      
 
 <header>
   
-    <h1 class="entry-title">Android SQLiteDemo</h1>
+    <h1 class="entry-title"><a href="/blog/android-google-weather-api.html">Android Google Weather API调用示例</a></h1>
+  
+  
+    <p class="meta">
+	  
+
+<span class="categories">
+  Posted in:
+  
+    <a class='category' href='/blog/categories/android/'>Android</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  Tag:
+  
+    <a href='/blog/tags/android/'>Android</a>
+  
+</span>
+
+	  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-22T00:27:47+08:00" pubdate="pubdate" data-updated="true">Oct 22<span>nd</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android Google Weather API调用示例 - http://duanhong169.github.com/blog/android-google-weather-api.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Android Google Weather API调用示例 - &amp;url=http://duanhong169.github.com/blog/android-google-weather-api.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
+Demo截图：
+[fgallery id=2 w=480 h=480 t=0 title=&#8221;weatherapp&#8221;]
+Android Project结构：
+<a href="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png" alt="" /></a>
+天气信息抽象数据类型WeatherInfo.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>public class WeatherInfo {</p>
+
+<pre><code>String city_name;
+String update_time;
+
+String condition;
+String temp_f;
+String temp_c;
+String humidity;
+String icon;
+String wind_condition;
+
+String day_of_week;
+String temp_low_f;
+String temp_high_f;
+
+public String getUpdate_time() {
+    return update_time;
+}
+
+public void setUpdate_time(String update_time) {
+    this.update_time = update_time;
+}
+
+public String getDay_of_week() {
+    return day_of_week;
+}
+
+public void setDay_of_week(String day_of_week) {
+    this.day_of_week = day_of_week;
+}
+
+public String getTemp_low_f() {
+    return temp_low_f;
+}
+
+public void setTemp_low_f(String temp_low_f) {
+    this.temp_low_f = temp_low_f;
+}
+
+public String getTemp_high_f() {
+    return temp_high_f;
+}
+
+public void setTemp_high_f(String temp_high_f) {
+    this.temp_high_f = temp_high_f;
+}
+
+public void setCity_name(String attribute) {
+    city_name = attribute;
+}
+
+public void setCondition(String attribute) {
+    condition = attribute;
+}
+
+public void setTemp_f(String attribute) {
+    temp_f = attribute;
+}
+
+public void setTemp_c(String attribute) {
+    temp_c = attribute;
+}
+
+public void setHumidity(String attribute) {
+    humidity = attribute;       
+}
+
+public void setIconPath(String attribute) {
+    icon = attribute;       
+}
+
+public void setWind_condition(String attribute) {
+    wind_condition = attribute;     
+}
+
+public String getCity_name() {
+    return city_name;
+}
+
+public String getCondition() {
+    return condition;
+}
+
+public String getTemp_f() {
+    return temp_f;
+}
+
+public String getHumidity() {
+    return humidity;
+}
+
+public String getTemp_c() {
+    return temp_c;
+}
+
+public String getWind_condition() {
+    return wind_condition;
+}
+
+public String getIconPath() {
+    return icon;
+}
+</code></pre>
+
+<p>}
+[/java]
+xml文档解析类DomXMLReader.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;</p>
+
+<p>import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;</p>
+
+<p>import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;</p>
+
+<p>public class DomXMLReader {</p>
+
+<pre><code>public static List&lt;WeatherInfo&gt; readXML(InputStream inStream) {
+    List&lt;WeatherInfo&gt; weatherReportList = new ArrayList&lt;WeatherInfo&gt;();
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    try {
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document dom = builder.parse(inStream);
+        Element root = dom.getDocumentElement();
+        NodeList items = root.getElementsByTagName("current_conditions");//查找所有CurrentCondition节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo currentCondition = new WeatherInfo();
+            //得到第一个CurrentCondition节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否condition元素
+                    if ("condition".equals(childNode.getNodeName())) {
+                        //获取condition节点的data属性值
+                        currentCondition.setCondition(childNode.getAttribute("data"));
+                    } else if ("temp_f".equals(childNode.getNodeName())) {
+                        //获取temp_f节点的data属性值
+                        currentCondition.setTemp_f(childNode.getAttribute("data"));
+                    } else if ("temp_c".equals(childNode.getNodeName())) {
+                        //获取temp_c节点的data属性值
+                        currentCondition.setTemp_c(childNode.getAttribute("data"));
+                    } else if ("humidity".equals(childNode.getNodeName())) {
+                        //获取humidity节点的data属性值
+                        currentCondition.setHumidity(childNode.getAttribute("data"));
+                    } else if ("icon".equals(childNode.getNodeName())) {
+                        //获取iconPath节点的data属性值
+                        currentCondition.setIconPath(childNode.getAttribute("data"));
+                    } else if ("wind_condition".equals(childNode.getNodeName())) {
+                        //获取wind_condition节点的data属性值
+                        currentCondition.setWind_condition(childNode.getAttribute("data"));
+                    }
+                }
+            }
+            weatherReportList.add(currentCondition);
+        }
+        items = root.getElementsByTagName("forecast_information");//查找所有forecast_information节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo forecastInformation = new WeatherInfo();
+            //得到一个forecastInformation节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否city元素
+                    if ("city".equals(childNode.getNodeName())) {
+                        //获取city节点的data属性值
+                        forecastInformation.setCity_name(childNode.getAttribute("data"));
+                    } else if ("current_date_time".equals(childNode.getNodeName())) {
+                        //获取current_date_time节点的data属性值
+                        forecastInformation.setUpdate_time(childNode.getAttribute("data"));
+                    } 
+                }
+            }
+            weatherReportList.add(forecastInformation);
+        }
+        items = root.getElementsByTagName("forecast_conditions");//查找所有forecast_conditions节点
+        for (int i = 0; i &lt; items.getLength(); i++) {
+            WeatherInfo forecastCondition = new WeatherInfo();
+            //得到第一个forecastCondition节点
+            Element currentNode = (Element) items.item(i);
+            //获取所有子节点
+            NodeList childsNodes = currentNode.getChildNodes();
+            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
+                Node node = (Node) childsNodes.item(j);
+                //判断是否为元素类型
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element childNode = (Element) node;
+                    //判断是否condition元素
+                    if ("condition".equals(childNode.getNodeName())) {
+                        //获取condition节点的data属性值
+                        forecastCondition.setCondition(childNode.getAttribute("data"));
+                    } else if ("day_of_week".equals(childNode.getNodeName())) {
+                        //获取day_of_week节点的data属性值
+                        forecastCondition.setDay_of_week(childNode.getAttribute("data"));
+                    } else if ("low".equals(childNode.getNodeName())) {
+                        //获取low节点的data属性值
+                        forecastCondition.setTemp_low_f(childNode.getAttribute("data"));
+                    } else if ("high".equals(childNode.getNodeName())) {
+                        //获取high节点的data属性值
+                        forecastCondition.setTemp_high_f(childNode.getAttribute("data"));
+                    } else if ("icon".equals(childNode.getNodeName())) {
+                        //获取iconPath节点的data属性值
+                        forecastCondition.setIconPath(childNode.getAttribute("data"));
+                    } 
+                }
+            }
+            weatherReportList.add(forecastCondition);
+        }
+        inStream.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return weatherReportList;
+}
+</code></pre>
+
+<p>}
+[/java]
+Activity代码WeatherAppActivity.java：
+[java]package com.honson.weatherapp;</p>
+
+<p>import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;</p>
+
+<p>import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;</p>
+
+<p>import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.InputType;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;</p>
+
+<p>public class WeatherAppActivity extends Activity implements OnClickListener {</p>
+
+<pre><code>private static final String GOOGLE_API_URL = "http://www.google.com/ig/api?weather=";        
+private static final String NETWORK_ERROR = "Zip code not found.\nPlease check the zip code.\nE.g.:10010 --&gt; New York\n94043 --&gt; Mountain View";
+private static final String TAG = "WeatherReport";        
+private EditText editText;
+private Button button;
+private TextView tvWeatherInfo, tvWeatherInfo01, tvWeatherInfo02, tvWeatherInfo03, tvWeatherInfo04; // Display weather information
+private TextView time, time01, time02, time03, time04;
+private ImageView icon, icon01, icon02, icon03, icon04;
+private List&lt;String&gt; times = new ArrayList&lt;String&gt;();
+private List&lt;Bitmap&gt; bms = new ArrayList&lt;Bitmap&gt;();
+private Handler mHandler;
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    Log.v(TAG, "onCreate()");
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    mHandler = new Handler();
+    findView();
+    button.setOnClickListener(this);
+    Timer timer = new Timer();
+    timer.schedule(new TimerTask() {
+        @Override
+        public void run() {
+            hideInputMethodView();//隐藏掉可能的已存在的软键盘
+            requestInputMethodView();
+        }
+    }, 1000);  //在一秒后打开(等待View绘制完成才能打开软键盘)
+}
+
+private void findView(){
+    editText = (EditText) findViewById(R.id.editText);
+    button = (Button) findViewById(R.id.goQuery);
+    icon = (ImageView) findViewById(R.id.icon);
+    time = (TextView) findViewById(R.id.time);
+    tvWeatherInfo = (TextView) findViewById(R.id.tvWeatherInfo);
+    icon01 = (ImageView) findViewById(R.id.icon01);
+    time01 = (TextView) findViewById(R.id.time01);
+    tvWeatherInfo01 = (TextView) findViewById(R.id.tvWeatherInfo01);
+    icon02 = (ImageView) findViewById(R.id.icon02);
+    time02 = (TextView) findViewById(R.id.time02);
+    tvWeatherInfo02 = (TextView) findViewById(R.id.tvWeatherInfo02);
+    icon03 = (ImageView) findViewById(R.id.icon03);
+    time03 = (TextView) findViewById(R.id.time03);
+    tvWeatherInfo03 = (TextView) findViewById(R.id.tvWeatherInfo03);
+    icon04 = (ImageView) findViewById(R.id.icon04);
+    time04 = (TextView) findViewById(R.id.time04);
+    tvWeatherInfo04 = (TextView) findViewById(R.id.tvWeatherInfo04);
+}
+
+private void resetView(){
+    icon.setImageDrawable(null);
+    time.setText(null);
+    tvWeatherInfo.setText(null);
+    icon01.setImageDrawable(null);
+    time01.setText(null);
+    tvWeatherInfo01.setText(null);
+    icon02.setImageDrawable(null);
+    time02.setText(null);
+    tvWeatherInfo02.setText(null);
+    icon03.setImageDrawable(null);
+    time03.setText(null);
+    tvWeatherInfo03.setText(null);
+    icon04.setImageDrawable(null);
+    time04.setText(null);
+    tvWeatherInfo04.setText(null);
+}
+
+@Override
+protected void onResume() {
+    Log.v(TAG, "onResume()");
+    super.onResume();
+}
+
+public void onClick(View v) {
+    //获得用户输入的城市名称
+    String city = editText.getText().toString();
+    // 必须每次都重新创建一个新的task实例进行查询，否则将提示如下异常信息
+    // the task has already been executed (a task can be executed only once)
+    city = city.replace(" ", "%20");
+    Log.v(TAG, city);
+    new GetWeatherTask().execute(city);
+    resetView();
+    //把天气信息显示出来
+    tvWeatherInfo.setText("Pending...");
+    hideInputMethodView();
+    //setTitle(weather);
+}
+
+@Override
+public void onConfigurationChanged(Configuration newConfig) {
+    Log.v(TAG, "onConfigurationChange()");
+    Log.v(TAG, newConfig.orientation + "");
+    hideInputMethodView();
+    // 当屏幕布局模式变为portrait时
+    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+    {
+        editText.setText(null);
+        editText.setHint(R.string.hint_string_portrait);
+        editText.setInputType(InputType.TYPE_CLASS_PHONE);
+        //icon.setImageDrawable(null);
+        //tvWeatherInfo.setText(R.string.indicate_string_portrait);
+        requestInputMethodView();
+    }
+    // 当屏幕布局模式变为landscape时
+    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_USER)
+    {
+        editText.setText(null);
+        editText.setHint(R.string.hint_string_landscape);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        //icon.setImageDrawable(null);
+        //tvWeatherInfo.setText(R.string.indicate_string_landscape);
+        requestInputMethodView();
+    }
+    super.onConfigurationChanged(newConfig);
+}
+
+/**
+ * 该方法用于在需要的时候弹出软键盘
+ */
+private void requestInputMethodView() {
+    Log.v(TAG, "requestInputMethodView()");
+    mHandler.post(new Runnable() {
+
+        public void run() {
+            Log.v(TAG, "InputMethodManager imm");
+            InputMethodManager imm = (InputMethodManager) WeatherAppActivity.this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
+            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_portrait, Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_landscape, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    });
+}
+
+private void hideInputMethodView() {
+    InputMethodManager imm = (InputMethodManager) this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+}
+
+/**
+ * 从Google Weather API获取数据
+ * @param city 城市名称或邮政编码
+ * @return 天气数据信息
+ */
+public List&lt;String&gt; getWeatherByCity(String city) {
+    HttpClient httpClient = new DefaultHttpClient();
+    HttpContext localContext = new BasicHttpContext();
+    HttpGet httpGet = new HttpGet(GOOGLE_API_URL + city);
+    Log.v(TAG, GOOGLE_API_URL + city);
+    try {HttpResponse response = httpClient.execute(httpGet, localContext);
+        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+            Log.e(TAG, "Failed. status code is not ok.");
+            httpGet.abort();
+        } 
+        else { 
+            // Get weather information successful
+            // Reset charset
+            HttpEntity httpEntity = response.getEntity();
+            String string = EntityUtils.toString(httpEntity, "utf-8").trim();
+            InputStream is = new ByteArrayInputStream(string.getBytes("utf-8"));
+            return parseWeather(is);
+        }
+    } catch (Exception e) {
+        Log.e(TAG, "Failed to get weather", e);
+    } finally {
+        httpClient.getConnectionManager().shutdown();
+    }
+    List&lt;String&gt; error = new ArrayList&lt;String&gt;();
+    error.add(NETWORK_ERROR);
+    return error;
+}
+
+/**
+ * 解析xml得出天气数据
+ * @param is 由Google Weather API返回的输入流
+ * @return 天气数据
+ * @throws IOException
+ */
+public List&lt;String&gt; parseWeather(InputStream is) throws IOException { 
+    List&lt;WeatherInfo&gt; list = DomXMLReader.readXML(is);
+    List&lt;String&gt; weatherInfos = new ArrayList&lt;String&gt;();
+    WeatherInfo weather_report = list.get(0);
+    if(weather_report.getIconPath().endsWith(".gif"));{
+        try
+        {
+            bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
+
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "IOException");
+        }
+    }
+    times.add("Now");
+    String without_city_name_and_time = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + ", "
+         + "Temp_f: " + weather_report.getTemp_f() + "℉\n"
+         //+ "Temp_c: " + weather_report.getTemp_c() + "℃\n"
+         + weather_report.getHumidity() + ", "
+</code></pre>
+
+<p>//             + current.getIconPath() + &#8220;\n&#8221;</p>
+
+<pre><code>         + weather_report.getWind_condition();
+    weather_report = list.get(1);
+    String city_name_and_time = "City: " + new String(weather_report.getCity_name().getBytes(), "utf-8") + "\n"
+         //+ "Update Time: " + weather_report.getUpdate_time() + "\n"
+         ;
+    weatherInfos.add(city_name_and_time + without_city_name_and_time);
+    for(int i = 2; i &lt;= 5; i++){
+         weather_report = list.get(i);
+         times.add(weather_report.getDay_of_week());
+         if(weather_report.getIconPath().endsWith(".gif"));{
+            try
+            {
+                bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
+
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG, "IOException");
+            }
+         }
+         String forecastCondition = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + "\n"
+                 + "Temp_low_f: " + weather_report.getTemp_low_f() + "℉\n"
+                 + "Temp_high_f: " + weather_report.getTemp_high_f() + "F\n";
+         weatherInfos.add(forecastCondition);
+    }
+    return weatherInfos;
+}
+
+/**
+ * 获取天气图片
+ * @param url 图片url
+ * @return
+ */
+private Bitmap getNetBitmap(String url){
+    URL imageUrl = null;
+    Bitmap bitmap = null;
+    try {
+        imageUrl = new URL(url);
+    }
+    catch (MalformedURLException e){
+        Log.e(TAG, e.getMessage());
+    }
+    try {
+        HttpURLConnection conn = (HttpURLConnection)imageUrl.openConnection();
+        conn.setDoInput(true);
+        conn.connect();
+        InputStream is = conn.getInputStream();
+        bitmap = BitmapFactory.decodeStream(is);
+        is.close();
+    } catch (IOException e){
+        Log.e(TAG, "IOException");
+    }
+    return bitmap;
+}
+
+/**
+ * 采用异步任务更新显示
+ * @author honson
+ *
+ */
+class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt; {
+
+    @Override
+    protected List&lt;String&gt; doInBackground(String... params) {
+        String city = params[0];
+
+        // 调用Google天气API查询指定城市的当日天气情况
+        return getWeatherByCity(city);
+    }
+
+    protected void onPostExecute(List&lt;String&gt; result) {
+        if(result.size() == 1){
+            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+                resetView();
+                tvWeatherInfo.setText(result.get(0));
+            }
+            return;
+        }
+        if(result.size() != 5 || times.size() != 5 || bms.size() !=5 || times == null) {
+            //tvWeatherInfo.setText(result.get(0));
+            return;
+        }
+        // 把doInBackground处理的结果即天气信息显示到界面
+        tvWeatherInfo.setText(result.get(0));
+        time.setText(times.get(0));
+        icon.setImageBitmap(bms.get(0));
+        tvWeatherInfo01.setText(result.get(1));
+        time01.setText(times.get(1));
+        icon01.setImageBitmap(bms.get(1));
+        tvWeatherInfo02.setText(result.get(2));
+        time02.setText(times.get(2));
+        icon02.setImageBitmap(bms.get(2));
+        tvWeatherInfo03.setText(result.get(3));
+        time03.setText(times.get(3));
+        icon03.setImageBitmap(bms.get(3));
+        tvWeatherInfo04.setText(result.get(4));
+        time04.setText(times.get(4));
+        icon04.setImageBitmap(bms.get(4));
+        bms.clear();
+        times.clear();
+    }
+}
+</code></pre>
+
+<p>}[/java]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/android-sqlitedemo.html">Android SQLiteDemo</a></h1>
   
   
     <p class="meta">
@@ -449,22 +1108,76 @@ android:layout_height="fill_parent"&gt;
 
 <p></LinearLayout>[/xml]</p>
 </div>
+  
+  
 
 
-    <footer>
-      <p class="meta neighbor clearfix">
-        
-          <a href="/blog/i-need-something-special.html" class="float-l" title="Previous Post: I need something special.">&laquo; I need something special.</a>
-        
-        
-          <a href="/blog/android-google-weather-api.html" class="float-r" title="Next Post: Android Google Weather API调用示例">Android Google Weather API调用示例 &raquo;</a>
-        
-      </p>
-    </footer>
-  </article>
+    </article>
+  
+  
+    <article>
+      
 
-  <section id="disqus_thread"></section>
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/i-need-something-special.html">I Need Something Special.</a></h1>
+  
+  
+    <p class="meta">
+	  
+
+<span class="categories">
+  Posted in:
+  
+    <a class='category' href='/blog/categories/life-can-be-bad/'>Life can be bad</a>
+  
+</span>
+
+
+      
+
+	  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-19T23:51:56+08:00" pubdate="pubdate" data-updated="true">Oct 19<span>th</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=I Need Something Special. - http://duanhong169.github.com/blog/i-need-something-special.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=I Need Something Special. - &amp;url=http://duanhong169.github.com/blog/i-need-something-special.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>我需要改变。</p>
+
+<p>我需要做一些特别的事情。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+
+  
+  <!-- Pagination -->
+  <section class="pagination clearfix">
+    
+    <a class="next float-r" href="/blog/page/3/">Newer &rarr;</a>
+  </section>
+  
 </section>
+
 
 <footer class="footer">
   &copy;2012 弘哥保护你

@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[SEGMAC]]></title>
+  <title><![CDATA[弘's blog]]></title>
   <link href="http://duanhong169.github.com/atom.xml" rel="self"/>
   <link href="http://duanhong169.github.com/"/>
-  <updated>2012-04-20T02:45:49+08:00</updated>
+  <updated>2012-04-20T14:14:20+08:00</updated>
   <id>http://duanhong169.github.com/</id>
   <author>
-    <name><![CDATA[弘]]></name>
+    <name><![CDATA[弘哥保护你]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 分割线]]></title>
+    <link href="http://duanhong169.github.com/blog/taste.html"/>
+    <updated>2012-04-20T02:59:00+08:00</updated>
+    <id>http://duanhong169.github.com/blog/taste</id>
+    <content type="html"><![CDATA[<p>终于可以代码高亮了，无语了。不过还是很丑的样子。</p>
+
+<figure class='code'><figcaption><span>Hello Octopress.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">def</span> <span class="nf">hello</span>
+</span><span class='line'>    <span class="s2">&quot;Hello Octopress&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Smack设置隐身状态]]></title>
@@ -22,66 +43,123 @@
 Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.
 <a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
 
-<p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。
-<a href="http://segmac.com/wp-content/uploads/2012/04/JWChat_login.png"><img src="http://segmac.com/wp-content/uploads/2012/04/JWChat_login_thumb.png" alt="JWChat_login" /></a>
+<p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
+
+<!--more-->
+
+
+<p><a href="http://segmac.com/wp-content/uploads/2012/04/JWChat_login.png"><img src="http://segmac.com/wp-content/uploads/2012/04/JWChat_login_thumb.png" alt="JWChat_login" /></a>
 对于通常的聊天客户端来说，用户一般都需要使用到“隐身（invisibility）”状态，即自身对于其他用户是离线的状态，而自身却依然能够接收到其他用户发来的消息。在Smack中用户通过向服务器发送<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.html">Presence</a>包来设置自己的状态，通过发送这个数据包可以向服务器发送一些与用户状态相关的请求，设置Presence的<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.Type.html">Type</a>属性可以用于说明该Presence包的用途（包括上线（available）、下线（unavailable）、请求订阅其他用户的状态（subscribe）、允许其他用户订阅自己的状态（subscribed）等等），通过设置Presence的<a href="http://www.igniterealtime.org/builds/smack/docs/latest/javadoc/org/jivesoftware/smack/packet/Presence.Mode.html">Mode</a>属性用于说明自己当前的状态（包括了在线（available）、离开（away）、等待聊天（chat）、忙碌（dnd）、长时间离开（xa）等状态），在Smack的较早版本中的Presence是可以直接设置为隐身（invisibility）的，然而这却违反了XMPP RFC，因此在2006年的6月就已经将这个隐身状态从Smack API中移除了<a href="http://issues.igniterealtime.org/browse/SMACK-147?page=com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab">[2]</a>。</p>
 
 <p>XMPP RFC认为隐身实际上是一个不必要独立存在的一个状态，因为在实际应用时，只要你不给你的其他联系人发送available类型的Presence，那么你的联系人就是不会看见你在线的，也就是达到了和隐身相同的效果，XMPP文档<a href="http://xmpp.org/extensions/xep-0126.html">XEP-0126</a>对于这种隐身功能的实现做了十分详细的说明。</p>
 
 <p>那么在Smack中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：</p>
 
-<pre><code>//设置状态
-private void setPresence(int code){
-    if(connection == null) return;
-    Presence presence;
-    switch(code){
-    case 0:
-        presence = new Presence(Presence.Type.available);
-        connection.sendPacket(presence);
-        Log.v(TAG, "设置在线");
-        break;
-    case 1:
-        presence = new Presence(Presence.Type.available);
-        presence.setMode(Presence.Mode.dnd);
-        connection.sendPacket(presence);
-        Log.v(TAG, "设置忙碌");
-        System.out.println(presence.toXML());
-        break;
-    case 2:
-        presence = new Presence(Presence.Type.available);
-        presence.setMode(Presence.Mode.away);
-        connection.sendPacket(presence);
-        Log.v(TAG, "设置离开");
-        System.out.println(presence.toXML());
-        break;
-    case 3:
-        Roster roster = connection.getRoster();
-        Collection entries = roster.getEntries();
-        for (RosterEntry entry : entries) {
-            presence = new Presence(Presence.Type.unavailable);
-            presence.setPacketID(Packet.ID_NOT_AVAILABLE);
-            presence.setFrom(connection.getUser());
-            presence.setTo(entry.getUser());
-            connection.sendPacket(presence);
-            System.out.println(presence.toXML());
-        }
-        //向同一用户的其他客户端发送隐身状态
-        presence = new Presence(Presence.Type.unavailable);
-        presence.setPacketID(Packet.ID_NOT_AVAILABLE);
-        presence.setFrom(connection.getUser());
-        presence.setTo(StringUtils.parseBareAddress(connection.getUser()));
-        connection.sendPacket(presence);
-        Log.v(TAG, "设置隐身");
-        break;
-    case 4:
-        presence = new Presence(Presence.Type.unavailable);
-        connection.sendPacket(presence);
-        Log.v(TAG, "设置离线");
-        break;
-    default: break;
-    }
-}
-</code></pre>
+<figure class='code'><figcaption><span>Smack Invisibility Snippet.java </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="c1">//设置状态</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setPresence</span><span class="o">(</span><span class="kt">int</span> <span class="n">code</span><span class="o">){</span>
+</span><span class='line'>      <span class="k">if</span><span class="o">(</span><span class="n">connection</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">Presence</span> <span class="n">presence</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">switch</span><span class="o">(</span><span class="n">code</span><span class="o">){</span>
+</span><span class='line'>      <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+</span><span class='line'>          <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">available</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;设置在线&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+</span><span class='line'>          <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">available</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">presence</span><span class="o">.</span><span class="na">setMode</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Mode</span><span class="o">.</span><span class="na">dnd</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;设置忙碌&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">presence</span><span class="o">.</span><span class="na">toXML</span><span class="o">());</span>
+</span><span class='line'>          <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+</span><span class='line'>          <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">available</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">presence</span><span class="o">.</span><span class="na">setMode</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Mode</span><span class="o">.</span><span class="na">away</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;设置离开&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">presence</span><span class="o">.</span><span class="na">toXML</span><span class="o">());</span>
+</span><span class='line'>          <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+</span><span class='line'>          <span class="n">Roster</span> <span class="n">roster</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getRoster</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">Collection</span> <span class="n">entries</span> <span class="o">=</span> <span class="n">roster</span><span class="o">.</span><span class="na">getEntries</span><span class="o">();</span>
+</span><span class='line'>          <span class="k">for</span> <span class="o">(</span><span class="n">RosterEntry</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">entries</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">unavailable</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">presence</span><span class="o">.</span><span class="na">setPacketID</span><span class="o">(</span><span class="n">Packet</span><span class="o">.</span><span class="na">ID_NOT_AVAILABLE</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">presence</span><span class="o">.</span><span class="na">setFrom</span><span class="o">(</span><span class="n">connection</span><span class="o">.</span><span class="na">getUser</span><span class="o">());</span>
+</span><span class='line'>              <span class="n">presence</span><span class="o">.</span><span class="na">setTo</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getUser</span><span class="o">());</span>
+</span><span class='line'>              <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">presence</span><span class="o">.</span><span class="na">toXML</span><span class="o">());</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>          <span class="c1">//向同一用户的其他客户端发送隐身状态</span>
+</span><span class='line'>          <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">unavailable</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">presence</span><span class="o">.</span><span class="na">setPacketID</span><span class="o">(</span><span class="n">Packet</span><span class="o">.</span><span class="na">ID_NOT_AVAILABLE</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">presence</span><span class="o">.</span><span class="na">setFrom</span><span class="o">(</span><span class="n">connection</span><span class="o">.</span><span class="na">getUser</span><span class="o">());</span>
+</span><span class='line'>          <span class="n">presence</span><span class="o">.</span><span class="na">setTo</span><span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">parseBareAddress</span><span class="o">(</span><span class="n">connection</span><span class="o">.</span><span class="na">getUser</span><span class="o">()));</span>
+</span><span class='line'>          <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;设置隐身&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+</span><span class='line'>          <span class="n">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Presence</span><span class="o">(</span><span class="n">Presence</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">unavailable</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">connection</span><span class="o">.</span><span class="na">sendPacket</span><span class="o">(</span><span class="n">presence</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;设置离线&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">default</span><span class="o">:</span> <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。</p>
 ]]></content>
@@ -92,19 +170,21 @@ private void setPresence(int code){
     <link href="http://duanhong169.github.com/blog/the-social-life-in-my-mind.html"/>
     <updated>2012-04-04T21:28:44+08:00</updated>
     <id>http://duanhong169.github.com/blog/the-social-life-in-my-mind</id>
-    <content type="html"><![CDATA[<p>Every human can&#8217;t live out of the social, and so we build a very big social around the world, and then we live in it,  we help each other, build our own land, so us human beings become stronger and stronger&#8211;we become the kings of the world.</p>
+    <content type="html"><![CDATA[<p>Every human can&#8217;t live out of the social, and so we build a very big social around the world, and then we live in it,  we help each other, build our own land, so us human beings become stronger and stronger&#8211;we become the kings of the world.
+As a human, we must be a part of the social or we&#8217;ll be cancelled&#8230;It&#8217;s no doubt we&#8217;ll be cancelled if we don&#8217;t do something to adapt to the social life, the social nature.
+You must want to know what is life and what is social life.well, sometimes we say life, this life most means our individual life. But truth be told, our life has two part&#8211;the social life and the individual life.
+Every morning we get up and open our eyes, it&#8217;s our life,our individual life. we can&#8217;t deny that social life is more difficult than individual life, we meet many different people and many different affairs, many problem for us to solve. As it is more difficult, some people want to run away from it. If a man run away from the social life, there is only one result, he&#8217;ll fail, he&#8217;ll never make any progress, and at last, he dead with nobody else feel sad&#8230;like he never come to the world.</p>
 
-<pre><code> As a human, we must be a part of the social or we'll be cancelled...It's no doubt we'll be cancelled if we don't do something to adapt to the social life, the social nature. 
- You must want to know what is life and what is social life.well, sometimes we say life, this life most means our individual life. But truth be told, our life has two part--the social life and the individual life.
- Every morning we get up and open our eyes, it's our life,our individual life. we can't deny that social life is more difficult than individual life, we meet many different people and many different affairs, many problem for us to solve. As it is more difficult, some people want to run away from it. If a man run away from the social life, there is only one result, he'll fail, he'll never make any progress, and at last, he dead with nobody else feel sad...like he never come to the world. 
- Strictly speaking, human is a type of animal that tends to lead a social rather than individual life. If you like, it’s easy to collect a bulk of strong and indubitable evidences to defend this. But isn’t true? What kind of social life the word covers? Beyond boundary of common sense, the word “social”, herein, not only embraces some things as bait fame and accumulate property by all means, not narrowly peer at all gathering in a mess in the street or grand hall. But, in my limited perspective, also emphasizes on one of main bridge which span the gap between countries, races, color, even languages: right reasoning. 
-  However, in our current society, a common picture becomes more difficult to draw in our hand.  Much time we wasted on one-eyed monster (TV, and new digital gadgets), around the corner of cyber web, etc. Solitude is like a haunting ghost we scare to be in face with. If not, where to get clear reason and make right decision on short-term, and long-term demand? 
- If you want to be one part of the social life,first,you must know how to learn something aboat other people,whenever I meet new people, I’m always curious to find out where they’re coming from so I can better understand who they are. This is natural, I know. The only difference is that to me, this means finding out about their past relationships. Strange, right? I’ve concluded that this is because I define myself by my relationships and therefore apply the same rules when trying to learn about other people.Well, it's just my way, and every body has their own ways.No matter which way you do, the most important thing is that you should know the man you want to do thing with.
- But what I say is just say, you must do it, we say practise is the best teacher, and so it's right here, we must take part in the social life and practise time afer time, then I believe every body has ability to handle it well.
- Now we're college students, as soon as we graduate, we will really become one part of the social, and it's time for us to show our skills, our ability, our advantages and so on. We must show our best to the other so we can be accept by others and then we have chances to make some bigger progress. If you don't show yourself, of course nobody will know what a man you are, even if you are most clever, loyal and so on, also nobody else could know you, nor feel good about you.So after we have got a job, we can say we really get in the social life, at that time we will feel how important to have a good way to deal with the social life.
- I'm very silent, I know it's not good for me to adapt to the society so I must take some action in order to make myself better. I won't stop my steps to success. BATTLE MY WAY TO THE SOCIAL LIFE.
- If the social life is like the sea, our individual life is just a pond of water, so how can we just want a pond of water and never think about to have fun in the sea?
-</code></pre>
+<!--more-->
+
+
+<p>Strictly speaking, human is a type of animal that tends to lead a social rather than individual life. If you like, it’s easy to collect a bulk of strong and indubitable evidences to defend this. But isn’t true? What kind of social life the word covers? Beyond boundary of common sense, the word “social”, herein, not only embraces some things as bait fame and accumulate property by all means, not narrowly peer at all gathering in a mess in the street or grand hall. But, in my limited perspective, also emphasizes on one of main bridge which span the gap between countries, races, color, even languages: right reasoning.
+However, in our current society, a common picture becomes more difficult to draw in our hand.  Much time we wasted on one-eyed monster (TV, and new digital gadgets), around the corner of cyber web, etc. Solitude is like a haunting ghost we scare to be in face with. If not, where to get clear reason and make right decision on short-term, and long-term demand?
+If you want to be one part of the social life,first,you must know how to learn something aboat other people,whenever I meet new people, I’m always curious to find out where they’re coming from so I can better understand who they are. This is natural, I know. The only difference is that to me, this means finding out about their past relationships. Strange, right? I’ve concluded that this is because I define myself by my relationships and therefore apply the same rules when trying to learn about other people.Well, it&#8217;s just my way, and every body has their own ways.No matter which way you do, the most important thing is that you should know the man you want to do thing with.
+But what I say is just say, you must do it, we say practise is the best teacher, and so it&#8217;s right here, we must take part in the social life and practise time afer time, then I believe every body has ability to handle it well.
+Now we&#8217;re college students, as soon as we graduate, we will really become one part of the social, and it&#8217;s time for us to show our skills, our ability, our advantages and so on. We must show our best to the other so we can be accept by others and then we have chances to make some bigger progress. If you don&#8217;t show yourself, of course nobody will know what a man you are, even if you are most clever, loyal and so on, also nobody else could know you, nor feel good about you.So after we have got a job, we can say we really get in the social life, at that time we will feel how important to have a good way to deal with the social life.
+I&#8217;m very silent, I know it&#8217;s not good for me to adapt to the society so I must take some action in order to make myself better. I won&#8217;t stop my steps to success. BATTLE MY WAY TO THE SOCIAL LIFE.
+If the social life is like the sea, our individual life is just a pond of water, so how can we just want a pond of water and never think about to have fun in the sea?</p>
 ]]></content>
   </entry>
   
@@ -118,6 +198,11 @@ private void setPresence(int code){
 <p>在一个人觉醒之前，他会觉得他总是正确的，他认为他总能够看清楚世间万物的道理。当他看到眼前所经历的一件事情之后，就会在脑子里对其进行分析和假定，然后给这件事情中涉及的人和事都加上自己的注解，他并不关心这些理解是否正确，因为他坚信自己的想法一定是正确的。他可以把自己与世间万物独立开来，站在上帝的角度来看待世界。他把自己视作hypervisor，以为自己已经掌握了所有心理学的奥妙，殊不知其实他连自己的心理状态都没有思考清楚。不过通常情况下他在大部分时候还可能是对的，因而就更加坚定了他站在上帝所处的制高点的信心，其实那些只不过是一个正常人都具备的基本的分析判断能力罢了。虽然偶尔发生的状况可能会稍稍地打击一下他，但是他也总是能够找到为自己开脱的理由。</p>
 
 <p>如果缺乏一定的目标来驱动，没有一个正确的标准来衡量自己的行为，那么一个人在一段时间内总会认为自己当前所做的事情是最合理的，即使在别人看来那是非常的不合理。也许在之后的某个时刻他自己也会发现其实现在这个时刻他所做的事情是无意义的，那是因为他已经觉得在之后那个时刻他正在做着他认为最合理的事情，所以说一个人总是处在一个自认为“最合理”的状态，因而会出现一些旁人看来异常顽固或者执迷不悟的行为，但是他本人却从未发觉，即使发觉了也是对别人的看法不屑一顾。这也许就是心理学上说的人的自利倾向吧。</p>
+
+<!--more-->
+
+
+<p></p>
 
 <p>这个世界并不存在什么绝对的对与错，它们是相对的，这取决于你用什么标准来衡量成功与失败。用正确的方法达到正确的目标固然是一种理想的方式，然而我们经常也会遇到用正确的方法做了错误的事的情况，甚至可能遇到用错误的方法却做了正确的事。这取决于你所处的环境、事物的发展趋势也可以理解为运气，而你自认为的努力从某种意义上来讲，可能是有助于你做正确的事，也可能恰恰是阻碍你做正确的事的原因，因为这个努力在未看结果之前，不能够确定到底是正方向上的还是反方向上的。</p>
 
@@ -141,6 +226,9 @@ private void setPresence(int code){
 <p>A:Point to point is a protocol for communication between two computers using a serial interface(phone).</p>
 
 <p>Peer to peer is a communication model in which each party has the same capabilities and either party can initiate a communication session.</p>
+
+<!--more-->
+
 
 <h2>Clue 2：概念简介</h2>
 

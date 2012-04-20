@@ -3,9 +3,9 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>SEGMAC</title>
+  <title>弘's blog</title>
   
-  <meta name="description" content="坑爹的XX Posted in: Complain Tag: sigh 2011-10-31 Mon 不知道是不是我太龊了，一天之内改两篇工程硕士学位论文真的大丈夫吗？注意这里的改不是批改，而是要修改其中的内容。说白了就是帮人写论文罢了，要是是我做过这论文里面的相关系统的设计也还可以理解， &hellip;" />
+  <meta name="description" content="KVM Posted in: Study Tag: KVM Nov 29th, 2011 KVM KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux &hellip;" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/stylesheets/screen.css" />
   
@@ -25,7 +25,7 @@ html,body{height:100%;overflow:hidden}
     <li><a href="/">Home</a></li>
     <li><a href="/blog/archives">Archives</a></li>
     <li><a href="/atom.xml">RSS</a></li>
-    <li><a href="http://switchable.mrzhang.me/" class="switchable" target="_blank">jQuery.Switchable</a></li>
+    <li><a href="http://octopress.org/" class="switchable" target="_blank">Goodbye.Wordpress</a></li>
     
     <li>
       <form action="http://google.com/search" method="get" target="_blank">
@@ -37,8 +37,9 @@ html,body{height:100%;overflow:hidden}
   </ul>
 </nav>
 
-<header class="my-nickname"><em title="">弘</em></header>
+<header class="my-nickname"><em title="">弘哥保护你</em></header>
 
+<meta property="wb:webmaster" content="31d8715d39ea1555" />
 <section class="main-wrap clearfix">
   
   
@@ -48,7 +49,7 @@ html,body{height:100%;overflow:hidden}
 
 <header>
   
-    <h1 class="entry-title"><a href="/blog/kendie-xx.html">坑爹的XX</a></h1>
+    <h1 class="entry-title"><a href="/blog/kvm.html">KVM</a></h1>
   
   
     <p class="meta">
@@ -57,7 +58,7 @@ html,body{height:100%;overflow:hidden}
 <span class="categories">
   Posted in:
   
-    <a class='category' href='/blog/categories/complain/'>Complain</a>
+    <a class='category' href='/blog/categories/study/'>Study</a>
   
 </span>
 
@@ -67,13 +68,10 @@ html,body{height:100%;overflow:hidden}
 <span class="tags">
   Tag:
   
-    <a href='/blog/tags/sigh/'>sigh</a>
+    <a href='/blog/tags/kvm/'>KVM</a>
   
 </span>
 
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=坑爹的XX - http://duanhong169.github.com/blog/kendie-xx.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
 	  
 
 
@@ -86,23 +84,55 @@ html,body{height:100%;overflow:hidden}
   
 
 
-<time datetime="2011-10-31T15:34:36+08:00" pubdate="pubdate" data-updated="true">2011-10-31 Mon</time>
+<time datetime="2011-11-29T20:36:01+08:00" pubdate="pubdate" data-updated="true">Nov 29<span>th</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=KVM - http://duanhong169.github.com/blog/kvm.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=KVM - &amp;url=http://duanhong169.github.com/blog/kvm.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
     </p>
   
 </header>
 
 
-  <div class="entry-content typo"><p>不知道是不是我太龊了，一天之内改两篇工程硕士学位论文真的大丈夫吗？注意这里的改不是批改，而是要修改其中的内容。说白了就是帮人写论文罢了，要是是我做过这论文里面的相关系统的设计也还可以理解，可是这根本就是我没去接触过的，看看学校给的这些整改意见吧。</p>
+  <div class="entry-content typo"><h2>KVM</h2>
 
-<blockquote><p>“论文毫无实质性内容，……系统实现部分根本看不出工作量，无关键代码，甚至无法知道系统设计的语言。”</p></blockquote>
+<p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
 
-<p>“正文篇幅不足；……设计内容不足，缺E-R图，流程图，无实现内容；”</p>
+<h2></h2>
 
-<p>这样的意见无非就是委婉的说：他X的这论文啥都没做就复制了几段百科也敢交上来？</p>
+<h2>QEMU</h2>
 
-<p>但是没办法，导师就是把这样的事安排给了我，咱能说不做吗？不合适吧，毕竟是师长，还是得敬重，首先得从自己这边找问题，那就是我能力太缺失了，如此简单的事情在我看来竟然是如此的棘手。天上掉下来一百多页的论文，别人还说是什么内容也没有，那我得增加多少内容才算过关呢？一篇论文居然需要一个完全不相关的人去充实里面最主要的内容，至于你怎么看，反正我的X眼被亮瞎了。</p>
+<p>QEMU是一套由Fabrice Bellard所编写的模拟处理器的自由软件。它与Bochs，PearPC近似，但其具有某些后两者所不具备的特性，如高速度及跨平台的特性。经由kqemu这个开源的加速器，QEMU能模拟至接近真实电脑的速度。QEMU有两种主要运作模式：</p>
 
-<p>一天时间我连熟悉它们要写的内容估计都够呛，但是没关系，这反正跟我也没啥关系，他不是皇帝我更不是太监，所以我不急，随便复制几段给他们拿去玩“大家来找茬”吧，还能怎么整，哈哈</p>
+<ul>
+<li><p>User mode模拟模式，亦即是使用者模式。QEMU能启动那些为不同中央处理器编译的Linux程序。而Wine及Dosemu是其主要目标。</p></li>
+<li><p>System mode模拟模式，亦即是系统模式。QEMU能模拟整个电脑系统，包括中央处理器及其他周边设备。它使得为系统源代码进行测试及除错工作变得容易。其亦能用来在一部主机上虚拟数部不同虚拟电脑。</p></li>
+</ul>
+
+
+<p>目前的Android模拟器就是基于QEMU开发的。</p>
+
+<h2>KVM与QEMU</h2>
+
+<p>由于KVM仅仅是为上层提供虚拟化的支持，它本身并不进行任何的创建或管理虚拟机的工作，而是通过一个用户空间的程序通过调用/dev/kvm接口来设置客户虚拟机的地址空间、管理I/O以及将视频显示映射回主机。QEMU就是一个可以完成这些工作的程序，可以说KVM就是借助QEMU的一部分功能来实现具体的虚拟机。</p>
+
+<h2>KVM与Xen</h2>
+
+<p>由于Xen、KVM都是应用在Linux虚拟化上的技术，因此有必要弄清楚它们之间的关系。Xen是一个直接工作在硬件层之上的系统，它是一个基于Nemesis微内核的hypervisor。当前各Linux发行版所包含的Xen，表面上看似乎是Xen跑在Linux系统上，实际上却是Linux跑在Xen上，只是这类发行版默认安装了一个Linux guest作为domain0，这让用户很容易产生错觉，以至于大多数的用户根本没有意识到他们正在运行一个完全不同的操作系统。</p>
+
+<p>对于Linux最开始为什么要包含Xen，Linux的开发者ANTHONY LIGUORI称这主要是由于Linux社区的绝望。因为虚拟化在最近一段时间逐渐成为了一个很热门的技术。但是Linux过去却没有提供任何的native hypervisor的能力。大多数的Linux kernel开发者对虚拟化技术知道得也不多，因此Xen很容易的使用了一个定制的kernel，并且这个kernel还有一个相当好的community。于是Linux社区做了一个决定：包含Xen到发行版中。LIGUORI称这个决定是草率的，因为他认为正确的做法是把Linux变成一个合适的hypervisor，而不是将这个功能寄托在Xen上，他也认为其他的系统也应该像Linux这样对待这个问题。因此，可以将KVM理解为由Linux内核直接提供的对虚拟化的更好的（Linux社区有足够的自信）支持。</p>
+
+<h2>其他</h2>
+
+<ul>
+<li><p>Xen——一个完整的系统，通常使用定制的Linux发行版作为domain0</p></li>
+<li><p>virtualbox——它的部分代码由QEMU修改而来，拥有自身的图形加速</p></li>
+<li><p>一套可以运行的KVM通常包括qemu-kvm和kvm-kmod两部分</p></li>
+<li><p>Xen属于半虚拟化的范畴，半虚拟化指客户机操作系统是经过定制的，客户机知道自身工作在虚拟的环境中，而全虚拟化则相反</p></li>
+<li><p>hypervisor，又叫VMM（Virtual Machine Manager），它相对于supervisory program（也成为内核）而言，内核的作用是负责分配计算机资源，调度，I/O等，而hypervisor处在比supervisory更高的层次上。</p></li>
+<li><p>hypervisor分为两类，即Type1 和 Type 2：1类的hypervisor直接运行在裸机上，相当于hypervisor是硬件上的第一层；2类的hypervisor则是运行在传统的操作系统之上，即hypervisor是属于第2层。KVM和Xen on Linux都是属于1类，不过Xen却伪装得很像2类。</p></li>
+</ul>
+
 </div>
   
   
@@ -116,213 +146,7 @@ html,body{height:100%;overflow:hidden}
 
 <header>
   
-    <h1 class="entry-title"><a href="/blog/no-words.html">为什么总是缺少语言</a></h1>
-  
-  
-    <p class="meta">
-	  
-
-<span class="categories">
-  Posted in:
-  
-    <a class='category' href='/blog/categories/complain/'>Complain</a>
-  
-</span>
-
-
-      
-
-<span class="tags">
-  Tag:
-  
-    <a href='/blog/tags/sigh/'>sigh</a>
-  
-</span>
-
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=为什么总是缺少语言 - http://duanhong169.github.com/blog/no-words.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
-	  
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-30T14:48:53+08:00" pubdate="pubdate" data-updated="true">2011-10-30 Sun</time>
-    </p>
-  
-</header>
-
-
-  <div class="entry-content typo"><p>很多时候，感觉自己想要说点什么，但是却一个字也吐不出来。看着对方一行一行的字出现，更是觉得越来越大的压力，以至于更加不知道说什么好了。</p>
-
-<p>不能怨别人，肤浅的人总是缺少语言，对一件事缺少感情，自然也不会对它产生多少的理解，更不用说对其侃侃而谈了。</p>
-
-<p>想起以前语文考试都要写的八百字作文，现在觉得真是能凑齐字数都是困难，过了这么多年，却是越来越退化了，一直以来都不怎么喜欢阅读，觉得都是别人写的一些与自己无关的话罢了，因此自从上了大学之后，没有了向高中那样的硬性要求，反而是阅读得更少了，要写什么东西，首先想到的是到网络上搜集一些别人的材料，然后照着别人的模式来写，根本就少有加入自身的思考，久而久之这些能力也就弱化了吧。本来就不强的东西，现在倒是更加弱化了，真不知道是该叹气还是该哭。</p>
-
-<p>看文章总不愿看超过2页的习惯，导致这些年来最喜欢看的就是些短文，笑话幽默什么的，这样的话什么《读者》啊《青年文摘》呀应该比较适合我吧？错了，就连这上面的文章70%我都觉得太长了，更不用说看什么小说了。我想正是因为这个原因，导致了我总是感觉缺少语言吧，现在得去在这方面加强一点努力了，不然总是会误了很多事的。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-
-<header>
-  
-    <h1 class="entry-title"><a href="/blog/i-can-not-wake-up.html">I Can Not Wake Up</a></h1>
-  
-  
-    <p class="meta">
-	  
-
-<span class="categories">
-  Posted in:
-  
-    <a class='category' href='/blog/categories/life-can-be-bad/'>Life can be bad</a>
-  
-</span>
-
-
-      
-
-<span class="tags">
-  Tag:
-  
-    <a href='/blog/tags/life/'>Life</a>
-  
-</span>
-
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=I Can Not Wake Up - http://duanhong169.github.com/blog/i-can-not-wake-up.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
-	  
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-27T16:02:47+08:00" pubdate="pubdate" data-updated="true">2011-10-27 Thu</time>
-    </p>
-  
-</header>
-
-
-  <div class="entry-content typo"><p>是意志不够坚定吗？但是我确实感觉太累了，感觉即使我能逃离这张床，也必定会在某个地方趴着睡着。</p>
-
-<p>唉 谁能教会我深度睡眠就好了~我觉得以前的我就是这样的，感觉每天睡四到六个小时就足够了，第二天一样精神满满，现在怎么就不行了呢。是环境变了吗，还是我自己变了。</p>
-
-<p>不过我知道我是个很难改变的人，缺点一大堆，但总是改不了，总是让人生气让人不爽，但是自己却总是不能改变，改变也仅仅是在口头上说说，在形式上改变，而实际上却还是在骨头里保留着原来的想法。</p>
-
-<blockquote><p>只想做自己喜欢的事，这样的决定当然无可厚非。但是在现实中，为了做自己喜欢的事情，必须做很多不那么喜欢的事情，如果对于这一点能欣然接收的话就好了。</p></blockquote>
-
-<p>确实，如果你想要得到一个东西或者去做一件事，那么你不能够期望毫无代价的去达到你的目的，世界不是为你一个人而准备的，你必须要学会付出，你才能得到你想要的东西，完成你想要做成的事情。</p>
-
-<blockquote><p>如果真的喜欢的话，就不会觉得辛苦了。如果害怕辛苦而不愿付出努力，那只能说，不是真正的喜欢这件事。</p></blockquote>
-
-<p>对于一件事我是否真的打心底里觉得喜欢呢？或许这才是关键的问题，可能自己对于喜欢的概念都弄错了，因为没有发现自己真正喜欢的，所以觉得自己喜欢的就是现在的这个样子。</p>
-
-<p>人生应该怎样度过？工作、积累财产、提升教养、满足爱好、建立家庭和保持身体健康，我要在对待这几点的观点上做出一些改变，认真对待他们。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-
-<header>
-  
-    <h1 class="entry-title"><a href="/blog/sleep-late.html">晚睡强迫症</a></h1>
-  
-  
-    <p class="meta">
-	  
-
-<span class="categories">
-  Posted in:
-  
-    <a class='category' href='/blog/categories/life-can-be-bad/'>Life can be bad</a>
-  
-</span>
-
-
-      
-
-<span class="tags">
-  Tag:
-  
-    <a href='/blog/tags/life/'>Life</a>
-  
-</span>
-
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=晚睡强迫症 - http://duanhong169.github.com/blog/sleep-late.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
-	  
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T01:48:22+08:00" pubdate="pubdate" data-updated="true">2011-10-26 Wed</time>
-    </p>
-  
-</header>
-
-
-  <div class="entry-content typo"><p>为什么夜深了却越是睡不着呢··七八点的时候倒是会有点打瞌睡。
-那时候又不敢睡~怕晚上突然醒了就悲剧了，最痛苦的事情还是是失眠呀。</p>
-
-<p>最近感觉自己越来越SB了，经常不知道自己在做什么，发现别人都很聪明~懂得多吐槽又厉害还能够精辟的分析历史和时事。</p>
-
-<p>寝室总有几只蚊子在嗡嗡的飞，偶尔拍死两个却总也灭绝不了，躺在床上过几分钟黑暗中就有蚊子飞过来，真是要气死爹啊。
-电脑的破硬盘的声音感觉大得出奇，这渣质量估计过两天就又得坏了~就是因为它都搞得我有点神经过敏了，总是感觉有什么东西在响，
-声音不是很大但是就是能听见，还是持续不断的那种，特别烦，今天中午睡午觉的时候把电脑待机，我居然能听见和待机灯闪烁频率一样的电源里的电流声，真是要了个命了哦，中途不得不下去把电脑关掉，瞬间感觉清净了，睡了几分钟好觉。
-不过今天又被导师叫去找学校盖一个合同的章，这样的事真是让我无力啊~感觉除了浪费时间之外就是浪费A4纸了，没办法还是得去跑，但是学校的那些老师行踪总是不确定，总是不能保证在确定的地方能找到他，平时不觉得，一要找了就找不到了，明天还得去。</p>
-
-<p>不过最近发现豆瓣FM是个不错的东西，界面简洁，功能独特，总是能跳出一些很好听的歌，就是白天经常会很卡，听都听不起，网上说可能是电信dns的原因，也不知道怎么整~各种浏览器都试了，桌面版的也下下来试了，统统都不行唉~真是没有一件事让我舒心的。</p>
-
-<p>还是睡觉吧，睡个好觉。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-
-<header>
-  
-    <h1 class="entry-title"><a href="/blog/android-google-weather-api.html">Android Google Weather API调用示例</a></h1>
+    <h1 class="entry-title"><a href="/blog/a-folder-failed-to-be-renamed-or-moved.html">关于“a Folder Failed to Be Renamed or Moved”错误</a></h1>
   
   
     <p class="meta">
@@ -345,9 +169,6 @@ html,body{height:100%;overflow:hidden}
   
 </span>
 
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android Google Weather API调用示例 - http://duanhong169.github.com/blog/android-google-weather-api.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
 	  
 
 
@@ -360,609 +181,29 @@ html,body{height:100%;overflow:hidden}
   
 
 
-<time datetime="2011-10-22T00:27:47+08:00" pubdate="pubdate" data-updated="true">2011-10-22 Sat</time>
+<time datetime="2011-11-16T18:12:08+08:00" pubdate="pubdate" data-updated="true">Nov 16<span>th</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=关于“a Folder Failed to Be Renamed or Moved”错误 - http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=关于“a Folder Failed to Be Renamed or Moved”错误 - &amp;url=http://duanhong169.github.com/blog/a-folder-failed-to-be-renamed-or-moved.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
     </p>
   
 </header>
 
 
-  <div class="entry-content typo"><p>该示例简单地对Google Weather API进行了调用并解析了返回的xml数据，然后展示到Activity。
-Demo截图：
-[fgallery id=2 w=480 h=480 t=0 title=&#8221;weatherapp&#8221;]
-Android Project结构：
-<a href="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project-hierarchy.png" alt="" /></a>
-天气信息抽象数据类型WeatherInfo.java：
-[java]package com.honson.weatherapp;</p>
+  <div class="entry-content typo"><p>在使用SDK Manager进行更新的时候，有时候会碰到“A folder failed to be renamed or moved”这个错误信息，内容大致如下：</p>
 
-<p>public class WeatherInfo {</p>
+<p>-= warning! =- A folder failed to be renamed or moved. On Windows this typically means that a program Is using that Folder (for example Windows Explorer or your anti-virus software.) Please momentarily deactivate your anti-virus software. Please also close any running programs that may be accessing the directory &#8216;D:\Install\Programming\android-sdk-working-dir\android-sdk-windows\android-sdk-windows\tools&#8217;. When ready, press YES to try again.</p>
 
-<pre><code>String city_name;
-String update_time;
+<p>以前更新的时候遇到过几次，不过没去管，不能够更新的组件不更新就是了，说不定下次更新的时候就可以了。但是今天去更新Android SDK Tools Rev. 15的时候，又碰见了这个问题，真是好郁闷，于是想看看到底是为什么，于是就尝试手动的逐渐将tools这个文件夹内的内容移动走，看看最终是那些东西被占用了，最后发现是tools/lib目录下的一些jar包正在被占用，刚好360有个解除占用的工具，于是用这个工具一看，发现是被java.exe使用了。</p>
 
-String condition;
-String temp_f;
-String temp_c;
-String humidity;
-String icon;
-String wind_condition;
+<p>于是全部解除占用后，按YES还是出现同样的错误，没办法，手动将所有的文件都移走，只留下一个空的tools文件夹，当然不出所料是不能移动这个空文件夹的，在windows下已经习惯这种情况了，关闭了所有杀毒软件也没有用，你就是不知道这个空文件夹到底是怎么被占用的。</p>
 
-String day_of_week;
-String temp_low_f;
-String temp_high_f;
+<p>其实在进行新版本替换时，已经将新版本下载到temp文件夹下了，既然文件夹被使用不能移动，那就不去动它了，点NO然后关闭掉SDK manager，然后手动把新版本的压缩包解压到tools目录下，再次启动SDK manager，发现更新已经成功了。</p>
 
-public String getUpdate_time() {
-    return update_time;
-}
+<p><a href="http://segmac.com/wp-content/uploads/2011/11/update-success.png"><img src="http://segmac.com/wp-content/uploads/2011/11/update-success.png" alt="" /></a></p>
 
-public void setUpdate_time(String update_time) {
-    this.update_time = update_time;
-}
-
-public String getDay_of_week() {
-    return day_of_week;
-}
-
-public void setDay_of_week(String day_of_week) {
-    this.day_of_week = day_of_week;
-}
-
-public String getTemp_low_f() {
-    return temp_low_f;
-}
-
-public void setTemp_low_f(String temp_low_f) {
-    this.temp_low_f = temp_low_f;
-}
-
-public String getTemp_high_f() {
-    return temp_high_f;
-}
-
-public void setTemp_high_f(String temp_high_f) {
-    this.temp_high_f = temp_high_f;
-}
-
-public void setCity_name(String attribute) {
-    city_name = attribute;
-}
-
-public void setCondition(String attribute) {
-    condition = attribute;
-}
-
-public void setTemp_f(String attribute) {
-    temp_f = attribute;
-}
-
-public void setTemp_c(String attribute) {
-    temp_c = attribute;
-}
-
-public void setHumidity(String attribute) {
-    humidity = attribute;       
-}
-
-public void setIconPath(String attribute) {
-    icon = attribute;       
-}
-
-public void setWind_condition(String attribute) {
-    wind_condition = attribute;     
-}
-
-public String getCity_name() {
-    return city_name;
-}
-
-public String getCondition() {
-    return condition;
-}
-
-public String getTemp_f() {
-    return temp_f;
-}
-
-public String getHumidity() {
-    return humidity;
-}
-
-public String getTemp_c() {
-    return temp_c;
-}
-
-public String getWind_condition() {
-    return wind_condition;
-}
-
-public String getIconPath() {
-    return icon;
-}
-</code></pre>
-
-<p>}
-[/java]
-xml文档解析类DomXMLReader.java：
-[java]package com.honson.weatherapp;</p>
-
-<p>import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;</p>
-
-<p>import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;</p>
-
-<p>import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;</p>
-
-<p>public class DomXMLReader {</p>
-
-<pre><code>public static List&lt;WeatherInfo&gt; readXML(InputStream inStream) {
-    List&lt;WeatherInfo&gt; weatherReportList = new ArrayList&lt;WeatherInfo&gt;();
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    try {
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document dom = builder.parse(inStream);
-        Element root = dom.getDocumentElement();
-        NodeList items = root.getElementsByTagName("current_conditions");//查找所有CurrentCondition节点
-        for (int i = 0; i &lt; items.getLength(); i++) {
-            WeatherInfo currentCondition = new WeatherInfo();
-            //得到第一个CurrentCondition节点
-            Element currentNode = (Element) items.item(i);
-            //获取所有子节点
-            NodeList childsNodes = currentNode.getChildNodes();
-            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
-                Node node = (Node) childsNodes.item(j);
-                //判断是否为元素类型
-                if(node.getNodeType() == Node.ELEMENT_NODE){
-                    Element childNode = (Element) node;
-                    //判断是否condition元素
-                    if ("condition".equals(childNode.getNodeName())) {
-                        //获取condition节点的data属性值
-                        currentCondition.setCondition(childNode.getAttribute("data"));
-                    } else if ("temp_f".equals(childNode.getNodeName())) {
-                        //获取temp_f节点的data属性值
-                        currentCondition.setTemp_f(childNode.getAttribute("data"));
-                    } else if ("temp_c".equals(childNode.getNodeName())) {
-                        //获取temp_c节点的data属性值
-                        currentCondition.setTemp_c(childNode.getAttribute("data"));
-                    } else if ("humidity".equals(childNode.getNodeName())) {
-                        //获取humidity节点的data属性值
-                        currentCondition.setHumidity(childNode.getAttribute("data"));
-                    } else if ("icon".equals(childNode.getNodeName())) {
-                        //获取iconPath节点的data属性值
-                        currentCondition.setIconPath(childNode.getAttribute("data"));
-                    } else if ("wind_condition".equals(childNode.getNodeName())) {
-                        //获取wind_condition节点的data属性值
-                        currentCondition.setWind_condition(childNode.getAttribute("data"));
-                    }
-                }
-            }
-            weatherReportList.add(currentCondition);
-        }
-        items = root.getElementsByTagName("forecast_information");//查找所有forecast_information节点
-        for (int i = 0; i &lt; items.getLength(); i++) {
-            WeatherInfo forecastInformation = new WeatherInfo();
-            //得到一个forecastInformation节点
-            Element currentNode = (Element) items.item(i);
-            //获取所有子节点
-            NodeList childsNodes = currentNode.getChildNodes();
-            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
-                Node node = (Node) childsNodes.item(j);
-                //判断是否为元素类型
-                if(node.getNodeType() == Node.ELEMENT_NODE){
-                    Element childNode = (Element) node;
-                    //判断是否city元素
-                    if ("city".equals(childNode.getNodeName())) {
-                        //获取city节点的data属性值
-                        forecastInformation.setCity_name(childNode.getAttribute("data"));
-                    } else if ("current_date_time".equals(childNode.getNodeName())) {
-                        //获取current_date_time节点的data属性值
-                        forecastInformation.setUpdate_time(childNode.getAttribute("data"));
-                    } 
-                }
-            }
-            weatherReportList.add(forecastInformation);
-        }
-        items = root.getElementsByTagName("forecast_conditions");//查找所有forecast_conditions节点
-        for (int i = 0; i &lt; items.getLength(); i++) {
-            WeatherInfo forecastCondition = new WeatherInfo();
-            //得到第一个forecastCondition节点
-            Element currentNode = (Element) items.item(i);
-            //获取所有子节点
-            NodeList childsNodes = currentNode.getChildNodes();
-            for (int j = 0; j &lt; childsNodes.getLength(); j++) {
-                Node node = (Node) childsNodes.item(j);
-                //判断是否为元素类型
-                if(node.getNodeType() == Node.ELEMENT_NODE){
-                    Element childNode = (Element) node;
-                    //判断是否condition元素
-                    if ("condition".equals(childNode.getNodeName())) {
-                        //获取condition节点的data属性值
-                        forecastCondition.setCondition(childNode.getAttribute("data"));
-                    } else if ("day_of_week".equals(childNode.getNodeName())) {
-                        //获取day_of_week节点的data属性值
-                        forecastCondition.setDay_of_week(childNode.getAttribute("data"));
-                    } else if ("low".equals(childNode.getNodeName())) {
-                        //获取low节点的data属性值
-                        forecastCondition.setTemp_low_f(childNode.getAttribute("data"));
-                    } else if ("high".equals(childNode.getNodeName())) {
-                        //获取high节点的data属性值
-                        forecastCondition.setTemp_high_f(childNode.getAttribute("data"));
-                    } else if ("icon".equals(childNode.getNodeName())) {
-                        //获取iconPath节点的data属性值
-                        forecastCondition.setIconPath(childNode.getAttribute("data"));
-                    } 
-                }
-            }
-            weatherReportList.add(forecastCondition);
-        }
-        inStream.close();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    return weatherReportList;
-}
-</code></pre>
-
-<p>}
-[/java]
-Activity代码WeatherAppActivity.java：
-[java]package com.honson.weatherapp;</p>
-
-<p>import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;</p>
-
-<p>import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.util.EntityUtils;</p>
-
-<p>import android.app.Activity;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.InputType;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;</p>
-
-<p>public class WeatherAppActivity extends Activity implements OnClickListener {</p>
-
-<pre><code>private static final String GOOGLE_API_URL = "http://www.google.com/ig/api?weather=";        
-private static final String NETWORK_ERROR = "Zip code not found.\nPlease check the zip code.\nE.g.:10010 --&gt; New York\n94043 --&gt; Mountain View";
-private static final String TAG = "WeatherReport";        
-private EditText editText;
-private Button button;
-private TextView tvWeatherInfo, tvWeatherInfo01, tvWeatherInfo02, tvWeatherInfo03, tvWeatherInfo04; // Display weather information
-private TextView time, time01, time02, time03, time04;
-private ImageView icon, icon01, icon02, icon03, icon04;
-private List&lt;String&gt; times = new ArrayList&lt;String&gt;();
-private List&lt;Bitmap&gt; bms = new ArrayList&lt;Bitmap&gt;();
-private Handler mHandler;
-@Override
-public void onCreate(Bundle savedInstanceState) {
-    Log.v(TAG, "onCreate()");
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
-    mHandler = new Handler();
-    findView();
-    button.setOnClickListener(this);
-    Timer timer = new Timer();
-    timer.schedule(new TimerTask() {
-        @Override
-        public void run() {
-            hideInputMethodView();//隐藏掉可能的已存在的软键盘
-            requestInputMethodView();
-        }
-    }, 1000);  //在一秒后打开(等待View绘制完成才能打开软键盘)
-}
-
-private void findView(){
-    editText = (EditText) findViewById(R.id.editText);
-    button = (Button) findViewById(R.id.goQuery);
-    icon = (ImageView) findViewById(R.id.icon);
-    time = (TextView) findViewById(R.id.time);
-    tvWeatherInfo = (TextView) findViewById(R.id.tvWeatherInfo);
-    icon01 = (ImageView) findViewById(R.id.icon01);
-    time01 = (TextView) findViewById(R.id.time01);
-    tvWeatherInfo01 = (TextView) findViewById(R.id.tvWeatherInfo01);
-    icon02 = (ImageView) findViewById(R.id.icon02);
-    time02 = (TextView) findViewById(R.id.time02);
-    tvWeatherInfo02 = (TextView) findViewById(R.id.tvWeatherInfo02);
-    icon03 = (ImageView) findViewById(R.id.icon03);
-    time03 = (TextView) findViewById(R.id.time03);
-    tvWeatherInfo03 = (TextView) findViewById(R.id.tvWeatherInfo03);
-    icon04 = (ImageView) findViewById(R.id.icon04);
-    time04 = (TextView) findViewById(R.id.time04);
-    tvWeatherInfo04 = (TextView) findViewById(R.id.tvWeatherInfo04);
-}
-
-private void resetView(){
-    icon.setImageDrawable(null);
-    time.setText(null);
-    tvWeatherInfo.setText(null);
-    icon01.setImageDrawable(null);
-    time01.setText(null);
-    tvWeatherInfo01.setText(null);
-    icon02.setImageDrawable(null);
-    time02.setText(null);
-    tvWeatherInfo02.setText(null);
-    icon03.setImageDrawable(null);
-    time03.setText(null);
-    tvWeatherInfo03.setText(null);
-    icon04.setImageDrawable(null);
-    time04.setText(null);
-    tvWeatherInfo04.setText(null);
-}
-
-@Override
-protected void onResume() {
-    Log.v(TAG, "onResume()");
-    super.onResume();
-}
-
-public void onClick(View v) {
-    //获得用户输入的城市名称
-    String city = editText.getText().toString();
-    // 必须每次都重新创建一个新的task实例进行查询，否则将提示如下异常信息
-    // the task has already been executed (a task can be executed only once)
-    city = city.replace(" ", "%20");
-    Log.v(TAG, city);
-    new GetWeatherTask().execute(city);
-    resetView();
-    //把天气信息显示出来
-    tvWeatherInfo.setText("Pending...");
-    hideInputMethodView();
-    //setTitle(weather);
-}
-
-@Override
-public void onConfigurationChanged(Configuration newConfig) {
-    Log.v(TAG, "onConfigurationChange()");
-    Log.v(TAG, newConfig.orientation + "");
-    hideInputMethodView();
-    // 当屏幕布局模式变为portrait时
-    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-    {
-        editText.setText(null);
-        editText.setHint(R.string.hint_string_portrait);
-        editText.setInputType(InputType.TYPE_CLASS_PHONE);
-        //icon.setImageDrawable(null);
-        //tvWeatherInfo.setText(R.string.indicate_string_portrait);
-        requestInputMethodView();
-    }
-    // 当屏幕布局模式变为landscape时
-    if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_USER)
-    {
-        editText.setText(null);
-        editText.setHint(R.string.hint_string_landscape);
-        editText.setInputType(InputType.TYPE_CLASS_TEXT);
-        //icon.setImageDrawable(null);
-        //tvWeatherInfo.setText(R.string.indicate_string_landscape);
-        requestInputMethodView();
-    }
-    super.onConfigurationChanged(newConfig);
-}
-
-/**
- * 该方法用于在需要的时候弹出软键盘
- */
-private void requestInputMethodView() {
-    Log.v(TAG, "requestInputMethodView()");
-    mHandler.post(new Runnable() {
-
-        public void run() {
-            Log.v(TAG, "InputMethodManager imm");
-            InputMethodManager imm = (InputMethodManager) WeatherAppActivity.this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
-            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
-            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
-                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_portrait, Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(WeatherAppActivity.this, R.string.indicate_string_landscape, Toast.LENGTH_SHORT).show();
-            }
-
-        }
-    });
-}
-
-private void hideInputMethodView() {
-    InputMethodManager imm = (InputMethodManager) this.getBaseContext().getSystemService(INPUT_METHOD_SERVICE);
-    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-}
-
-/**
- * 从Google Weather API获取数据
- * @param city 城市名称或邮政编码
- * @return 天气数据信息
- */
-public List&lt;String&gt; getWeatherByCity(String city) {
-    HttpClient httpClient = new DefaultHttpClient();
-    HttpContext localContext = new BasicHttpContext();
-    HttpGet httpGet = new HttpGet(GOOGLE_API_URL + city);
-    Log.v(TAG, GOOGLE_API_URL + city);
-    try {HttpResponse response = httpClient.execute(httpGet, localContext);
-        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-            Log.e(TAG, "Failed. status code is not ok.");
-            httpGet.abort();
-        } 
-        else { 
-            // Get weather information successful
-            // Reset charset
-            HttpEntity httpEntity = response.getEntity();
-            String string = EntityUtils.toString(httpEntity, "utf-8").trim();
-            InputStream is = new ByteArrayInputStream(string.getBytes("utf-8"));
-            return parseWeather(is);
-        }
-    } catch (Exception e) {
-        Log.e(TAG, "Failed to get weather", e);
-    } finally {
-        httpClient.getConnectionManager().shutdown();
-    }
-    List&lt;String&gt; error = new ArrayList&lt;String&gt;();
-    error.add(NETWORK_ERROR);
-    return error;
-}
-
-/**
- * 解析xml得出天气数据
- * @param is 由Google Weather API返回的输入流
- * @return 天气数据
- * @throws IOException
- */
-public List&lt;String&gt; parseWeather(InputStream is) throws IOException { 
-    List&lt;WeatherInfo&gt; list = DomXMLReader.readXML(is);
-    List&lt;String&gt; weatherInfos = new ArrayList&lt;String&gt;();
-    WeatherInfo weather_report = list.get(0);
-    if(weather_report.getIconPath().endsWith(".gif"));{
-        try
-        {
-            bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
-
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "IOException");
-        }
-    }
-    times.add("Now");
-    String without_city_name_and_time = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + ", "
-         + "Temp_f: " + weather_report.getTemp_f() + "℉\n"
-         //+ "Temp_c: " + weather_report.getTemp_c() + "℃\n"
-         + weather_report.getHumidity() + ", "
-</code></pre>
-
-<p>//             + current.getIconPath() + &#8220;\n&#8221;</p>
-
-<pre><code>         + weather_report.getWind_condition();
-    weather_report = list.get(1);
-    String city_name_and_time = "City: " + new String(weather_report.getCity_name().getBytes(), "utf-8") + "\n"
-         //+ "Update Time: " + weather_report.getUpdate_time() + "\n"
-         ;
-    weatherInfos.add(city_name_and_time + without_city_name_and_time);
-    for(int i = 2; i &lt;= 5; i++){
-         weather_report = list.get(i);
-         times.add(weather_report.getDay_of_week());
-         if(weather_report.getIconPath().endsWith(".gif"));{
-            try
-            {
-                bms.add(getNetBitmap("http://www.google.com" + weather_report.getIconPath()));
-
-            }
-            catch (Exception e)
-            {
-                Log.e(TAG, "IOException");
-            }
-         }
-         String forecastCondition = "Condition: " + new String(weather_report.getCondition().getBytes(), "utf-8") + "\n"
-                 + "Temp_low_f: " + weather_report.getTemp_low_f() + "℉\n"
-                 + "Temp_high_f: " + weather_report.getTemp_high_f() + "F\n";
-         weatherInfos.add(forecastCondition);
-    }
-    return weatherInfos;
-}
-
-/**
- * 获取天气图片
- * @param url 图片url
- * @return
- */
-private Bitmap getNetBitmap(String url){
-    URL imageUrl = null;
-    Bitmap bitmap = null;
-    try {
-        imageUrl = new URL(url);
-    }
-    catch (MalformedURLException e){
-        Log.e(TAG, e.getMessage());
-    }
-    try {
-        HttpURLConnection conn = (HttpURLConnection)imageUrl.openConnection();
-        conn.setDoInput(true);
-        conn.connect();
-        InputStream is = conn.getInputStream();
-        bitmap = BitmapFactory.decodeStream(is);
-        is.close();
-    } catch (IOException e){
-        Log.e(TAG, "IOException");
-    }
-    return bitmap;
-}
-
-/**
- * 采用异步任务更新显示
- * @author honson
- *
- */
-class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt; {
-
-    @Override
-    protected List&lt;String&gt; doInBackground(String... params) {
-        String city = params[0];
-
-        // 调用Google天气API查询指定城市的当日天气情况
-        return getWeatherByCity(city);
-    }
-
-    protected void onPostExecute(List&lt;String&gt; result) {
-        if(result.size() == 1){
-            if(WeatherAppActivity.this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
-                resetView();
-                tvWeatherInfo.setText(result.get(0));
-            }
-            return;
-        }
-        if(result.size() != 5 || times.size() != 5 || bms.size() !=5 || times == null) {
-            //tvWeatherInfo.setText(result.get(0));
-            return;
-        }
-        // 把doInBackground处理的结果即天气信息显示到界面
-        tvWeatherInfo.setText(result.get(0));
-        time.setText(times.get(0));
-        icon.setImageBitmap(bms.get(0));
-        tvWeatherInfo01.setText(result.get(1));
-        time01.setText(times.get(1));
-        icon01.setImageBitmap(bms.get(1));
-        tvWeatherInfo02.setText(result.get(2));
-        time02.setText(times.get(2));
-        icon02.setImageBitmap(bms.get(2));
-        tvWeatherInfo03.setText(result.get(3));
-        time03.setText(times.get(3));
-        icon03.setImageBitmap(bms.get(3));
-        tvWeatherInfo04.setText(result.get(4));
-        time04.setText(times.get(4));
-        icon04.setImageBitmap(bms.get(4));
-        bms.clear();
-        times.clear();
-    }
-}
-</code></pre>
-
-<p>}[/java]</p>
+<p>所以呢，其实这个事情上谁都没有错，毕竟是多个公司的产品在协作上不可能那么完美，在这种情况下，自己稍微变通一下往往就可以解决这类问题了。</p>
 </div>
   
   
@@ -976,7 +217,7 @@ class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt
 
 <header>
   
-    <h1 class="entry-title"><a href="/blog/android-sqlitedemo.html">Android SQLiteDemo</a></h1>
+    <h1 class="entry-title"><a href="/blog/android-rotateanimation.html">Android RotateAnimation的一点疑问</a></h1>
   
   
     <p class="meta">
@@ -995,13 +236,10 @@ class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt
 <span class="tags">
   Tag:
   
-    <a href='/blog/tags/android/'>Android</a>
+    <a href='/blog/tags/top/'>top</a>
   
 </span>
 
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android SQLiteDemo - http://duanhong169.github.com/blog/android-sqlitedemo.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
 	  
 
 
@@ -1014,368 +252,43 @@ class GetWeatherTask extends AsyncTask&lt;String, Integer, List&lt;String&gt;&gt
   
 
 
-<time datetime="2011-10-20T10:51:17+08:00" pubdate="pubdate" data-updated="true">2011-10-20 Thu</time>
+<time datetime="2011-11-10T11:33:34+08:00" pubdate="pubdate" data-updated="true">Nov 10<span>th</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=Android RotateAnimation的一点疑问 - http://duanhong169.github.com/blog/android-rotateanimation.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=Android RotateAnimation的一点疑问 - &amp;url=http://duanhong169.github.com/blog/android-rotateanimation.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
     </p>
   
 </header>
 
 
-  <div class="entry-content typo"><p>该Demo简单说明了SQLite的使用方法，包括常见的增删改查操作。
-Demo截图：
-[fgallery id=1 w=320 h=480 t=0 title=&#8221;sqlite&#8221;]
-Android Project结构：
-<a href="http://l4love.org/wp-content/uploads/2011/10/project.png"><img src="http://l4love.org/wp-content/uploads/2011/10/project.png" alt="" /></a></p>
+  <div class="entry-content typo"><p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
 
-<p>数据库操作辅助类（DBHelper.java），该类封装了对SQLite数据的操作，包括了创建表，删除表，增删改查数据等方法：
-[java]package com.android.SqliteDemo;</p>
+<p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
 
-<p>import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.util.Log;</p>
+<p><a href="http://l4love.org/wp-content/uploads/2011/11/relationship1.png"><img src="http://l4love.org/wp-content/uploads/2011/11/relationship1.png" alt="" /></a></p>
 
-<p>public class DBHelper extends SQLiteOpenHelper {</p>
+<p>图1 手机朝向与传感器返回值的关系</p>
 
-<pre><code>Context context;//应用环境上下文  
-private static SQLiteDatabase db;//该辅助类维护的数据库对象
-public String table_name = "files";//数据库表名
-private static final String TAG = "duanhong";// 调试标签 
-private String name;//数据库名
-public DBHelper(Context context, String name, CursorFactory factory,
-        int version) {
-    super(context, name, factory, version);
-    this.context = context;
-    this.name = name;
-    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);
-    drop_table();//清除数据库，便于测试
-    CreateTable();//辅助类建立时运行该方法建立数据库
-}
-@Override
-public void onCreate(SQLiteDatabase db) {
+<p>图中右方箭头所指方向为正北，左方圆形中的箭头所指的是手机（传感器）所朝的方向，数值则是传感器返回的values[0]值。</p>
 
-} 
-public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-}
+<p>因此在对指南针进行旋转时则需要朝相反的方向旋转一个角度（即-values[0]），则可以实现指南针始终能够指向一个方向。现在的问题是经过临界点的旋转问题，即旋转经过（-0°）时，分为了如下两种情况：</p>
 
-public void CreateTable() {   
-    try {//使用execSQL方法执行sql语句完成数据库表创建   
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + table_name + "(" +   
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,"  
-                + "fileName VARCHAR, description VARCHAR"    
-                + ");");   
-        Log.v(TAG, "Create Table files ok");   
-    } catch (Exception e) {   
-        Log.v(TAG, e.toString());   
-    }   
-}
+<ol>
+<li><p>顺时针经过0°，即旋转过程为（-1° → -359°）；</p></li>
+<li><p>逆时针经过0°，即旋转过程为（-359° → -1°）；</p></li>
+</ol>
 
-//初始化表，使用SQLiteDatabase提供的insert方法插入一行数据
-public void initDatabase(){
-    ContentValues cv = new ContentValues();//数据集，表示一行数据
-    cv.put("fileName", "Test");
-    cv.put("description", "初始化测试项");
-    db.insert(table_name, "", cv);
-}
 
-/**
- * @param filename 欲插入条目的名称
- * @param description 欲插入条目的描述
- * @return 条目是否插入成功
- */
-public boolean insert(String filename, String description){   
-    String sql="";   
-    try{   
-        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null); //打开数据库供后续操作使用  
-        sql="insert into files values(null,'"+ filename + "','" + description +"')";   
-        db.execSQL(sql);   
-        Log.v(TAG,"insert Table files ok");   
-        return true;   
+<p>按照RotateAnimation的旋转方式，这两种情况将会出现一个旋转这个圆中大弧的情况，视觉上的效果就是指南针在经过零点时不会平滑的旋转过去，而是相反的快速的反向旋转接近360°到达目标角度，出现一个跳转的效果，虽然说结果是正确的，但是毕竟会给人不好的感觉。</p>
 
-    }catch(Exception e){   
-        Log.v(TAG,"insert Table files err ,sql: "+sql);   
-        return false;   
-    }   
-}   
-/**
- * @param fileid 欲删除的条目id
- * @return 条目是否删除成功
- */
-public boolean delete(int fileid){
-    String sql="";
-    try{   
-        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
-        sql="delete from files where _id=" + fileid;   
-        db.execSQL(sql);   
-        Log.v(TAG,"delete item ok");   
-        return true;   
+<p>然而，在这个指南针示例中，它却能够平滑的经过0°点而不发生跳转，让我百思不得骑姐。。</p>
 
-    }catch(Exception e){   
-        Log.v(TAG,"delete item err ,sql: "+sql);   
-        return false;   
-    }
-}
-/**
- * @param fileid 欲修改的条目id
- * @param filename 欲修改条目名称的目标内容
- * @param description 欲修改条目的目标描述
- * @return 条目是否修改成功
- */
-public boolean update(int fileid, String filename, String description){
-    String sql="";   
-    try{   
-        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
-        sql="update files set fileName='" + filename + "',description='" + description +"' where _id=" + fileid;   
-        db.execSQL(sql);   
-        Log.v(TAG,"update Table files ok");   
-        return true;   
+<p>之后我将RotateAnimation单独拿出来测试，也验证了RotateAnimation在处理上述两种情况时确实会按圆的大弧旋转，最后经过思考，暂时觉得原因如下：</p>
 
-    }catch(Exception e){   
-        Log.v(TAG,"update Table files err ,sql: "+sql);   
-        return false;   
-    }
-}
+<blockquote><p>由于传感器传回数值的频率相当频繁，大约一秒钟内会有数次，即旋转所进行的频率过快，以至于在（-1° → -359°）和（-359° → -1°）两种情况的旋转尚未完成时，就被新的旋转所覆盖，它自然也就被冲掉了，有点像前浪死在沙滩上的感觉。</p></blockquote>
 
-/**
- * @param fileid 欲查询的条目id
- * @return 欲查询条目的Cursor，使用该Cursor可得到条目各属性内容
- */
-public Cursor select(int fileid){
-    String sql="_id=" + fileid;
-    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
-    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, sql, null, null, null, null);   
-    return cur; 
-}
-
-public Cursor loadAll(){//返回可得到数据库所有表项的Cursor   
-    db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
-    Cursor cur=db.query(table_name, new String[]{"_id","fileName","description"}, null, null, null, null, null);   
-    return cur;   
-}   
-
-public void drop_table(){//删除表
-    String sql="";   
-    try{   
-        db = context.openOrCreateDatabase(name, Context.MODE_PRIVATE,null);   
-        sql="drop table " + table_name;   
-        db.execSQL(sql);   
-        Log.v(TAG,"drop Table files ok");   
-    }catch(Exception e){   
-        Log.v(TAG,"drop Table files err ,sql: "+sql);     
-    }
-}
-
-public void close(){  //关闭数据库 
-    db.close();   
-}
-</code></pre>
-
-<p>}[/java]</p>
-
-<p>Activity代码（SQLiteDemoActivity.java）：
-[java]package com.android.SqliteDemo;</p>
-
-<p>import android.app.Activity;
-import android.os.Bundle;
-import android.database.Cursor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.*;</p>
-
-<p>public class SqliteDemoActivity extends Activity {</p>
-
-<pre><code>public String db_name = "sqlite_test";//数据库名
-Button add;
-Button delete;
-Button modify;
-Button query;
-EditText filename;
-EditText description;
-EditText fileid;
-TextView answer;
-ListView items;
-DBHelper helper;
-public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
-    add = (Button)findViewById(R.id.add);//获得UI控件
-    delete = (Button)findViewById(R.id.delete);
-    modify = (Button)findViewById(R.id.modify);
-    query = (Button)findViewById(R.id.query);
-    fileid = (EditText)findViewById(R.id.fileid);
-    filename = (EditText)findViewById(R.id.filename);
-    description = (EditText)findViewById(R.id.description);
-    answer = (TextView)findViewById(R.id.answer);
-    items = (ListView)findViewById(R.id.items);
-    //实例化辅助类，在辅助类中实现数据库创建并提供增删改查操作的接口
-    helper = new DBHelper(this,db_name,null,2);
-    helper.initDatabase();//初始化数据
-    refresh();//刷新数据库内容显示
-    //定义按钮点击监听器
-    OnClickListener ocl = new OnClickListener(){
-        public void onClick(View v) {
-            int id;
-            switch(v.getId()){
-            case R.id.add:
-                //添加条目，使用helper的insert方法，由于id是自增的，只需提供名称及描述
-                helper.insert(filename.getText().toString(), description.getText().toString());
-                refresh();
-                break;
-            case R.id.delete:
-                //删除条目，从编辑框中获取欲删除的条目id
-                try {//若输入id格式错误，给出提示信息
-                    id = Integer.parseInt(fileid.getText().toString());
-                }catch (NumberFormatException e) {
-                    answer.setText("请输入纯数字的id号");
-                    break;
-                }
-                helper.delete(id);
-                refresh();
-                break;
-            case R.id.modify:
-                //更新条目，从id编辑框中获知欲更新的条目
-                try {
-                    id = Integer.parseInt(fileid.getText().toString());
-                }catch (NumberFormatException e) {
-                    answer.setText("请输入纯数字的id号");
-                    break;
-                }
-                helper.update(id, filename.getText().toString(), description.getText().toString());
-                refresh();
-                break;
-            //使用id查询数据
-            case R.id.query:
-                try {
-                    id = Integer.parseInt(fileid.getText().toString());
-                }catch (NumberFormatException e) {
-                    answer.setText("请输入纯数字的id号");
-                    break;
-                }
-                Cursor cur = helper.select(id);
-                cur.moveToFirst();
-                filename.setText(cur.getString(1));
-                description.setText(cur.getString(2));
-                break;
-            }
-        }
-    };
-    //按钮绑定监听器
-    add.setOnClickListener(ocl);
-    delete.setOnClickListener(ocl);
-    modify.setOnClickListener(ocl);
-    query.setOnClickListener(ocl);
-}
-
-//刷新数据库内容显示
-public void refresh(){
-    Cursor cur = helper.loadAll();
-    //将cursor对象交给系统管理，使cursor与Activity生命周期同步
-    startManagingCursor(cur);
-    ListAdapter la = new SimpleCursorAdapter(this,R.layout.list_item,cur,new String[]{"_id", "fileName", "description"},new int[]{R.id.item_fileid, R.id.item_filename, R.id.item_description});
-    items.setAdapter(la);
-    items.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-    helper.close();
-}
-//由于仅用于测试，故在程序被销毁时删除表中数据
-public void onDestroy(){
-    super.onDestroy();
-    helper.drop_table();
-}
-</code></pre>
-
-<p>}[/java]
-每一行的布局：list_item.xml
-[xml]&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?>
-&lt;LinearLayout android:id=&#8221;@+id/linearLayout1&#8221;</p>
-
-<pre><code>android:layout_width="fill_parent" 
-android:layout_height="fill_parent"
-android:orientation="vertical" 
-xmlns:android="http://schemas.android.com/apk/res/android"&gt;
-&lt;LinearLayout android:id="@+id/linearLayout2" 
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"&gt;
-&lt;!-- &lt;CheckBox android:id="@+id/chkTodo"
-    android:layout_width="40dip" 
-    android:layout_height="40dip"/&gt; --&gt;
-&lt;TextView android:id="@+id/item_fileid" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:textSize="20dip"&gt;&lt;/TextView&gt;
-&lt;TextView android:id="@+id/item_filename" 
-    android:layout_width="fill_parent" 
-    android:layout_marginLeft="20dip"
-    android:layout_marginRight="20dip"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:textSize="20dip"&gt;&lt;/TextView&gt;
-&lt;TextView android:id="@+id/item_description" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:textSize="20dip"&gt;&lt;/TextView&gt;
-&lt;/LinearLayout&gt;
-</code></pre>
-
-<p></LinearLayout>[/xml]
-布局文件：main.xml
-[xml]&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?>
-&lt;LinearLayout xmlns:android=&#8221;http://schemas.android.com/apk/res/android&#8221;</p>
-
-<pre><code>android:orientation="vertical" android:layout_width="fill_parent"
-android:layout_height="fill_parent"&gt;
-&lt;TextView android:layout_width="fill_parent" android:background="#222222" android:textSize="20dip"
-    android:layout_height="wrap_content" android:text="SQLite基本操作演示" /&gt;
-&lt;TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent"&gt;
-    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
-        &lt;TextView android:text="ID" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-        &lt;TextView android:text="条目名称" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-        &lt;TextView android:text="条目描述" android:textSize="20dip" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-    &lt;/TableRow&gt;
-    &lt;TableRow android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
-        &lt;EditText android:id="@+id/fileid" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-        &lt;EditText android:id="@+id/filename" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-        &lt;EditText android:id="@+id/description" android:layout_width="fill_parent" android:layout_weight="1"/&gt;
-    &lt;/TableRow&gt;
-&lt;/TableLayout&gt;
-&lt;LinearLayout android:orientation="horizontal"
-    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
-    &lt;Button android:text="增加记录" android:id="@+id/add"
-        android:layout_weight="1" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:textSize="20dip"
-        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
-    &lt;Button android:text="删除记录" android:id="@+id/delete"
-        android:layout_weight="1" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:textSize="20dip"
-        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
-&lt;/LinearLayout&gt;
-&lt;LinearLayout android:orientation="horizontal"
-    android:layout_width="fill_parent" android:layout_height="wrap_content"&gt;
-    &lt;Button android:text="修改记录" android:id="@+id/modify"
-        android:layout_weight="1" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:textSize="20dip"
-        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
-    &lt;Button android:text="查询记录" android:id="@+id/query"
-        android:layout_weight="1" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:textSize="20dip"
-        android:layout_marginTop="5dip"&gt;&lt;/Button&gt;
-&lt;/LinearLayout&gt;
-&lt;TextView android:layout_width="fill_parent"
-    android:text="数据库内容（ID|名称|描述）" android:background="#222222"
-    android:layout_height="wrap_content" android:textSize="20dip"
-    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
-&lt;ListView android:id="@+id/items" android:layout_width="match_parent" 
-    android:layout_height="wrap_content"&gt;&lt;/ListView&gt;
-&lt;TextView android:id="@+id/answer" android:layout_width="wrap_content"
-    android:layout_height="wrap_content" android:textSize="20dip"
-    android:layout_marginTop="5dip"&gt;&lt;/TextView&gt;
-</code></pre>
-
-<p></LinearLayout>[/xml]</p>
+<p>这个故事告诉我们：邪恶的行为一定会被正义消灭的··</p>
 </div>
   
   
@@ -1389,7 +302,7 @@ android:layout_height="fill_parent"&gt;
 
 <header>
   
-    <h1 class="entry-title"><a href="/blog/i-need-something-special.html">I Need Something Special.</a></h1>
+    <h1 class="entry-title"><a href="/blog/20-2.html">《20岁，开始与别人拉开距离》笔记二</a></h1>
   
   
     <p class="meta">
@@ -1398,16 +311,13 @@ android:layout_height="fill_parent"&gt;
 <span class="categories">
   Posted in:
   
-    <a class='category' href='/blog/categories/life-can-be-bad/'>Life can be bad</a>
+    <a class='category' href='/blog/categories/读书笔记/'>读书笔记</a>
   
 </span>
 
 
       
 
-      <span class="share-to-weibo">
-        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=I Need Something Special. - http://duanhong169.github.com/blog/i-need-something-special.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
-      </span>
 	  
 
 
@@ -1420,15 +330,104 @@ android:layout_height="fill_parent"&gt;
   
 
 
-<time datetime="2011-10-19T23:51:56+08:00" pubdate="pubdate" data-updated="true">2011-10-19 Wed</time>
+<time datetime="2011-11-09T23:16:03+08:00" pubdate="pubdate" data-updated="true">Nov 9<span>th</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=《20岁，开始与别人拉开距离》笔记二 - http://duanhong169.github.com/blog/20-2.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=《20岁，开始与别人拉开距离》笔记二 - &amp;url=http://duanhong169.github.com/blog/20-2.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
     </p>
   
 </header>
 
 
-  <div class="entry-content typo"><p>我需要改变。</p>
+  <div class="entry-content typo"><p><a href="http://book.douban.com/subject/6073215/">http://book.douban.com/subject/6073215/</a></p>
 
-<p>我需要做一些特别的事情。</p>
+<p>伴随着时间的推移，伴随着年龄的增加，要为自己增加一些能够让未来更加光明的武器和筹码。这些武器和筹码，可以是另一项才能，可以是现有能力的挖掘，也可以是一种意识上的推陈出新。</p>
+
+<p>局部的胜利可以增强信心，并非一定要取得总体的第一名，可以先以某一领域的NO.1为奋斗目标，即便不能在大的领域保持领先，也要使自己成为不可忽视的一种力量。</p>
+
+<p>在工作中往往并不一定要100%地追求十全十美，许多工作只要能够做到70分即可。没有必要对待每一件工作都竭尽全力。要考虑到工作本身的性质并且提高工作效率。</p>
+
+<p>要怀疑常识，不要臆测结果。不要害怕结果与别处不同。</p>
+
+<p>赚钱不是王道，花自己的钱为自己投资。在交往中使用金钱是人生必要的投资。</p>
+
+<p>要想不断提升自己，就得自己掏腰包去看一些东西，并尝试一些事情。这些都会在无形中成为自己的软实力。
+自己掏腰包去娱乐身心吧！这样自身的软实力就会不断增强。</p>
+
+<p>活着就应有活着的精彩，对于只能花在今天的钱就不要吝惜！</p>
+
+<p>不修边幅是不行的。</p>
+
+<p>不要总想着要有什么回报，而是要先尽自己的力量来提供帮助。</p>
+
+<p>善于和异性沟通能使人受益。</p>
+
+<p>恋爱可以让阴暗的人变得开朗，可以让愚钝的人变得干脆利落富有行动力，可以让傲慢的人变得谦逊。恋爱有着能够洗涤你灵魂中的邪与恶的效果。</p>
+
+<p>恋爱可以减轻你的自卑感。与异性交谈，将自卑感变成武器。找一个能够让你克服自卑感的异性是你一生的幸福。</p>
+
+<p>真正的恋爱，就是要找出对方的优点，展示自己的缺点。</p>
+
+<p>养育孩子能够扩宽你的话题，可以增加你自己直面这个世界的机会。</p>
+
+<p>人生，其实就是自己送给自己的礼物。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+
+<header>
+  
+    <h1 class="entry-title"><a href="/blog/dota2-takesurvey.html">DOTA2的调查问卷</a></h1>
+  
+  
+    <p class="meta">
+	  
+
+<span class="categories">
+  Posted in:
+  
+    <a class='category' href='/blog/categories/life-can-be-good/'>Life can be good</a>
+  
+</span>
+
+
+      
+
+	  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-02T14:58:44+08:00" pubdate="pubdate" data-updated="true">Nov 2<span>nd</span>, 2011</time>
+	  <span class="share-to-weibo">
+        <a href="javascript:void(0)" onclick="window.open('https://twitter.com/intent/tweet?text=DOTA2的调查问卷 - http://duanhong169.github.com/blog/dota2-takesurvey.html', null, 'width=600,height=300,toolbar=0,status=0')" class="twitter" title="分享到Twitter"></a>
+		<a href="javascript:void(0)" onclick="window.open('http://service.weibo.com/share/share.php?appkey=&amp;ralateUid=&amp;title=DOTA2的调查问卷 - &amp;url=http://duanhong169.github.com/blog/dota2-takesurvey.html', null, 'width=615,height=505,toolbar=0,status=0')" class="sina-weibo" title="分享到新浪微博"></a>
+      </span>
+    </p>
+  
+</header>
+
+
+  <div class="entry-content typo"><p>以前申请的DOTA2体验资格的邮箱今天收到了一封由Steam发过来的邮件，大概意思是需要进一步的调查玩家所使用的机器配置及网络相关的信息，一遍DOTA2能够满足大部分玩家的需求，可是发件邮件中的<a href="steam://takesurvey/1/">steam://takesurvey/1/</a>链接（这里可以点）却点不开，已经安装并更新了STEAM的客户端也不行，不知道什么原因~</p>
+
+<p>呵呵没关系，更新完成后，点上面那个链接应该就行了，可能是邮件里面除了些问题，没有把链接弄对。</p>
+
+<p>点击之后可能会弹出使用什么软件来打开这个链接的窗口，steam安装正确的话默认选项就是steam了，确认就会从steam打开这个问卷了，开始做问卷调查吧。做完调查后就可能在几周内收到邀请函了。</p>
 </div>
   
   
@@ -1440,7 +439,7 @@ android:layout_height="fill_parent"&gt;
   
   <!-- Pagination -->
   <section class="pagination clearfix">
-    
+    <a class="prev float-l" href="/blog/page/3/">&larr; Older</a>
     <a class="next float-r" href="/">Newer &rarr;</a>
   </section>
   
@@ -1448,7 +447,7 @@ android:layout_height="fill_parent"&gt;
 
 
 <footer class="footer">
-  &copy;2012 弘
+  &copy;2012 弘哥保护你
   &nbsp;-&nbsp;
   Powered by <a href="http://octopress.org" target="_blank">Octopress</a>
 </footer>
@@ -1465,6 +464,18 @@ android:layout_height="fill_parent"&gt;
     </a>
   </li>
   
+  
+  <!-- Sina Weibo -->
+  <li>
+    <a href="http://weibo.com/dhmaod" target="_blank">
+      <svg width="40" height="40" class="sina-weibo" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f9f9f9" d="M9.641,17.231c-3.799,0.374-7.079-1.343-7.326-3.838c-0.246-2.494,2.634-4.82,6.434-5.196  c3.798-0.377,7.079,1.34,7.326,3.835C16.32,14.529,13.44,16.855,9.641,17.231 M17.24,8.952c-0.322-0.098-0.544-0.163-0.375-0.587  c0.365-0.921,0.403-1.718,0.007-2.286c-0.745-1.063-2.783-1.005-5.12-0.027c0-0.002-0.734,0.321-0.546-0.261  c0.359-1.156,0.305-2.123-0.254-2.682c-1.267-1.271-4.639,0.047-7.53,2.936C1.257,8.209,0,10.504,0,12.488  c0,3.796,4.866,6.104,9.628,6.104c6.241,0,10.393-3.627,10.393-6.506C20.021,10.347,18.557,9.358,17.24,8.952" />
+        <path fill="#f9f9f9" d="M21.384,2.005c-1.507-1.671-3.73-2.308-5.782-1.872l0,0c-0.475,0.102-0.778,0.569-0.676,1.043  c0.101,0.473,0.567,0.777,1.043,0.674c1.459-0.31,3.039,0.145,4.111,1.332c1.069,1.188,1.362,2.806,0.902,4.225v0.001  c-0.149,0.462,0.104,0.957,0.566,1.106c0.461,0.149,0.956-0.104,1.105-0.565c0,0,0-0.002,0-0.004  C23.299,5.95,22.894,3.674,21.384,2.005" />
+        <path fill="#f9f9f9" d="M19.07,4.094c-0.734-0.814-1.817-1.123-2.817-0.912c-0.409,0.088-0.671,0.49-0.581,0.899  c0.088,0.407,0.489,0.67,0.896,0.58v0.001c0.488-0.104,1.019,0.047,1.379,0.445c0.359,0.398,0.455,0.941,0.301,1.416l0,0  c-0.127,0.398,0.09,0.825,0.488,0.954c0.396,0.127,0.824-0.091,0.952-0.488C20,6.017,19.805,4.908,19.07,4.094" />
+        <path fill="#f9f9f9" d="M9.85,12.713c-0.132,0.229-0.426,0.338-0.656,0.242c-0.227-0.094-0.297-0.348-0.169-0.572  c0.132-0.221,0.416-0.328,0.64-0.239C9.895,12.227,9.978,12.483,9.85,12.713 M8.64,14.268c-0.367,0.586-1.154,0.843-1.747,0.57  c-0.584-0.265-0.756-0.945-0.389-1.518c0.362-0.568,1.124-0.824,1.712-0.574C8.811,12.998,9.001,13.675,8.64,14.268 M10.021,10.118  c-1.808-0.47-3.852,0.431-4.637,2.023c-0.8,1.624-0.026,3.428,1.801,4.017c1.892,0.612,4.122-0.324,4.898-2.078  C12.848,12.367,11.891,10.602,10.021,10.118" />
+      </svg>
+    </a>
+  </li>
   
   
   
