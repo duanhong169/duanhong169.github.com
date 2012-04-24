@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>师生配Overview - 弘's blog</title>
+  <meta name="author" content="弘哥保护你">
+
+  
+  <meta name="description" content="师生配Overview Apr 24th, 2012 为了方便新的成员加入，这里对师生配的情况做一个简单地说明。 什么是师生配 师生配，就是佘老师随口说出来的一个词汇，因为名字也不好想，所以就直接用他这个词来代替了。 目前采用到的技术 鉴于我们对Java都比较熟悉，因此采用了目前比较流行的Web &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://duanhong169.github.com/tsmatch-overview/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="弘's blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">弘's blog</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:duanhong169.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">师生配Overview</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T13:13:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time></p>
+  </header>
+  
+  <p>为了方便新的成员加入，这里对<strong>师生配</strong>的情况做一个简单地说明。</p>
+
+<h2>什么是师生配</h2>
+
+<p><em>师生配</em>，就是佘老师随口说出来的一个词汇，因为名字也不好想，所以就直接用他这个词来代替了。</p>
+
+<h2>目前采用到的技术</h2>
+
+<p>鉴于我们对Java都比较熟悉，因此采用了目前比较流行的Web Application开发框架<a href="http://www.playframework.org/">Play framework</a>，Play framework相关信息可以直接到它的主页进行了解，由于在这个项目开始时Play framework 2.0尚未发布，因此我们的开发仍然采用的是Play framework 1.2.4版本，该版本的文档首页在<a href="http://www.playframework.org/documentation/1.2.4/home">这里</a>，使用Play framework除了需要Java，可能还需要对<a href="http://groovy.codehaus.org/">Groovy</a>语言有简单的了解，因为Play framework的模板引擎（<a href="http://www.playframework.org/documentation/1.2.4/templates">The template engine</a>）使用Groovy作为表达式语言。</p>
+
+<p>Play framework提供了许多的<a href="http://www.playframework.org/modules">Module</a>，这些Module简单的说就是由其他开发人员所开发的一些可以被我们直接应用到开发中的一些模块，例如一些用于整合其他技术的Module、实现了独立功能的Module以及一些Toolkit类的Module等等，当我们想要实现某个功能时，可以首先到Module的页面搜索一下是否已经有可用的或者类似的Module已经实现了这个功能或者有助于这个功能的实现。目前已经使用到的Module包括：</p>
+
+<ol>
+<li>casino，这个Module不知道出于什么原因，在Play framework的相关页面已经不能访问，该Module的源码地址在<a href="https://github.com/reyez/casino-play">casino-play</a>,这个Module所提供的功能包括用户的登录注册、邮件激活账户、找回密码、<a href="http://www.google.com/recaptcha">ReCaptcha</a>验证码、用户角色管理、以及采用hash值方式保存密码等;</li>
+<li><a href="http://www.playframework.org/documentation/1.2.4/crud">crud</a>，这个模块随Play framework一起发布，是一个比较必要的模块，提供了一个用户对JPA Model对象进行管理的Web界面。</li>
+<li><a href="http://www.playframework.org/modules/elasticsearch-0.4/home">elasticsearch</a>，源码地址在<a href="https://github.com/feliperazeek/playframework-elasticsearch">playframework-elasticsearch</a>，这个Module用于在Play! Framework应用程序中集成<a href="http://www.elasticsearch.org/">Elastic Search</a>，Elastic Search是一个构建在<a href="http://lucene.apache.org/">Apache Lucene</a>之上的开源、分布式、RESTful的搜索引擎，借助于elasticsearch这个Module可以使得我们的每个Model能够被Elastic Search自动索引和更新索引（例如，当某个用户的资料被修改后，Elastic Search能够自动更新对这个资料的索引），借助于Elastic Search的<a href="http://www.elasticsearch.org/guide/reference/java-api/">Java API</a>使用起来非常的方便。</li>
+</ol>
+
+
+<p>在实现一些其他功能时，还用到了如下一些工具或技术：</p>
+
+<ol>
+<li><a href="http://valums.com/ajax-upload/">ajax file upload</a>，文件上传功能ajax实现，支持拖拽上传，源码地址在<a href="https://github.com/valums/file-uploader">file-uploader</a>。</li>
+<li><a href="https://developers.google.com/maps/documentation/staticmaps/">Google Static Maps API V2</a>，Google静态地图API，可以根据提供的经纬度数值返回一个包含该经纬度的地图图片。</li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/">Google Maps JavaScript API v3</a>，用于实现一些需要与用户交互的地图功能，目前实现的是能够使用户在网页上拖动marker来指定自己的地理位置。</li>
+</ol>
+
+
+<h2>具体实现</h2>
+
+<p>在具体的实现方面，目前实现了如下几个Model：</p>
+
+<ul>
+<li><code>User</code>：代表一个用户账号，里面仅仅包括了用户名、密码、邮箱等等账号信息，另外<code>JpaUserManager</code>是casino所需要的；</li>
+<li><code>UserInfo</code>：代表了一个用户的详细信息，该Model与User是一一对应的关系（<code>@OneToOne</code>），主要包括了该用户信息所属的User、地址、用户类型、积分、地理坐标、头像等等。</li>
+<li><code>UploadFile</code>：代表用户上传的文件。</li>
+<li><code>Comment</code>、<code>Post</code>、<code>Tag</code>：来自于Play framework示例Yabe的遗产Model，还不确定是否有留下的价值。</li>
+</ul>
+
+
+<p>实现了如下几个Controller：</p>
+
+<ul>
+<li><code>Admin</code>：可以作为用户的“个人主页”入口。</li>
+<li><code>Application</code>：整个Web应用程序的入口Controller，其中index()方法的作用就是渲染首页，在这个Controller中还包含了实现搜索功能的方法。</li>
+<li><code>UploadFiles</code>、<code>Users</code>、<code>UserInfos</code>、<code>Comments</code>、<code>Posts</code>、<code>Tags</code>：用于操作对应Model的数据。</li>
+</ul>
+
+
+<h2>下一步需要实现的功能</h2>
+
+<p>在目前的基础上，亟需实现的功能包括：</p>
+
+<ul>
+<li><strong>评分功能</strong>：对某个用户进行评分，如何存储所有的评价信息，如何通过所有的评分计算出该用户的最终得分。进一步划分用户等级。</li>
+<li><strong>完善<code>UserInfo</code></strong>：使得用户可以存储更加丰富的资料，主要是图像文件的存储和显示（<code>Gallery</code>）。<code>UserInfo</code>应该包含所有需要的信息，这些信息将被分别展示到“个人中心”或者其他的地方。这里可能需要实现更多的界面。</li>
+<li>将用户<strong>匹配</strong>的结果以<strong>通知</strong>的形式发送给正确的用户：这个功能包括了<strong>匹配</strong>和<strong>通知</strong>两个功能，其中匹配功能可以基于elasticsearch实现（定期搜索或者事件触发），而通知功能则可能需要借助于其他工具或技术。</li>
+<li><strong>邮件系统</strong>：目前的邮件系统还没有实现，采用的是伪造邮件的方式，参看<code>application.conf</code>文件中的：
+
+<blockquote><pre><code># Mail configuration
+# ~~~~~ 
+# Default is to use a mock Mailer
+mail.smtp=mock
+</code></pre></blockquote>
+
+<p>  因此需要实现一个真实的邮件系统。</p></li>
+<li>用户<strong>自定义</strong>：出于用户可能的需要，需要使得用户能够自定义他人是否能够通过搜索或匹配的功能找到自己。</li>
+<li>用户状态管理：主要面向付费用户（即教师和培训机构），即当该付费用户过期后，系统应该能够<strong>暂时屏蔽</strong>其相关信息，使得其他用户不能够搜索到他，并且当他继续付费后，能够取消掉屏蔽。</li>
+</ul>
+
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T13:13:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/markdown.html">Markdowns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/taste.html">Octopress 分割线</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/smack-invisibility.html">Smack设置隐身状态</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/the-social-life-in-my-mind.html">The social life in my mind</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/thinking.html">思考</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - 弘哥保护你 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'duanhong169';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://duanhong169.github.com/tsmatch-overview/index.html';
+        var disqus_url = 'http://duanhong169.github.com/tsmatch-overview/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
