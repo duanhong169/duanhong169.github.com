@@ -137,19 +137,24 @@
 <li><strong>评分功能</strong>：对某个用户进行评分，如何存储所有的评价信息，如何通过所有的评分计算出该用户的最终得分。进一步划分用户等级。</li>
 <li><strong>完善<code>UserInfo</code></strong>：使得用户可以存储更加丰富的资料，主要是图像文件的存储和显示（<code>Gallery</code>）。<code>UserInfo</code>应该包含所有需要的信息，这些信息将被分别展示到“个人中心”或者其他的地方。这里可能需要实现更多的界面。</li>
 <li>将用户<strong>匹配</strong>的结果以<strong>通知</strong>的形式发送给正确的用户：这个功能包括了<strong>匹配</strong>和<strong>通知</strong>两个功能，其中匹配功能可以基于elasticsearch实现（定期搜索或者事件触发），而通知功能则可能需要借助于其他工具或技术。</li>
-<li><strong>邮件系统</strong>：目前的邮件系统还没有实现，采用的是伪造邮件的方式，参看<code>application.conf</code>文件中的：
-
-<blockquote><pre><code># Mail configuration
-# ~~~~~ 
-# Default is to use a mock Mailer
-mail.smtp=mock
-</code></pre></blockquote>
-
-<p>  因此需要实现一个真实的邮件系统。</p></li>
 <li>用户<strong>自定义</strong>：出于用户可能的需要，需要使得用户能够自定义他人是否能够通过搜索或匹配的功能找到自己。</li>
 <li>用户状态管理：主要面向付费用户（即教师和培训机构），即当该付费用户过期后，系统应该能够<strong>暂时屏蔽</strong>其相关信息，使得其他用户不能够搜索到他，并且当他继续付费后，能够取消掉屏蔽。</li>
 </ul>
 
+
+<h2>Update：已经实现的功能</h2>
+
+<p>邮件系统：直接使用gmail服务器即可。See <a href="http://www.playframework.org/documentation/1.2.4/emails">Using Gmail</a>。</p>
+
+<blockquote><p> 邮件系统：目前的邮件系统还没有实现，采用的是伪造邮件的方式，参看<code>application.conf</code>文件中的：</p>
+
+<pre><code># Mail configuration
+# ~~~~~ 
+# Default is to use a mock Mailer
+mail.smtp=mock
+</code></pre>
+
+<p> 因此需要实现一个真实的邮件系统。</p></blockquote>
 
   
     <footer>
