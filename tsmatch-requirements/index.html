@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>KVM - 弘's blog</title>
+  <title>师生配文档 - 弘's blog</title>
   <meta name="author" content="弘哥保护你">
 
   
-  <meta name="description" content="KVM KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。 &hellip;">
+  <meta name="description" content="1. 概况 1.1 编写目的 本文主要用于师生配（用于教师（等教学资源）与学生进行匹配的平台）的功能做出需求分析说明。本文的预期读者为： 师生配开发人员
+需求方 1.2 定义 1.2.1 师生配信息发布与检索平台 1.2.2 师生配Android客户端 1.2.3 业务类型 2. 功能需求 2.1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://duanhong169.github.com/blog/kvm.html">
+  <link rel="canonical" href="http://duanhong169.github.com/tsmatch-requirements/index.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">KVM</h1>
+      <h1 class="entry-title">师生配文档</h1>
     
     
       <p class="meta">
@@ -93,51 +94,98 @@
   
 
 
-<time datetime="2011-11-29T20:36:01+08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2011</time>
+<time datetime="2012-06-11T11:21:00+08:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>KVM</h2>
+<div class="entry-content"><h1>1. 概况</h1>
 
-<p>KVM（即Kernal-based Virtual Machine）是工作在包含虚拟化扩展支持（Intel VT或者AMD-V）的x86架构上的Linux的一套完整的虚拟化解决方案，它是Linux kernel的一部分，Linux kernel通过KVM来提供虚拟化的功能。使用KVM可以在一台物理机上同时运行多个无需修改的Linux或者Windows系统，并且每一个系统都拥有一套私有的虚拟硬件。</p>
+<h2>1.1 编写目的</h2>
 
-<h2></h2>
+<p>本文主要用于师生配（用于教师（等教学资源）与学生进行匹配的平台）的功能做出需求分析说明。本文的预期读者为：</p>
 
-<h2>QEMU</h2>
+<ol>
+<li>师生配开发人员</li>
+<li>需求方</li>
+</ol>
 
-<p>QEMU是一套由Fabrice Bellard所编写的模拟处理器的自由软件。它与Bochs，PearPC近似，但其具有某些后两者所不具备的特性，如高速度及跨平台的特性。经由kqemu这个开源的加速器，QEMU能模拟至接近真实电脑的速度。QEMU有两种主要运作模式：</p>
+
+<h2>1.2 定义</h2>
+
+<h3>1.2.1 师生配信息发布与检索平台</h3>
+
+<h3>1.2.2 师生配Android客户端</h3>
+
+<h3>1.2.3 业务类型</h3>
+
+<h1>2. 功能需求</h1>
+
+<h2>2.1 信息发布与检索平台功能需求</h2>
+
+<h3>2.1.1 用户注册登录</h3>
+
+<h3>2.1.2 用户角色</h3>
+
+<h3>2.1.3 资料设置与权限</h3>
+
+<h3>2.1.4 信息发布（审批）与搜索</h3>
+
+<h3>2.1.5 用户评价</h3>
+
+<h3>2.1.6 积分控制</h3>
+
+<h3>2.1.7 消息系统</h3>
+
+<h2>2.2 手机客户端功能需求</h2>
+
+<h1>3. 详细设计</h1>
+
+<h2>3.1 Models（Play框架组件）及相互依赖关系</h2>
+
+<p>师生配系统一共包括如下一些Model（按生成关系排序）：</p>
+
+<ol>
+<li><code>User</code>
+ 代表一个用户账号，所有用户注册后都将在系统中生成一条User记录</li>
+<li><code>UserInfo</code>
+ 代表一个账号的用户信息，在用户注册后会生成一个默认的<code>UserInfo</code>（几乎为空），系统将引导用户完善自己的信息，并且根据用户自身的信息完整程度进行权限分配</li>
+<li><code>Post</code>
+ 代表用户发布的内容，用户可以在师生配平台上发布相关信息，该信息将会接收系统审批，信息可以包括附件（<code>UploadFile</code>），信息可以拥有一个或多个标签（<code>Tag</code>），信息在发布后，相关权限的用户可以对其进行评论（<code>Comment</code>）</li>
+<li><code>Tag</code>
+ 用于标识信息或资源的标签，系统将拥有一系列事先定义的或者用户生成的标签，根据这些标签将能够筛选师生配平台的数据</li>
+<li><code>Comment</code>
+ 评论</li>
+<li><code>UploadFile</code>
+ 上传的文件，用户按照相应权限或者积分限制可以上传若干文件</li>
+<li><code>Rating</code>
+ 用户根据自己的权限可以对其他用户或者资源进行评分</li>
+</ol>
+
+
+<p>上述7种Model的相互关系如下：</p>
+
+<ol>
+<li><p><code>A -&gt; B</code> 代表<code>B</code>依赖于<code>A</code>，即当<code>A</code>不存在时，<code>B</code>也随之消失。</p>
 
 <ul>
-<li><p>User mode模拟模式，亦即是使用者模式。QEMU能启动那些为不同中央处理器编译的Linux程序。而Wine及Dosemu是其主要目标。</p></li>
-<li><p>System mode模拟模式，亦即是系统模式。QEMU能模拟整个电脑系统，包括中央处理器及其他周边设备。它使得为系统源代码进行测试及除错工作变得容易。其亦能用来在一部主机上虚拟数部不同虚拟电脑。</p></li>
+<li><code>User</code> -> <code>UserInfo</code></li>
+<li><code>Post</code> -> <code>Comment</code></li>
+<li><code>Post(belongsto)</code> -> <code>UploadFile</code></li>
 </ul>
-
-
-<p>目前的Android模拟器就是基于QEMU开发的。</p>
-
-<h2>KVM与QEMU</h2>
-
-<p>由于KVM仅仅是为上层提供虚拟化的支持，它本身并不进行任何的创建或管理虚拟机的工作，而是通过一个用户空间的程序通过调用/dev/kvm接口来设置客户虚拟机的地址空间、管理I/O以及将视频显示映射回主机。QEMU就是一个可以完成这些工作的程序，可以说KVM就是借助QEMU的一部分功能来实现具体的虚拟机。</p>
-
-<h2>KVM与Xen</h2>
-
-<p>由于Xen、KVM都是应用在Linux虚拟化上的技术，因此有必要弄清楚它们之间的关系。Xen是一个直接工作在硬件层之上的系统，它是一个基于Nemesis微内核的hypervisor。当前各Linux发行版所包含的Xen，表面上看似乎是Xen跑在Linux系统上，实际上却是Linux跑在Xen上，只是这类发行版默认安装了一个Linux guest作为domain0，这让用户很容易产生错觉，以至于大多数的用户根本没有意识到他们正在运行一个完全不同的操作系统。</p>
-
-<p>对于Linux最开始为什么要包含Xen，Linux的开发者ANTHONY LIGUORI称这主要是由于Linux社区的绝望。因为虚拟化在最近一段时间逐渐成为了一个很热门的技术。但是Linux过去却没有提供任何的native hypervisor的能力。大多数的Linux kernel开发者对虚拟化技术知道得也不多，因此Xen很容易的使用了一个定制的kernel，并且这个kernel还有一个相当好的community。于是Linux社区做了一个决定：包含Xen到发行版中。LIGUORI称这个决定是草率的，因为他认为正确的做法是把Linux变成一个合适的hypervisor，而不是将这个功能寄托在Xen上，他也认为其他的系统也应该像Linux这样对待这个问题。因此，可以将KVM理解为由Linux内核直接提供的对虚拟化的更好的（Linux社区有足够的自信）支持。</p>
-
-<h2>其他</h2>
+</li>
+<li><p><code>A ~&gt; B</code> 代表<code>B</code>与<code>A</code>存在联系，例如某个<code>Post</code>是由某个<code>User</code>所发布，但是与<code>A -&gt; B</code>存在的区别是，当<code>A ~&gt; B</code>时，在<code>A</code>不存在时，<code>B</code>依然存在。</p>
 
 <ul>
-<li><p>Xen——一个完整的系统，通常使用定制的Linux发行版作为domain0</p></li>
-<li><p>virtualbox——它的部分代码由QEMU修改而来，拥有自身的图形加速</p></li>
-<li><p>一套可以运行的KVM通常包括qemu-kvm和kvm-kmod两部分</p></li>
-<li><p>Xen属于半虚拟化的范畴，半虚拟化指客户机操作系统是经过定制的，客户机知道自身工作在虚拟的环境中，而全虚拟化则相反</p></li>
-<li><p>hypervisor，又叫VMM（Virtual Machine Manager），它相对于supervisory program（也成为内核）而言，内核的作用是负责分配计算机资源，调度，I/O等，而hypervisor处在比supervisory更高的层次上。</p></li>
-<li><p>hypervisor分为两类，即Type1 和 Type 2：1类的hypervisor直接运行在裸机上，相当于hypervisor是硬件上的第一层；2类的hypervisor则是运行在传统的操作系统之上，即hypervisor是属于第2层。KVM和Xen on Linux都是属于1类，不过Xen却伪装得很像2类。</p></li>
+<li><code>User</code> ~> <code>Post</code>（用户的注销不会导致发布信息消失）</li>
+<li><code>UserInfo(rater/rated)</code> ~> <code>Rating</code>(评分一旦生效就永远存在)</li>
+<li><code>UserInfo(owner)</code> ~> <code>UploadFile</code>（用户的注销不会导致上传文件的消失）</li>
+<li><code>\*(whatever)</code> ~> <code>Tag</code></li>
 </ul>
+</li>
+</ol>
 
 </div>
 
@@ -161,12 +209,12 @@
   
 
 
-<time datetime="2011-11-29T20:36:01+08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2011</time>
+<time datetime="2012-06-11T11:21:00+08:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/study/'>Study</a>
+    Liquid error: undefined method `sort!' for nil:NilClass
   
 </span>
 
@@ -175,7 +223,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://duanhong169.github.com/blog/kvm.html" data-via="duanhong169" data-counturl="http://duanhong169.github.com/blog/kvm.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://duanhong169.github.com/tsmatch-requirements/index.html" data-via="duanhong169" data-counturl="http://duanhong169.github.com/tsmatch-requirements/index.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -188,14 +236,16 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/a-folder-failed-to-be-renamed-or-moved.html" title="Previous Post:  关于“A folder failed to be renamed or moved”错误">&laquo;  关于“A folder failed to be renamed or moved”错误</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/p2pppp.html" title="Next Post: P2P与PPP">P2P与PPP &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -255,7 +305,10 @@
       var disqus_shortname = 'duanhong169';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://duanhong169.github.com/tsmatch-requirements/index.html';
+        var disqus_url = 'http://duanhong169.github.com/tsmatch-requirements/index.html';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

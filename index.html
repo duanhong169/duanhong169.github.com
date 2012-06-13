@@ -9,7 +9,7 @@
   <meta name="author" content="弘哥保护你">
 
   
-  <meta name="description" content="来自John Gruber 的Markdown Basics。 标题1 标题2 普通段落 标题3 引用段落 引用段落 引用段落 引用段落内的标题 ">
+  <meta name="description" content="今天听了Martin Fowler的演讲，虽然讲的内容并不多，但是讲的都是当今软件开发中最重要的技术和原则，这些都是这个时代的程序员所应该熟知的，在此简单地做一个总结。 1. NoSQL Models 由于目前的应用数据存储对分布式、可扩展性方面的需求， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/nosql-rest.html">NOSQL & REST</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-12T13:50:00+08:00" pubdate data-updated="true">Jun 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天听了<a href="http://www.martinfowler.com">Martin Fowler</a>的演讲，虽然讲的内容并不多，但是讲的都是当今软件开发中最重要的技术和原则，这些都是这个时代的程序员所应该熟知的，在此简单地做一个总结。</p>
+
+<h2>1. NoSQL Models</h2>
+
+<p>由于目前的应用数据存储对分布式、可扩展性方面的需求，NoSQL作为新一代的数据库组织方式逐渐被人们放上台面，所谓<a href="http://nosql-database.org/">NoSQL</a>，并不应该被简单的理解为&#8221;No&#8221; SQL，而更应该被理解为“Not only SQL”，它通常具有非关系型、分布式、开源和水平可扩展等几个特性。</p>
+
+<p>与关系数据库通常遵循的是ACID(atomicity<em>原子性, consistency</em>一致性, isolation<em>隔离性, durability</em>持久性)不同，NoSQL所遵循的是BASE(Basically Available<em>基本可用, Soft state</em>软状态, Eventually consistent_最终一致性)，这些特性正是与当前分布式存储、云计算领域的需求相符合的。具体的不同可以参照<a href="http://it.toolbox.com/blogs/oracle-guide/acid-vs-base-25938">这篇文章</a>。</p>
+
+<h2>2. REST</h2>
+
+<p>REST即Representational State Transfer，通常被译为“表述性状态转移”，这是一个用于分布式系统的软件体系结构，最大的一个应用当属我们的万维网（World Wide Web）了，REST在最近几年已经逐步成为了Web service的主要设计模式，通常我们说一个Web Service的API是RESTful的，实际上就是指它具备了REST的特性，以Web为例，REST具有如下一些特性：</p>
+
+<ol>
+<li>网络上所有的事物都被抽象为资源（resource）；</li>
+<li>每个资源对应一个唯一的资源标识（resource identifier）；</li>
+<li>可以通过通用的连接器接口对资源进行操作（generic connector interface）；</li>
+<li>对资源的各种操作不会改变资源标识；</li>
+<li>所有的操作都是无状态的（stateless）</li>
+</ol>
+
+
+<p>按Martin所述，按照<a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardson Maturity Model</a>，REST按程度不同通常如下四个阶段：</p>
+
+<p>图1. <a href="http://martinfowler.com/articles/images/richardsonMaturityModel/overview.png">Steps toward REST</a></p>
+
+<p><img src="/images/rest-overview.png" alt="rest-overview" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/nosql-rest.html">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -208,9 +274,9 @@
   </header>
 
 
-  <div class="entry-content"><p>什么是Smack？
-Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat.
-<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>Smack是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
+  <div class="entry-content"><p>什么是<code>Smack</code>？
+Smack is a library for communicating with XMPP servers to perform real-time communications, including instant messaging and group chat
+<a href="http://www.igniterealtime.org/builds/smack/docs/latest/documentation/overview.html">[1]</a>.<code>Smack</code>是一个用于与XMPP服务器通讯的Java类库，它使得我们可以方便的通过XMPP协议来进行即时通讯，群聊等。</p>
 
 <p>新浪微博的即时通讯功能也是基于XMPP协议实现的，因此我们可以通过任何支持XMPP协议的客户端来连接它，从而使用它来与新浪微博中互相关注的好友进行聊天，这些聊天记录也会以私信的方式保存在新浪微博里。新浪微博的XMPP服务器地址是xmpp.weibo.com，端口是缺省的5222端口，用户名可以是你注册的邮箱或者是你的UID，可以到<a href="http://jwchat.org/">JWChat</a>测试一下连接。如图。</p>
 
@@ -269,51 +335,6 @@ Every morning we get up and open our eyes, it&#8217;s our life,our individual li
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/thinking.html">思考</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-18T16:36:21+08:00" pubdate data-updated="true">Dec 18<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一个人在经历了一定的时间之后，他终究是会醒悟的。</p>
-
-<p>在一个人觉醒之前，他会觉得他总是正确的，他认为他总能够看清楚世间万物的道理。当他看到眼前所经历的一件事情之后，就会在脑子里对其进行分析和假定，然后给这件事情中涉及的人和事都加上自己的注解，他并不关心这些理解是否正确，因为他坚信自己的想法一定是正确的。他可以把自己与世间万物独立开来，站在上帝的角度来看待世界。他把自己视作hypervisor，以为自己已经掌握了所有心理学的奥妙，殊不知其实他连自己的心理状态都没有思考清楚。不过通常情况下他在大部分时候还可能是对的，因而就更加坚定了他站在上帝所处的制高点的信心，其实那些只不过是一个正常人都具备的基本的分析判断能力罢了。虽然偶尔发生的状况可能会稍稍地打击一下他，但是他也总是能够找到为自己开脱的理由。</p>
-
-<p>如果缺乏一定的目标来驱动，没有一个正确的标准来衡量自己的行为，那么一个人在一段时间内总会认为自己当前所做的事情是最合理的，即使在别人看来那是非常的不合理。也许在之后的某个时刻他自己也会发现其实现在这个时刻他所做的事情是无意义的，那是因为他已经觉得在之后那个时刻他正在做着他认为最合理的事情，所以说一个人总是处在一个自认为“最合理”的状态，因而会出现一些旁人看来异常顽固或者执迷不悟的行为，但是他本人却从未发觉，即使发觉了也是对别人的看法不屑一顾。这也许就是心理学上说的人的自利倾向吧。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/thinking.html">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -338,6 +359,10 @@ Every morning we get up and open our eyes, it&#8217;s our life,our individual li
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/nosql-rest.html">NOSQL & REST</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/markdown.html">Markdowns</a>
       </li>
     
@@ -351,10 +376,6 @@ Every morning we get up and open our eyes, it&#8217;s our life,our individual li
     
       <li class="post">
         <a href="/blog/the-social-life-in-my-mind.html">The social life in my mind</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/thinking.html">思考</a>
       </li>
     
   </ul>
@@ -388,9 +409,36 @@ Every morning we get up and open our eyes, it&#8217;s our life,our individual li
 
 
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
 
 
 

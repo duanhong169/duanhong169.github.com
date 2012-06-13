@@ -66,7 +66,7 @@
     </url>
     <url>
         <loc>http://duanhong169.github.com/blog/smack-invisibility.html</loc>
-        <lastmod>2012-05-25T15:31:05+08:00</lastmod>
+        <lastmod>2012-06-13T16:42:41+08:00</lastmod>
     </url>
     <url>
         <loc>http://duanhong169.github.com/blog/taste.html</loc>
@@ -77,16 +77,20 @@
         <lastmod>2012-05-25T15:31:05+08:00</lastmod>
     </url>
     <url>
+        <loc>http://duanhong169.github.com/blog/nosql-rest.html</loc>
+        <lastmod>2012-06-13T16:37:15+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://duanhong169.github.com/404.html</loc>
         <lastmod>2012-04-24T12:42:42+08:00</lastmod>
     </url>
     <url>
         <loc>http://duanhong169.github.com/blog/archives/</loc>
-        <lastmod>2012-05-25T15:31:05+08:00</lastmod>
+        <lastmod>2012-06-13T16:42:41+08:00</lastmod>
     </url>
     <url>
         <loc>http://duanhong169.github.com/</loc>
-        <lastmod>2012-05-25T15:31:05+08:00</lastmod>
+        <lastmod>2012-06-13T16:42:41+08:00</lastmod>
     </url>
     <url>
         <loc>http://duanhong169.github.com/reading/</loc>
@@ -99,5 +103,9 @@
     <url>
         <loc>http://duanhong169.github.com/tsmatch-overview/</loc>
         <lastmod>2012-05-25T15:31:05+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://duanhong169.github.com/tsmatch-requirements/</loc>
+        <lastmod>2012-06-12T22:39:05+08:00</lastmod>
     </url>
 </urlset>
