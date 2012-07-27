@@ -9,7 +9,7 @@
   <meta name="author" content="弘哥保护你">
 
   
-  <meta name="description" content="http://book.douban.com/subject/6073215/ 伴随着时间的推移，伴随着年龄的增加，要为自己增加一些能够让未来更加光明的武器和筹码。这些武器和筹码，可以是另一项才能，可以是现有能力的挖掘，也可以是一种意识上的推陈出新。 局部的胜利可以增强信心， &hellip;">
+  <meta name="description" content="最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下： 众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图 图1 手机朝向与传感器返回值的关系 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/android-rotateanimation.html">Android RotateAnimation的一点疑问</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T11:33:34+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近在做一个指南针的例子时，遇到了一点疑问，就是关于RotateAnimation的问题，问题描述如下：</p>
+
+<p>众所周知，指南针的旋转的起始和终止角度是根据方位传感器所传回的角度值来确定的，而方位传感器所传回的值是代表了设备当前所朝向的角度，如图</p>
+
+<p><a href="http://l4love.org/wp-content/uploads/2011/11/relationship1.png"><img src="http://l4love.org/wp-content/uploads/2011/11/relationship1.png" alt="" /></a></p>
+
+<p>图1 手机朝向与传感器返回值的关系</p>
+
+<p>图中右方箭头所指方向为正北，左方圆形中的箭头所指的是手机（传感器）所朝的方向，数值则是传感器返回的values[0]值。</p>
+
+<p>因此在对指南针进行旋转时则需要朝相反的方向旋转一个角度（即-values[0]），则可以实现指南针始终能够指向一个方向。现在的问题是经过临界点的旋转问题，即旋转经过（-0°）时，分为了如下两种情况：</p>
+
+<ol>
+<li><p>顺时针经过0°，即旋转过程为（-1° → -359°）；</p></li>
+<li><p>逆时针经过0°，即旋转过程为（-359° → -1°）；</p></li>
+</ol>
+
+
+<p>按照RotateAnimation的旋转方式，这两种情况将会出现一个旋转这个圆中大弧的情况，视觉上的效果就是指南针在经过零点时不会平滑的旋转过去，而是相反的快速的反向旋转接近360°到达目标角度，出现一个跳转的效果，虽然说结果是正确的，但是毕竟会给人不好的感觉。</p>
+
+<p>然而，在这个指南针示例中，它却能够平滑的经过0°点而不发生跳转，让我百思不得骑姐。。</p>
+
+<p>之后我将RotateAnimation单独拿出来测试，也验证了RotateAnimation在处理上述两种情况时确实会按圆的大弧旋转，最后经过思考，暂时觉得原因如下：</p>
+
+<blockquote><p>由于传感器传回数值的频率相当频繁，大约一秒钟内会有数次，即旋转所进行的频率过快，以至于在（-1° → -359°）和（-359° → -1°）两种情况的旋转尚未完成时，就被新的旋转所覆盖，它自然也就被冲掉了，有点像前浪死在沙滩上的感觉。</p></blockquote>
+
+<p>这个故事告诉我们：邪恶的行为一定会被正义消灭的··</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -322,48 +384,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/no-words.html">为什么总是缺少语言</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-30T14:48:53+08:00" pubdate data-updated="true">Oct 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>很多时候，感觉自己想要说点什么，但是却一个字也吐不出来。看着对方一行一行的字出现，更是觉得越来越大的压力，以至于更加不知道说什么好了。</p>
-
-<p>不能怨别人，肤浅的人总是缺少语言，对一件事缺少感情，自然也不会对它产生多少的理解，更不用说对其侃侃而谈了。</p>
-
-<p>想起以前语文考试都要写的八百字作文，现在觉得真是能凑齐字数都是困难，过了这么多年，却是越来越退化了，一直以来都不怎么喜欢阅读，觉得都是别人写的一些与自己无关的话罢了，因此自从上了大学之后，没有了向高中那样的硬性要求，反而是阅读得更少了，要写什么东西，首先想到的是到网络上搜集一些别人的材料，然后照着别人的模式来写，根本就少有加入自身的思考，久而久之这些能力也就弱化了吧。本来就不强的东西，现在倒是更加弱化了，真不知道是该叹气还是该哭。</p>
-
-<p>看文章总不愿看超过2页的习惯，导致这些年来最喜欢看的就是些短文，笑话幽默什么的，这样的话什么《读者》啊《青年文摘》呀应该比较适合我吧？错了，就连这上面的文章70%我都觉得太长了，更不用说看什么小说了。我想正是因为这个原因，导致了我总是感觉缺少语言吧，现在得去在这方面加强一点努力了，不然总是会误了很多事的。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -390,6 +410,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/drupal.html">Drupal学习路线</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/nosql-rest.html">NOSQL & REST</a>
       </li>
     
@@ -403,10 +427,6 @@
     
       <li class="post">
         <a href="/blog/smack-invisibility.html">Smack设置隐身状态</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/the-social-life-in-my-mind.html">The social life in my mind</a>
       </li>
     
   </ul>

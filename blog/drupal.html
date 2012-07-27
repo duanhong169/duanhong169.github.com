@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Drupal学习路线 - 弘's blog</title>
+  <meta name="author" content="弘哥保护你">
+
+  
+  <meta name="description" content="最近由于需要建立一个团队内部的资源和信息发布类的网站，尝试着开始使用了Drupal，虽然之前很早就对Drupal有所了解，但是一直没有去真正的接触，抱着一个好奇的态度花了几天的时间来了解了一下Drupal，不看不知道，一看吓一跳，由于Drupal不仅仅是面向程序员使用的原因， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://duanhong169.github.com/blog/drupal.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="弘's blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32127208-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">弘's blog</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:duanhong169.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Drupal学习路线</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-17T14:50:00+08:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>最近由于需要建立一个团队内部的资源和信息发布类的网站，尝试着开始使用了<a href="http://drupal.org">Drupal</a>，虽然之前很早就对Drupal有所了解，但是一直没有去真正的接触，抱着一个好奇的态度花了几天的时间来了解了一下Drupal，不看不知道，一看吓一跳，由于Drupal不仅仅是面向程序员使用的原因，它的有些文档显得过分详细以致于你会觉得文档的“质量低”，事实上并不是这样，因为Drupal社区要照顾到它各类不同用户的需求，所以这些文档所处于的层次，所面向的群体是不一样的，不论你是一名开发者或者仅仅是想使用Drupal作为建站工具。对于一名强迫症患者、害怕错过每一处关键的信息，所以对阅读文档中遇到的每一个引用链接都会打开的我，Drupal文档又让我感受到了什么叫“群众的力量是无穷的”，不过我相信在学习一个东西的开始阶段，这样的投入还是值得的，因为我深切的感受到了在不断阅读文档的过程中，很多的疑惑都逐一地解开，很多关键点都在心里慢慢地被加深了认识，例如<a href="http://drupal.org/project/modules">Module</a>是如何工作的、<a href="http://drupal.org/project/themes">theme</a>是怎么实现的、怎样在已有theme的基础上进行二次开发、开发（使用）Drupal分为哪几个阶段（入门级，熟练级，专家级等）或者说哪几类使用方法（系统/网站管理员、网站信息系统架构员、网站开发人员等）等等问题，还有Drupal中比较重要的概念例如<a href="http://api.drupal.org/api/drupal/includes%21module.inc/group/hooks/7">hooks</a>，以及使用Drupal的一些快捷方式（<a href="http://drupal.org/project/distributions">Distribution</a>、<a href="http://drupal.org/node/1089736#distributions-vs-installation-profiles">Installation profiles</a>、<a href="http://drupal.org/documentation/site-recipes">Site Recipe</a>）等等。在这里对我学习的过程做一个简单记录，顺便作为备忘。</p>
+
+<!--more-->
+
+
+<h2>1. 初识Drupal</h2>
+
+<p>对于初学者，大部分都会由首页跳转到<a href="http://drupal.org/start">Drupal start</a>这个页面，这个页面可以说是Drupal的一个较为全面的一个概览，包括了下载安装、如何扩展和使用Drupal、在哪里可以找到Drupal文档以及如何从Drupal社区获取帮助的信息，依次会浏览到如下页面：</p>
+
+<ul>
+<li><a href="http://drupal.org/project/drupal">Drupal Core下载页面</a></li>
+<li><a href="http://drupal.org/documentation/install">Drupal安装说明</a>，对于初学者通常是希望在本地建立起一个服务器，因此需要浏览<a href="http://drupal.org/node/157602">Local server setup</a>，我选择了在<a href="http://drupal.org/node/1248034">Windows上安装DAMP</a>（即Drupal, Apache, MySQL, and PHP，是由Acquia提供的一个Drupal Stack Installer），根据这个页面上的指引可以顺利的在Windows上安装好本地的Drupal服务器环境。安装成功之后就可以将Drupal Core运行起来，得到一个可以在本地访问的Web服务器，Drupal Core可以算作是Drupal的Hello world，虽然看上去很简单，但是它已经包含了扩展Drupal所需要的所有核心代码和模块，接下来要做的就是向其中添加或开发具有更丰富功能的Modules，以及为其选择和开发合适的Theme。</li>
+</ul>
+
+
+<h2>2. 使用Module扩展Drupal</h2>
+
+<p>在将Drupal Local Server成功地搭建起来之后，就需要开始考虑使用Module来扩展所需的功能了，Drupal自2001年上线以来，经过10多年的发展，已经形成了一个十分强大的社区，超过630000的用户和开发者正在使用Drupal开发网站，Drupal的Module数量也已经突破了10000大关，使得Drupal变得越来越强大，即使用户没有很丰富的编程经验也可以利用其他贡献者的成果来实现满足自己需求的网站，在<a href="http://drupal.org/project/modules">Modules</a>的页面上可以根据需求搜索Module，对于初学者则建议先了解一下使用量排在前几位的Module，一般来说这几个Module在任何网站中都是需要的，通过对它们的了解和使用，可以进一步明白Module的工作原理以及使用方法。我就从View这个Module入手，阅读其相关文档，同时了解了一些必须的概念。</p>
+
+<h2>3. Drupal Themes</h2>
+
+<p>网站的功能固然重要，但是网站的外观同样不可忽视，还是那句话，用户看到的永远只是用户界面，因此必须要满足用户的视觉需求，Drupal Theme就是用来实现网站的视觉效果的，在Drupal的<a href="http://drupal.org/project/themes">Themes</a>页面上目前已经存在接近1000个不同的Theme，虽然数量不如Module那般大，但是值得注意的是很多Theme不仅仅是一个简单的主题，它还是一个主题开发框架，例如列在第一位的Zen theme，在它的基础上能够非常方便的进行二次开发，推荐通过Zen作为切入点去仔细了解如何进行theme的开发工作。</p>
+
+<h2>4. 深入理解Drupal</h2>
+
+<p>在经过前面几步对Drupal有了一个直观上的认识之后，下一步需要是系统化的了解Drupal，这个过程是比较枯燥乏味的，要系统化的了解Drupal，就应该跟随Drupal的<a href="http://drupal.org/documentation">文档</a>一步一步的进行了，尤其是<a href="http://drupal.org/documentation/understand">Understanding Drupal</a>文档，需要仔细的阅读一遍，从内部架构了解Drupal，对进行更深入的开发有非常重要的作用。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">弘哥保护你</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-17T14:50:00+08:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blog/'>blog</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://duanhong169.github.com/blog/drupal.html" data-via="duanhong169" data-counturl="http://duanhong169.github.com/blog/drupal.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/nosql-rest.html" title="Previous Post: NOSQL & REST">&laquo; NOSQL & REST</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>爱学习，不爱劳动</p>
+  <p>不爱睡觉，爱睡懒觉</p>
+  <p>怕热，怕冷</p>
+  <p>重度强迫症患者</p>
+  <p>重度拖延症患者</p>
+  <p>从明天起重新做人_类患者</p>
+  <p>duanhong169#gmail.com欢迎骚扰</p>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/drupal.html">Drupal学习路线</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/nosql-rest.html">NOSQL & REST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/markdown.html">Markdowns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/taste.html">Octopress 分割线</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/smack-invisibility.html">Smack设置隐身状态</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - 弘哥保护你 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'duanhong169';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://duanhong169.github.com/blog/drupal.html';
+        var disqus_url = 'http://duanhong169.github.com/blog/drupal.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

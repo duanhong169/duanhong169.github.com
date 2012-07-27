@@ -265,9 +265,13 @@
 
 <p>Hypermedia controls的优势在于，服务器可以在不破坏客户端应用程序的情况下对自己的URI schema进行改变。如上例所示，客户端只需要去查阅addTest连接即可，服务端可以随意地对除了最初入口点(slots/1234)之外的所有URI进行改变。</p>
 
-<h2>3. More</h2>
+<h2>3. DSL</h2>
 
-<p>Martin还讲到了DSL在软件设计的价值、Event Sourcing等等，下次再接着总结。</p>
+<p>所谓DSL，全称Domain-specific language，即“领域特定语言”，一个简捷的定义是：一种专注于某个特定领域的、仅具有有限的表述能力编程语言。按我的理解来说就是专注于某类功能或逻辑的实现，并且在该部分领域拥有极高的表达力和执行效率的语言。这类语言在实际应用中也是很常见的，例如正则表达式、CSS、makefile/ant/rake、SQL/HQL，甚至用于编写struct-config.xml文件的语法也可以被认为是一种DSL。基于DSL的定义，一般来说我们并不能够使用某种DSL去实现一个完整的项目（谁会只用正则表达式去写一个项目呢XD），而是在一个项目中使用一种通用编程语言并且结合使用若干DSL。事实上，DSL也是通过所谓通用编程语言来实现的，这实际上也是“不要自己从头再实现轮子”思想的体现，借助DSL我们可以在一个更高的层次上编程，使得代码更紧凑，从而获得更高的效率，DSL就好比是一个被精心制造出来的轮子。DSL目前在Ruby社区非常的火爆，借助Ruby开发人员可以更方便地去实现一种DSL，例如可以用来更高效地写css代码的<a href="http://sass-lang.com">SASS</a>。</p>
+
+<h2>4. Event Sourcing</h2>
+
+<p>Event Sourcing从字面上看就是“事件溯源”的含义，通俗地说就是“记录你所走的每一步”，这是什么样的一个概念呢？最重要的一点实际上就是我们可以将程序的状态（动态）保存到磁盘（静态），这样一来我们就不容易丢失程序的某个状态，因为我们可以通过日志文件将状态恢复，最常见的应用就是源代码版本控制系统了（Subversion、Git、mercurial等），当然还包括了记录数据库变迁的DB Migration追踪系统，进一步的遵循了Event Sourcing原则，将数据库的改变也纳入版本控制中，这样一来我们就可以自由的在程序的多个状态中切换。</p>
 </div>
 
 
@@ -320,6 +324,8 @@
         <a class="basic-alignment left" href="/blog/markdown.html" title="Previous Post: Markdowns">&laquo; Markdowns</a>
       
       
+        <a class="basic-alignment right" href="/blog/drupal.html" title="Next Post: Drupal学习路线">Drupal学习路线 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -348,6 +354,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/drupal.html">Drupal学习路线</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/nosql-rest.html">NOSQL & REST</a>
       </li>
     
@@ -361,10 +371,6 @@
     
       <li class="post">
         <a href="/blog/smack-invisibility.html">Smack设置隐身状态</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/the-social-life-in-my-mind.html">The social life in my mind</a>
       </li>
     
   </ul>
