@@ -17,56 +17,6 @@ XMPP RFC认为隐身实际上是一个不必要独立存在的一个状态，因
 
 那么在`Smack`中如何实现隐身状态呢，事实上有一种简单的实现办法，虽然不确定它的完善性，但是还是在一定程度上可用的。在这里对这种简单的实现做一个描述，可用性在Android平台上进行了验证。代码片段如下：
 
-    //设置状态
-    private void setPresence(int code){
-		if(connection == null) return;
-		Presence presence;
-    	switch(code){
-		case 0:
-			presence = new Presence(Presence.Type.available);
-			connection.sendPacket(presence);
-			Log.v(TAG, "设置在线");
-			break;
-		case 1:
-			presence = new Presence(Presence.Type.available);
-			presence.setMode(Presence.Mode.dnd);
-			connection.sendPacket(presence);
-			Log.v(TAG, "设置忙碌");
-			System.out.println(presence.toXML());
-			break;
-		case 2:
-			presence = new Presence(Presence.Type.available);
-			presence.setMode(Presence.Mode.away);
-			connection.sendPacket(presence);
-			Log.v(TAG, "设置离开");
-			System.out.println(presence.toXML());
-			break;
-		case 3:
-			Roster roster = connection.getRoster();
-			Collection entries = roster.getEntries();
-			for (RosterEntry entry : entries) {
-				presence = new Presence(Presence.Type.unavailable);
-				presence.setPacketID(Packet.ID_NOT_AVAILABLE);
-				presence.setFrom(connection.getUser());
-				presence.setTo(entry.getUser());
-				connection.sendPacket(presence);
-				System.out.println(presence.toXML());
-	    	}
-			//向同一用户的其他客户端发送隐身状态
-			presence = new Presence(Presence.Type.unavailable);
-			presence.setPacketID(Packet.ID_NOT_AVAILABLE);
-			presence.setFrom(connection.getUser());
-			presence.setTo(StringUtils.parseBareAddress(connection.getUser()));
-			connection.sendPacket(presence);
-			Log.v(TAG, "设置隐身");
-			break;
-		case 4:
-			presence = new Presence(Presence.Type.unavailable);
-			connection.sendPacket(presence);
-			Log.v(TAG, "设置离线");
-			break;
-		default: break;
-		}
-    }
+<script src="https://gist.github.com/duanhong169/5235205.js"></script>
 
 其中，case 3就是用于设置隐身的代码，设置隐身时，首先获取到当前的联系人列表，然后向联系人逐个发送“unavailable”状态，然后再向自己它处登录的客户端发送“unavailable”状态，而由于没有向服务器发送unavailable的状态，因此还是能够接收到联系人发送过来的消息，从而实现了隐身状态。

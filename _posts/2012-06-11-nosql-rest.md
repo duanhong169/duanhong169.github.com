@@ -21,12 +21,12 @@ Tags: nosql, rest, DSL, Event-Sourcing
 
 按Martin所述，按照[Richardson Maturity Model](http://martinfowler.com/articles/richardsonMaturityModel.html)，REST按程度不同通常如下四个阶段：
 
+![rest-overview](http://martinfowler.com/articles/images/richardsonMaturityModel/overview.png)
 图1. [Steps toward REST](http://martinfowler.com/articles/images/richardsonMaturityModel/overview.png)
 
-![rest-overview](http://martinfowler.com/articles/images/richardsonMaturityModel/overview.png)
-<!--more-->
 1.  Level 0：
-最初级的阶段，将HTTP当作一个可以进行远程交互的通讯系统来使用，在这个阶段不会使用到web的任何机制，而仅仅将HTTP作为远程交互机制。
+
+    最初级的阶段，将HTTP当作一个可以进行远程交互的通讯系统来使用，在这个阶段不会使用到web的任何机制，而仅仅将HTTP作为远程交互机制。
 以一个示例来简单地说明：如果我们需要通过web预约一位医生，通常会经历如下步骤：
     -  `POST /appointmentService?data=2010-01-04&doctor=mjones`
         获取到在2010年1月4号MJones医生的所有可预约时间段，我们会得到服务器响应传回的一个列表
