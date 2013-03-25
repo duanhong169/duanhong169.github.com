@@ -1,3 +1,3 @@
 Jekyll, Ruby & Windows just broke my heart.
 
-Please visit blog.segmac.com.
+Please read posts here directly or visit blog.segmac.com
