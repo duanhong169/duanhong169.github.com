@@ -2,7 +2,6 @@ Title: 在Android中高效地显示图片
 Date: 2013-03-25 23:50
 Slug: displaying-android-bitmaps-efficiently
 Tags: android, bitmap, performance
-Published: false
 
 图片资源是移动应用中较耗内存的部分，同时也是最常用的资源之一。对于涉及大量图片的应用、尤其是图片资源需要通过网络连接获取的应用，需要达到如下一些基本要求:
 
@@ -41,3 +40,17 @@ Published: false
 <script src="https://gist.github.com/duanhong169/5235814.js"></script>
 
 这里通过继承`BitmapDrawable`实现了可以保存对`AsyncTask`对象的引用的`AsyncDrawable`类，现在，就可以使用`ImageView.setImageDrawable(asyncDrawable)`方法来使得`ImageView`能够保持对当前有效的`AsyncTask`的引用了。借助于`AsyncDrawable`，可以通过如下方式获取到与某个`ImageView`关联的`AsyncTask`：
+
+<script src="https://gist.github.com/duanhong169/5236583.js"></script>
+
+同样地，还需要在`AsyncTask`中保持对`ImageView`的引用，只需要将`ImageView`作为参数传递给`AsyncTask`即可。
+
+现在，已经能够确定`ImageView`和`AsyncTask`的正确对应关系，当一个`AsyncTask`完成时，可以通过比较之前传入的`ImageView`在当前时刻关联的`AsyncTask`是否等于自身来确定是否应该将结果返回给`ImageView`：
+
+<script src="https://gist.github.com/duanhong169/5236618.js"></script>
+
+通过如上的一些处理，可以防止由多个并发的`AsyncTask`造成的问题，但是仍然存在一个问题，就是当用户滑动`ListView`时，会造成许多没必要的`AsyncTask`在后台执行，虽然已经不会造成图片的显示混乱，但是会浪费不必要的计算资源，为此，可以在每次为`ImageView`新建图片加载任务时，首先获取当前与此`ImageView`相关联的`AsyncTask`，然后判断该`AsyncTask`是否与新建的图片加载任务执行的任务内容一致，如果不一致则终止此次任务，如果一致（当用户来回滑动界面时可能出现这种情况）就不需要再新建`AsyncTask`了。
+
+<script src="https://gist.github.com/duanhong169/5236744.js"></script>
+
+###增加缓存
