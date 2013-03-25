@@ -1,3 +1,1 @@
-Jekyll, Ruby & Windows just broke my heart.
-
-Please read posts here directly or visit blog.segmac.com
+一些读不通的句子。
