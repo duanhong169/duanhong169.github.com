@@ -133,7 +133,8 @@ th,b,strong,h1,h2,h3,h4,h5,h6,dt {
   border-bottom: 1px dashed black;
   padding-bottom: 17px;
   margin-bottom: 35px; 
-  font-size: 120%;
+  font-size: 125%;
+  color: #e14a42;
   padding-left: 27px;
 }
 
