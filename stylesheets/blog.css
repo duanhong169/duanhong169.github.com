@@ -26,12 +26,16 @@ END */
   font-size:12px;
 }
 
+.content .gist table {
+  margin-bottom: 0;
+}
+
 body {
   color: black;
   font-size: 12px;
   font-size: 12px;
   margin: 20px auto;
-  width: 800px;
+  width: 720px;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -66,7 +70,7 @@ img {
 }
 
 .blog {
-  width: 800px;
+  width: 720px;
 }
 
 #menu {
@@ -253,7 +257,7 @@ html {
 }
 
 .title h2 {
-  font-weight:700;
+  font-weight:500;
 }
 
 code {
@@ -261,7 +265,7 @@ code {
   padding: 1px 3px;
 }
 
-.body-post a, .body-page a, .pages a, .title h2
+.body-post a, .body-page a, .pages a, .content h1, .content h2, .content h3, .content h4, .content h5, .content h6
 {
   color: #e14a42;
 }
