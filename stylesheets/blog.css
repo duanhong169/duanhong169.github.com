@@ -89,9 +89,20 @@ img {
 }
 
 .content pre {
-  background: #e5e5e5;
+  background: #fff;
   padding: 13px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  border: solid 1px #efeee6;
 }
+
+.content pre code {
+  border: none;
+}
+
 .content {
   margin-bottom: 100px;
 }
@@ -245,7 +256,7 @@ ul.tags {
 * Added
 */
 html {
-  background-color: #f7f7f7;
+  background-color: #fcfcfa;
 }
 
 .blog-info pre{
@@ -261,8 +272,18 @@ html {
 }
 
 code {
-  background-color: #e5e5e5;
   padding: 1px 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  background-color: #fff;
+  border: solid 1px #efeee6;
+  color: #f14e32;
+  font-family: Courier,monospace !important;
+  line-height: 18px;
 }
 
 .body-post a, .body-page a, .pages a, .content h1, .content h2, .content h3, .content h4, .content h5, .content h6
