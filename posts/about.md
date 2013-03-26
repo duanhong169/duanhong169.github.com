@@ -8,3 +8,4 @@ Type: page
 ###友情链接
 -  [Liufeiyu's blog](http://liufeiyu.cn/)
 -  [MosquitoLiu's Blog](http://blog.mosquitoliu.com/)
+-  [Minimalism](http://xmtsui.github.com/tsui/)
